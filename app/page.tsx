@@ -829,12 +829,17 @@ function ContactSection() {
                   <p style={{ fontSize: '15.41px', color: 'rgb(112,112,112)', lineHeight: 1.65 }}>{t.contact.success}</p>
                 </motion.div>
               ) : (
-                <form
-  name="contact"
-  method="POST"
-  data-netlify="true"
->
-  <input type="hidden" name="form-name" value="contact" />
+                <motion.form
+                  key="form"
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -16 }}
+                  onSubmit={handleSubmit}
+                  name="contact"
+                  method="POST"
+                  data-netlify="true"
+                  style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}
+                >
                   <input type="hidden" name="form-name" value="contact" />
                   <div className="form-2col">
                     <div>
