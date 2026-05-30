@@ -802,7 +802,7 @@ function ContactSection() {
     e.preventDefault()
     const data = new FormData(e.currentTarget)
     try {
-      await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(data as unknown as Record<string, string>).toString() })
+      await fetch('/__forms.html', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(data as unknown as Record<string, string>).toString() })
       setSubmitted(true)
     } catch { setError(true) }
   }
@@ -836,8 +836,6 @@ function ContactSection() {
                   exit={{ opacity: 0, y: -16 }}
                   onSubmit={handleSubmit}
                   name="contact"
-                  method="POST"
-                  data-netlify="true"
                   style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}
                 >
                   <input type="hidden" name="form-name" value="contact" />
