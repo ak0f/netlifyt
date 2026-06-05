@@ -4,8 +4,10 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Script from 'next/script'
 import Link from 'next/link'
+import { useLang } from '@/context/LanguageContext'
 
 export default function CookieBanner() {
+  const { t } = useLang()
   const [consent, setConsent] = useState<boolean | null>(null)
   const [show, setShow] = useState(false)
 
@@ -76,9 +78,9 @@ export default function CookieBanner() {
             }}
           >
             <p style={{ fontSize: '13.5px', color: 'rgba(255,255,255,0.55)', lineHeight: 1.55, margin: 0, flex: 1, minWidth: '180px' }}>
-              Wir verwenden Google Analytics für anonymisierte Statistiken.{' '}
+              {t.cookie.text}{' '}
               <Link href="/datenschutz" style={{ color: 'rgba(255,255,255,0.35)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
-                Datenschutz
+                {t.cookie.privacy}
               </Link>
             </p>
             <div style={{ display: 'flex', gap: '0.6rem', flexShrink: 0 }}>
@@ -98,7 +100,7 @@ export default function CookieBanner() {
                 onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.25)'; e.currentTarget.style.color = 'rgba(255,255,255,0.65)' }}
                 onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)'; e.currentTarget.style.color = 'rgba(255,255,255,0.4)' }}
               >
-                Ablehnen
+                {t.cookie.decline}
               </button>
               <button
                 onClick={accept}
@@ -116,7 +118,7 @@ export default function CookieBanner() {
                 onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.18)' }}
                 onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)' }}
               >
-                Akzeptieren
+                {t.cookie.accept}
               </button>
             </div>
           </motion.div>

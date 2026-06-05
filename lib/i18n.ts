@@ -86,6 +86,12 @@ const de = {
   flyout: {
     counts: ['/5 Leistungen', '/4 Leistungen', '/3 Leistungen'],
   },
+  cookie: {
+    text: 'Wir verwenden Google Analytics für anonymisierte Statistiken.',
+    privacy: 'Datenschutz',
+    decline: 'Ablehnen',
+    accept: 'Akzeptieren',
+  },
 }
 
 const en: typeof de = {
@@ -173,6 +179,12 @@ const en: typeof de = {
   },
   flyout: {
     counts: ['/5 services', '/4 services', '/3 services'],
+  },
+  cookie: {
+    text: 'We use Google Analytics for anonymised statistics.',
+    privacy: 'Privacy policy',
+    decline: 'Decline',
+    accept: 'Accept',
   },
 }
 

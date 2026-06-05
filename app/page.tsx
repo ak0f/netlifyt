@@ -179,7 +179,7 @@ function HeroSection() {
       {/* Content */}
       <motion.div style={{ y: yContent, opacity: heroOpacity, position: 'relative', zIndex: 2 }}>
         <div style={{ overflow: 'hidden', marginBottom: 'max(3.5vw, 1.5rem)' }}>
-          <motion.h1 initial={{ opacity: 0, y: 56 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.1, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.18 }} style={{ fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif', fontSize: 'var(--fs-hero)', fontWeight: 400, lineHeight: 1.5, margin: 0 }}>
+          <motion.h1 initial={{ opacity: 0, y: 56 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.1, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.18 }} style={{ fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif', fontSize: 'var(--fs-hero)', fontWeight: 400, lineHeight: 1.2, margin: 0, maxWidth: '64rem' }}>
             <span style={{ color: '#ffffff' }}>{t.hero.line1} </span>
             <span style={{ color: 'rgba(255,255,255,0.40)' }}>{t.hero.line2}</span>
           </motion.h1>
