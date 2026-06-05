@@ -122,7 +122,7 @@ export default function Navbar() {
             aria-label="Main navigation"
           >
             {NAV_ITEMS.map(item =>
-              item.label === 'Leistungen' ? (
+              item.label === t.nav.services ? (
 
                 /* ── Leistungen with flyout ── */
                 <div
