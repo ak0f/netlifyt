@@ -7,7 +7,6 @@ import LoadingScreen from '@/components/LoadingScreen'
 import PageTransition from '@/components/PageTransition'
 import CustomCursor from '@/components/CustomCursor'
 import CookieBanner from '@/components/CookieBanner'
-import LanguageModal from '@/components/LanguageModal'
 import { LanguageProvider } from '@/context/LanguageContext'
 
 const dmSans = DM_Sans({
@@ -56,7 +55,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <LanguageProvider>
           <CustomCursor />
           <LoadingScreen />
-          <LanguageModal />
           <Navbar />
           <PageTransition>{children}</PageTransition>
           <Footer />

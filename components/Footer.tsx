@@ -6,7 +6,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useLang } from '@/context/LanguageContext'
 
-const COMPANY_HREFS = ['/#ueber-uns', '/#referenzen', '/#preise', '/ablauf', '/#kontakt']
+const COMPANY_HREFS = ['/#ueber-uns', '/referenzen', '/#preise', '/ablauf', '/#kontakt']
 const SERVICE_HREFS = ['/#leistungen', '/#leistungen', '/#leistungen', '/#leistungen']
 const LEGAL = [
   { label: 'Datenschutz', href: '/datenschutz' },

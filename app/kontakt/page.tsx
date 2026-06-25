@@ -1,29 +1,13 @@
-﻿'use client'
+'use client'
 
 import { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
-import Link from 'next/link'
+import { useLang } from '@/context/LanguageContext'
 
 const FADE_UP = {
   hidden: { opacity: 0, y: 28 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] } },
 }
-
-const SERVICES = [
-  'Website Entwicklung',
-  'Social Media Marketing',
-  'E-Mail & Domain',
-  'Wartung & IT-Support',
-  'Sonstiges',
-]
-
-const BUDGETS = [
-  'Unter CHF 500',
-  'CHF 500 – 1\'000',
-  'CHF 1\'000 – 3\'000',
-  'Über CHF 3\'000',
-  'Noch unklar',
-]
 
 function FadeSection({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
   const ref = useRef<HTMLDivElement>(null)
@@ -42,23 +26,33 @@ function FadeSection({ children, delay = 0 }: { children: React.ReactNode; delay
 }
 
 export default function KontaktPage() {
+  const { t } = useLang()
+  const kp = t.kontaktPage
+  const ct = t.contact
+
   const [sent, setSent] = useState(false)
   const [selectedService, setSelectedService] = useState('')
   const [selectedBudget, setSelectedBudget] = useState('')
+
+  const [sending, setSending] = useState(false)
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     const form = e.currentTarget
     const data = new FormData(form)
+    setSending(true)
     try {
-      await fetch('/', {
+      const res = await fetch('/__forms.html', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams(data as unknown as Record<string, string>).toString(),
       })
+      if (!res.ok) throw new Error(`Status ${res.status}`)
       setSent(true)
     } catch {
-      setSent(true)
+      alert(ct.error)
+    } finally {
+      setSending(false)
     }
   }
 
@@ -69,7 +63,7 @@ export default function KontaktPage() {
       <section style={{ padding: 'max(6vw, 1.5rem) max(5vw, 1.25rem) max(4vw, 1.25rem)' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <FadeSection>
-            <span className="s-label">Kontakt</span>
+            <span className="s-label">{ct.label}</span>
           </FadeSection>
           <FadeSection delay={0.08}>
             <h1 style={{
@@ -81,13 +75,13 @@ export default function KontaktPage() {
               letterSpacing: '-0.04em',
               margin: '0 0 2rem',
             }}>
-              Lass uns<br />
-              <span style={{ color: 'rgba(255,255,255,0.35)' }}>zusammenarbeiten.</span>
+              {kp.heroHeading1}<br />
+              <span style={{ color: 'rgba(255,255,255,0.35)' }}>{kp.heroHeading2}</span>
             </h1>
           </FadeSection>
           <FadeSection delay={0.14}>
             <p style={{ fontSize: '15.41px', color: 'rgb(112,112,112)', maxWidth: '480px', lineHeight: 1.7 }}>
-              Füll das Formular aus oder schreib uns direkt — wir melden uns innerhalb von 24 Stunden.
+              {kp.heroSub}
             </p>
           </FadeSection>
         </div>
@@ -95,14 +89,15 @@ export default function KontaktPage() {
 
       {/* Main content: form + sidebar */}
       <section style={{ padding: '0 max(5vw, 1.25rem) max(10vw, 3rem)' }}>
-        <div style={{
-          maxWidth: '1200px',
-          margin: '0 auto',
-          display: 'grid',
-          gridTemplateColumns: 'minmax(0, 1fr) 340px',
-          gap: 'clamp(2rem, 6vw, 6rem)',
-          alignItems: 'start',
-        }}
+        <div
+          style={{
+            maxWidth: '1200px',
+            margin: '0 auto',
+            display: 'grid',
+            gridTemplateColumns: 'minmax(0, 1fr) 340px',
+            gap: 'clamp(2rem, 6vw, 6rem)',
+            alignItems: 'start',
+          }}
           className="kontakt-grid"
         >
 
@@ -129,10 +124,10 @@ export default function KontaktPage() {
                   letterSpacing: '-0.03em',
                   marginBottom: '1rem',
                 }}>
-                  Nachricht erhalten.
+                  {kp.successHeading}
                 </h2>
                 <p style={{ color: 'rgb(112,112,112)', fontSize: '15.41px', lineHeight: 1.7 }}>
-                  Vielen Dank für deine Anfrage. Wir melden uns innerhalb von 24 Stunden bei dir.
+                  {kp.successBody}
                 </p>
               </motion.div>
             ) : (
@@ -140,36 +135,28 @@ export default function KontaktPage() {
                 name="kontakt"
                 method="POST"
                 data-netlify="true"
+                data-netlify-honeypot="bot-field"
                 onSubmit={handleSubmit}
                 style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}
               >
                 <input type="hidden" name="form-name" value="kontakt" />
+                <p hidden>
+                  <label>Don’t fill this out: <input name="bot-field" /></label>
+                </p>
 
                 {/* Name + Email row */}
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }} className="form-row">
                   <div>
                     <label style={{ display: 'block', fontSize: '12px', fontWeight: 400, color: 'rgba(255,255,255,0.3)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '0.75rem' }}>
-                      Name *
+                      {ct.fields.name} *
                     </label>
-                    <input
-                      type="text"
-                      name="name"
-                      required
-                      placeholder="Max Muster"
-                      className="fi"
-                    />
+                    <input type="text" name="name" required placeholder={ct.fields.namePh} className="fi" />
                   </div>
                   <div>
                     <label style={{ display: 'block', fontSize: '12px', fontWeight: 400, color: 'rgba(255,255,255,0.3)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '0.75rem' }}>
-                      E-Mail *
+                      {ct.fields.email} *
                     </label>
-                    <input
-                      type="email"
-                      name="email"
-                      required
-                      placeholder="max@beispiel.ch"
-                      className="fi"
-                    />
+                    <input type="email" name="email" required placeholder={ct.fields.emailPh} className="fi" />
                   </div>
                 </div>
 
@@ -177,36 +164,26 @@ export default function KontaktPage() {
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }} className="form-row">
                   <div>
                     <label style={{ display: 'block', fontSize: '12px', fontWeight: 400, color: 'rgba(255,255,255,0.3)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '0.75rem' }}>
-                      Unternehmen
+                      {kp.companyLabel}
                     </label>
-                    <input
-                      type="text"
-                      name="company"
-                      placeholder="Muster GmbH"
-                      className="fi"
-                    />
+                    <input type="text" name="company" placeholder={kp.companyPh} className="fi" />
                   </div>
                   <div>
                     <label style={{ display: 'block', fontSize: '12px', fontWeight: 400, color: 'rgba(255,255,255,0.3)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '0.75rem' }}>
-                      Telefon
+                      {ct.fields.phone}
                     </label>
-                    <input
-                      type="tel"
-                      name="phone"
-                      placeholder="+41 78 000 00 00"
-                      className="fi"
-                    />
+                    <input type="tel" name="phone" placeholder={ct.fields.phonePh} className="fi" />
                   </div>
                 </div>
 
                 {/* Service selection */}
                 <div>
                   <label style={{ display: 'block', fontSize: '12px', fontWeight: 400, color: 'rgba(255,255,255,0.3)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '1rem' }}>
-                    Gewünschte Leistung
+                    {kp.serviceLabel}
                   </label>
                   <input type="hidden" name="service" value={selectedService} />
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                    {SERVICES.map(s => (
+                    {kp.services.map(s => (
                       <button
                         key={s}
                         type="button"
@@ -233,11 +210,11 @@ export default function KontaktPage() {
                 {/* Budget selection */}
                 <div>
                   <label style={{ display: 'block', fontSize: '12px', fontWeight: 400, color: 'rgba(255,255,255,0.3)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '1rem' }}>
-                    Budget
+                    {kp.budgetLabel}
                   </label>
                   <input type="hidden" name="budget" value={selectedBudget} />
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                    {BUDGETS.map(b => (
+                    {kp.budgets.map(b => (
                       <button
                         key={b}
                         type="button"
@@ -264,12 +241,12 @@ export default function KontaktPage() {
                 {/* Message */}
                 <div>
                   <label style={{ display: 'block', fontSize: '12px', fontWeight: 400, color: 'rgba(255,255,255,0.3)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '0.75rem' }}>
-                    Nachricht *
+                    {ct.fields.message} *
                   </label>
                   <textarea
                     name="message"
                     required
-                    placeholder="Erzähl uns von deinem Projekt..."
+                    placeholder={ct.fields.messagePh}
                     className="ft"
                     style={{ minHeight: '140px' }}
                   />
@@ -279,8 +256,9 @@ export default function KontaktPage() {
                 <div>
                   <motion.button
                     type="submit"
-                    whileHover={{ opacity: 0.88 }}
-                    whileTap={{ scale: 0.98 }}
+                    disabled={sending}
+                    whileHover={sending ? undefined : { opacity: 0.88 }}
+                    whileTap={sending ? undefined : { scale: 0.98 }}
                     style={{
                       display: 'inline-flex',
                       alignItems: 'center',
@@ -293,10 +271,11 @@ export default function KontaktPage() {
                       fontSize: '15.41px',
                       fontWeight: 400,
                       fontFamily: 'inherit',
-                      cursor: 'pointer',
+                      cursor: sending ? 'default' : 'pointer',
+                      opacity: sending ? 0.6 : 1,
                     }}
                   >
-                    Anfrage senden
+                    {kp.submitLabel}
                     <span style={{ fontSize: '18px', lineHeight: 1 }}>→</span>
                   </motion.button>
                 </div>
@@ -315,7 +294,7 @@ export default function KontaktPage() {
                 padding: '2rem',
               }}>
                 <p style={{ fontSize: '12px', fontWeight: 400, color: 'rgba(255,255,255,0.3)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '1.5rem' }}>
-                  Direktkontakt
+                  {kp.sidebarDirect}
                 </p>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
                   <a href="mailto:info@slideagentur.ch" style={{ color: '#fff', textDecoration: 'none', fontSize: '15.41px', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
@@ -328,7 +307,7 @@ export default function KontaktPage() {
                   </a>
                   <p style={{ color: 'rgb(112,112,112)', fontSize: '15.41px', display: 'flex', alignItems: 'flex-start', gap: '0.75rem', margin: 0 }}>
                     <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: '13px', minWidth: '16px', marginTop: '2px' }}>◎</span>
-                    Ostermundigen, Bern<br />Schweiz
+                    {ct.infoValues[2]}
                   </p>
                 </div>
               </div>
@@ -342,11 +321,12 @@ export default function KontaktPage() {
                 padding: '2rem',
               }}>
                 <p style={{ fontSize: '12px', fontWeight: 400, color: 'rgba(255,255,255,0.3)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '1.5rem' }}>
-                  Reaktionszeit
+                  {kp.sidebarResponse}
                 </p>
                 <p style={{ fontSize: '15.41px', color: 'rgb(112,112,112)', lineHeight: 1.7, margin: 0 }}>
-                  Wir antworten in der Regel innerhalb von{' '}
-                  <span style={{ color: '#fff' }}>24 Stunden</span> auf Anfragen.
+                  {kp.responseText}{' '}
+                  <span style={{ color: '#fff' }}>{kp.responseHighlight}</span>{' '}
+                  {kp.responseTextAfter}
                 </p>
               </div>
             </FadeSection>
@@ -359,7 +339,7 @@ export default function KontaktPage() {
                 padding: '2rem',
               }}>
                 <p style={{ fontSize: '12px', fontWeight: 400, color: 'rgba(255,255,255,0.3)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '1.5rem' }}>
-                  Social Media
+                  {kp.sidebarSocial}
                 </p>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                   <a href="https://www.instagram.com/slideagentur" target="_blank" rel="noopener noreferrer"
@@ -396,4 +376,3 @@ export default function KontaktPage() {
     </main>
   )
 }
-

@@ -2,12 +2,17 @@
 <html>
   <head></head>
   <body>
-    <form name="contact" data-netlify="true" hidden>
-      <input type="hidden" name="form-name" value="contact" />
+    <!-- Hidden static form so Netlify can register it at build time.
+         Field names MUST match the React form in app/kontakt/page.tsx -->
+    <form name="kontakt" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="kontakt" />
+      <input name="bot-field" />
       <input name="name" type="text" />
       <input name="email" type="email" />
+      <input name="company" type="text" />
       <input name="phone" type="tel" />
-      <select name="subject"></select>
+      <input name="service" type="text" />
+      <input name="budget" type="text" />
       <textarea name="message"></textarea>
     </form>
   </body>

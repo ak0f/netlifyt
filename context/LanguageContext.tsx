@@ -7,46 +7,40 @@ interface LangCtx {
   lang: Lang
   t: T
   setLang: (l: Lang) => void
-  ready: boolean          // false until localStorage + IP check done
-  showModal: boolean      // true on genuine first visit
-  confirmLang: (l: Lang) => void
+  ready: boolean          // false until language is detected
 }
 
 const Ctx = createContext<LangCtx | null>(null)
 
-const DACH = ['CH', 'DE', 'AT', 'LI']
 const STORAGE_KEY = 'slide_lang'
 
-async function detectLangFromIP(): Promise<Lang> {
-  try {
-    const res = await fetch('https://ipapi.co/country_code/', { cache: 'no-store' })
-    const code = (await res.text()).trim().toUpperCase()
-    return DACH.includes(code) ? 'de' : 'en'
-  } catch {
-    return 'de'
+/** Detect German vs English from the browser locale. Defaults to German. */
+function detectLang(): Lang {
+  if (typeof navigator === 'undefined') return 'de'
+  const locales = navigator.languages?.length ? navigator.languages : [navigator.language]
+  for (const loc of locales) {
+    const code = loc?.toLowerCase() ?? ''
+    if (code.startsWith('de')) return 'de'
+    if (code.startsWith('en')) return 'en'
   }
+  return 'de'
 }
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [lang, setLangState] = useState<Lang>('de')
-  const [ready, setReady]     = useState(false)
-  const [showModal, setShowModal] = useState(false)
+  const [ready, setReady]    = useState(false)
 
   useEffect(() => {
     const stored = localStorage.getItem(STORAGE_KEY) as Lang | null
 
     if (stored === 'de' || stored === 'en') {
-      /* returning visitor: just use their preference */
+      /* returning visitor: respect their manual choice */
       setLangState(stored)
-      setReady(true)
     } else {
-      /* first ever visit: detect via IP then show modal */
-      detectLangFromIP().then(detected => {
-        setLangState(detected)   // pre-select the detected language
-        setReady(true)
-        setShowModal(true)
-      })
+      /* first visit: auto-detect from the browser language */
+      setLangState(detectLang())
     }
+    setReady(true)
   }, [])
 
   function setLang(l: Lang) {
@@ -54,13 +48,8 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     localStorage.setItem(STORAGE_KEY, l)
   }
 
-  function confirmLang(l: Lang) {
-    setLang(l)
-    setShowModal(false)
-  }
-
   return (
-    <Ctx.Provider value={{ lang, t: translations[lang], setLang, ready, showModal, confirmLang }}>
+    <Ctx.Provider value={{ lang, t: translations[lang], setLang, ready }}>
       {children}
     </Ctx.Provider>
   )

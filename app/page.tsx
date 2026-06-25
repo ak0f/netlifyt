@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { motion, useInView, AnimatePresence, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion'
 import { useLang } from '@/context/LanguageContext'
+import { PROJECTS, type Project } from '@/lib/projects'
 
 /* ─── Animation helpers ─── */
 function FadeUp({ children, delay = 0, className = '' }: { children: React.ReactNode; delay?: number; className?: string }) {
@@ -16,22 +17,6 @@ function FadeUp({ children, delay = 0, className = '' }: { children: React.React
       initial={{ opacity: 0, y: 56 }}
       animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 56 }}
       transition={{ duration: 1.1, ease: [0.25, 0.46, 0.45, 0.94], delay }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  )
-}
-
-function FadeIn({ children, delay = 0, className = '' }: { children: React.ReactNode; delay?: number; className?: string }) {
-  const ref    = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-60px' })
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0 }}
-      animate={inView ? { opacity: 1 } : {}}
-      transition={{ duration: 1, ease: 'easeOut', delay }}
       className={className}
     >
       {children}
@@ -506,110 +491,104 @@ function ServiceCard({ title, tagline, subtitle, img, features, idx }: {
 
 
 /* ─── REFERENCES ─── */
-const PROJECTS = [
-  {
-    img: '/img/apotheke.png', alt: 'Wegmühle Apotheke Website', title: 'Wegmühle Apotheke',
-    desc: 'Eine moderne, benutzerfreundliche Website für die Wegmühle Apotheke. Vollständig in HTML, CSS und JavaScript programmiert.',
-    quote: '"Die neue Website hat unsere Kundenanfragen spürbar erhöht. Schnelle Umsetzung, sauberes Ergebnis." – M. Emch',
-    meta: { location: 'Bern, Schweiz', industry: 'Apotheke', service: 'Website' },
-    links: [{ label: 'Website ansehen →', href: 'https://apotheke.akif.pw' }],
-  },
-  {
-    img: '/img/doner.png', alt: 'Avanti Bistro', title: 'Avanti Bistro Ittigen',
-    desc: 'Eine warme, responsive Website für das Avanti Bistro in Ittigen. Benutzerfreundliches Design, optimiert für alle Bildschirmgrössen.',
-    quote: '"Unkomplizierte Zusammenarbeit, klare Kommunikation und ein Resultat, das überzeugt." – Avanti Bistro',
-    meta: { location: 'Ittigen, Bern', industry: 'Gastronomie', service: 'Website' },
-    links: [{ label: 'Website ansehen →', href: 'https://avanti-bern.akif.pw' }],
-  },
-  {
-    img: '/img/zerotrace.png', alt: 'ZeroTrace', title: 'ZeroTrace',
-    desc: 'SLIDE hat die Social-Media-Kanäle von ZeroTrace übernommen und 1–2 Beiträge pro Woche erstellt. Online-Sichtbarkeit deutlich gesteigert.',
-    quote: '"Das Content Marketing ist sehr gut umgesetzt." – 9dl, CEO von ZeroTrace',
-    meta: { location: 'Online', industry: 'Tech / Privacy', service: 'Social Media' },
-    links: [{ label: 'TikTok →', href: 'https://www.tiktok.com/@zerotrace.pw' }, { label: 'Instagram →', href: 'https://www.instagram.com/zerotrace.pw' }],
-  },
-  {
-    img: '/img/portfolio.png', alt: 'Portfolio Akif Yaylaci', title: 'Portfolio Akif Yaylaci',
-    desc: 'Das persönliche Portfolio des SLIDE-Gründers – modernes Webprojekt in HTML, CSS und JavaScript als Demonstration des handwerklichen Könnens.',
-    quote: '"Dein Portfolio hat uns recht beeindruckt." – Bundesamt für Informatik und Telekommunikation (BIT)',
-    meta: { location: 'Bern, Schweiz', industry: 'Web Development', service: 'Portfolio' },
-    links: [{ label: 'Portfolio ansehen →', href: 'https://akif.pw' }],
-  },
-]
-
 function ReferencesSection() {
   const { t } = useLang()
-  return (
-    <section id="referenzen" style={{ background: 'rgb(15, 15, 15)', padding: 'max(10vw, 3.5rem) max(5vw, 1.25rem)' }}>
-      <FadeUp>
-        <span style={{ display: 'block', fontSize: '15.41px', fontWeight: 400, textTransform: 'uppercase', color: 'rgb(112,112,112)', marginBottom: '1.5rem' }}>{t.references.label}</span>
-        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-end', gap: '2rem', marginBottom: '3rem' }}>
-          <h2 style={{ fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif', fontSize: 'var(--fs-section)', fontWeight: 400, color: '#fff', margin: 0, lineHeight: 1.25 }}>
-            {t.references.heading}
-          </h2>
-          <Link href="/kontakt" className="btn-dark">{t.references.cta}</Link>
-        </div>
-      </FadeUp>
+  const sectionRef = useRef(null)
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'start 25%'] })
+  const bg = useTransform(scrollYProgress, [0, 1], ['rgb(18,18,18)', 'rgb(11,11,11)'])
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 'max(10vw, 3.5rem)' }}>
-        {PROJECTS.map((p, idx) => <ProjectCard key={p.title} {...p} idx={idx} />)}
+  return (
+    <motion.section ref={sectionRef} id="referenzen" style={{ background: bg, padding: 'max(7vw, 3rem) clamp(1rem, 2.5vw, 2.5rem)' }}>
+      <div style={{ width: '100%', margin: '0 auto' }}>
+        <FadeUp>
+          <span style={{ display: 'block', fontSize: '15.41px', fontWeight: 400, textTransform: 'uppercase', color: 'rgb(112,112,112)', marginBottom: '1.5rem' }}>{t.references.label}</span>
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-end', gap: '2rem', marginBottom: 'clamp(2rem, 4vw, 3rem)' }}>
+            <h2 style={{ fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif', fontSize: 'var(--fs-section)', fontWeight: 400, color: '#fff', margin: 0, lineHeight: 1.25 }}>
+              {t.references.heading}
+            </h2>
+            <Link href="/referenzen" className="btn-dark">{t.references.seeAll}</Link>
+          </div>
+        </FadeUp>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(1rem, 2vw, 1.5rem)' }}>
+          {PROJECTS.map(p => <ProjectCard key={p.slug} project={p} />)}
+        </div>
       </div>
-    </section>
+    </motion.section>
   )
 }
 
-function ProjectCard({ img, alt, title, desc, quote, meta, links, idx }: {
-  img: string; alt: string; title: string; desc: string; quote: string
-  meta: { location: string; industry: string; service: string }
-  links: { label: string; href: string }[]; idx: number
-}) {
-  const { t } = useLang()
+function ProjectCard({ project }: { project: Project }) {
+  const { t, lang } = useLang()
+  const { img, alt, title, desc, meta, slug } = project
   const ref    = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-80px' })
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] })
-  const yImg   = useTransform(scrollYProgress, [0, 1], ['-6%', '6%'])
-  const isEven = idx % 2 === 0
+  const yImg    = useTransform(scrollYProgress, [0, 1], ['-7%', '7%'])
+  // scroll-linked reveal — card fades, rises and scales in as it scrolls up
+  const opacity = useTransform(scrollYProgress, [0, 0.22], [0, 1])
+  const y       = useTransform(scrollYProgress, [0, 0.22], [90, 0])
+  const scale   = useTransform(scrollYProgress, [0, 0.22], [0.95, 1])
+
+  const metaCols = [
+    { label: t.references.meta.location, value: meta.location[lang] },
+    { label: t.references.meta.industry, value: meta.industry[lang] },
+    { label: t.references.meta.service, value: meta.service[lang] },
+  ]
 
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 32 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.9, ease: [0.25, 0.46, 0.45, 0.94] }}
-      style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px, 100%), 1fr))', gap: '3rem', alignItems: 'start', direction: isEven ? 'ltr' : 'rtl' }}
-    >
-      {/* Image with parallax */}
-      <div style={{ borderRadius: '15.41px', overflow: 'hidden', background: 'rgb(29,29,29)', direction: 'ltr' }}>
-        <motion.div style={{ y: yImg }}>
-          <Image
-            src={img} alt={alt} width={700} height={420}
-            style={{ width: '100%', height: 'auto', display: 'block', objectFit: 'cover', filter: 'brightness(0.88)', transition: 'transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.4s', transform: 'scale(1.04)' }}
-            unoptimized
-            onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.09)'; e.currentTarget.style.filter = 'brightness(0.95)' }}
-            onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1.04)'; e.currentTarget.style.filter = 'brightness(0.88)' }}
-          />
-        </motion.div>
-      </div>
+    <Link href={`/referenzen/${slug}`} style={{ textDecoration: 'none' }} aria-label={title}>
+      <motion.article
+        ref={ref}
+        style={{
+          opacity,
+          y,
+          scale,
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(320px, 100%), 1fr))',
+          gap: 'clamp(2rem, 4vw, 4rem)',
+          alignItems: 'stretch',
+          padding: 'clamp(1.25rem, 2.5vw, 2rem)',
+          borderRadius: '20px',
+          border: '1px solid rgba(255,255,255,0.06)',
+          background: 'linear-gradient(135deg, rgba(34,34,34,0.55) 0%, rgba(18,18,18,0.35) 100%)',
+          transition: 'border-color 0.3s',
+        }}
+        whileHover={{ borderColor: 'rgba(255,255,255,0.16)' }}
+      >
+        {/* Image with parallax */}
+        <div style={{ borderRadius: '14px', overflow: 'hidden', background: 'rgb(29,29,29)', minHeight: '280px' }}>
+          <motion.div style={{ y: yImg, height: '100%' }}>
+            <Image
+              src={img} alt={alt} width={760} height={560}
+              style={{ width: '100%', height: '100%', display: 'block', objectFit: 'cover', filter: 'brightness(0.9)', transition: 'transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.4s', transform: 'scale(1.06)' }}
+              unoptimized
+              onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.1)'; e.currentTarget.style.filter = 'brightness(1)' }}
+              onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1.06)'; e.currentTarget.style.filter = 'brightness(0.9)' }}
+            />
+          </motion.div>
+        </div>
 
-      <div style={{ direction: 'ltr', display: 'flex', flexDirection: 'column', gap: '1.5rem', paddingTop: '1rem' }}>
-        <h3 style={{ fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif', fontSize: '29px', fontWeight: 400, color: '#fff', margin: '0 0 0.5rem', lineHeight: 1.2 }}>{title}</h3>
-        <p style={{ fontSize: '15.41px', color: 'rgb(112,112,112)', lineHeight: 1.65, margin: 0 }}>{desc}</p>
-        <p style={{ fontSize: '15.41px', color: 'rgba(255,255,255,0.45)', lineHeight: 1.65, margin: 0, paddingLeft: '1rem', borderLeft: '2px solid rgba(255,255,255,0.1)' }}>{quote}</p>
-        <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', paddingTop: '1.5rem', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
-          {[[t.references.meta.location, meta.location], [t.references.meta.industry, meta.industry], [t.references.meta.service, meta.service]].map(([k, v]) => (
-            <div key={k}>
-              <p style={{ fontSize: '11px', fontWeight: 400, textTransform: 'uppercase', color: 'rgba(255,255,255,0.28)', marginBottom: '0.3rem', letterSpacing: '0.08em' }}>{k}</p>
-              <p style={{ fontSize: '14px', color: '#fff', margin: 0 }}>{v}</p>
-            </div>
-          ))}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', paddingBlock: 'clamp(0.5rem, 1.5vw, 1.5rem)' }}>
+          <h3 style={{ fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif', fontSize: 'clamp(2rem, 3.5vw, 3rem)', fontWeight: 400, color: '#fff', margin: 0, lineHeight: 1.05, letterSpacing: '-0.02em' }}>{title}</h3>
+          <p style={{ fontSize: '15.41px', color: 'rgb(150,150,150)', lineHeight: 1.7, margin: 0 }}>{desc[lang]}</p>
+
+          <div style={{ flex: 1 }} />
+
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '2.5rem', paddingTop: '0.5rem' }}>
+            {metaCols.map(m => (
+              <div key={m.label} style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
+                <span style={{ fontSize: '13px', color: 'rgb(112,112,112)' }}>{m.label}</span>
+                <span style={{ fontSize: '14px', color: '#fff', textTransform: 'uppercase', letterSpacing: '0.04em' }}>{m.value}</span>
+              </div>
+            ))}
+          </div>
+
+          <span style={{ display: 'inline-flex', alignItems: 'center', fontSize: '15.41px', color: '#fff', marginTop: '0.5rem', fontFamily: 'var(--font-hg), sans-serif' }}>
+            {t.references.viewProject}
+          </span>
         </div>
-        <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
-          {links.map(l => (
-            <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer" className="btn-dark" style={{ padding: '10px 20px', fontSize: '14px' }}>{l.label}</a>
-          ))}
-        </div>
-      </div>
-    </motion.div>
+      </motion.article>
+    </Link>
   )
 }
 
@@ -623,31 +602,72 @@ const TESTIMONIALS = [
 
 function TestimonialsSection() {
   const { t } = useLang()
-  const doubled = [...TESTIMONIALS, ...TESTIMONIALS]
   return (
-    <section style={{ background: 'rgb(16, 16, 16)', padding: 'max(8vw, 2.5rem) 0', overflow: 'hidden' }}>
-      <FadeIn>
-        <p style={{ fontSize: '15.41px', fontWeight: 400, textTransform: 'uppercase', color: 'rgb(112,112,112)', paddingInline: 'max(5vw, 1.25rem)', marginBottom: 'max(4vw, 1.5rem)' }}>{t.testimonials.label}</p>
-      </FadeIn>
-      <div style={{ overflow: 'hidden' }}>
-        <div className="marquee-track" style={{ gap: '1.5rem', animationDuration: '40s' }}>
-          {doubled.map((t, i) => (
-            <div key={i} style={{ background: 'rgb(29,29,29)', borderRadius: '15.41px', padding: '1.75rem', minWidth: '340px', maxWidth: '380px', flexShrink: 0, display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-              <p style={{ fontSize: '15.41px', color: '#fff', lineHeight: 1.65, margin: 0 }}>{t.quote}</p>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: 'rgba(255,255,255,0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', color: 'rgba(255,255,255,0.4)', flexShrink: 0 }}>
-                  {t.name[0]}
-                </div>
-                <div>
-                  <p style={{ fontSize: '13px', color: '#fff', margin: 0 }}>{t.name}</p>
-                  <p style={{ fontSize: '11px', color: 'rgb(112,112,112)', margin: 0 }}>{t.title}</p>
-                </div>
-              </div>
-            </div>
-          ))}
+    <section style={{ background: 'rgb(11, 11, 11)', padding: 'max(7vw, 3rem) clamp(1rem, 2.5vw, 2.5rem)' }}>
+      <div style={{ position: 'relative', width: '100%', margin: '0 auto', background: 'rgb(6,6,6)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 'clamp(20px, 3vw, 32px)', padding: 'clamp(1.75rem, 4vw, 4rem)', overflow: 'hidden' }}>
+        {/* soft blurred glow */}
+        <div aria-hidden style={{ position: 'absolute', top: '-25%', left: '50%', transform: 'translateX(-50%)', width: 'min(70%, 720px)', height: '45%', background: 'radial-gradient(ellipse at center, rgba(120,120,140,0.14), transparent 70%)', filter: 'blur(70px)', pointerEvents: 'none', zIndex: 0 }} />
+
+        <div style={{ position: 'relative', zIndex: 1, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(380px, 100%), 1fr))', gap: 'clamp(2rem, 5vw, 5rem)', alignItems: 'start' }}>
+        {/* Left — sticky intro + CTA */}
+        <div style={{ position: 'sticky', top: 'clamp(2rem, 14vh, 9rem)', display: 'flex', flexDirection: 'column', gap: 'clamp(2.5rem, 6vw, 5rem)' }}>
+          <FadeUp>
+            <span style={{ display: 'inline-block', fontSize: '13px', textTransform: 'uppercase', letterSpacing: '0.06em', color: 'rgb(150,150,150)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '999px', padding: '8px 18px', marginBottom: '2rem' }}>{t.testimonials.label}</span>
+            <h2 style={{ fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif', fontSize: 'clamp(2.25rem, 4vw, 3.75rem)', fontWeight: 400, margin: 0, lineHeight: 1.08, letterSpacing: '-0.02em' }}>
+              <span style={{ color: '#fff' }}>{t.testimonials.heading[0]}</span>{' '}
+              <span style={{ color: 'rgb(112,112,112)' }}>{t.testimonials.heading[1]}</span>
+            </h2>
+          </FadeUp>
+          <div>
+            <Link href="/kontakt" className="btn-dark">{t.contact.cta}</Link>
+          </div>
+        </div>
+
+        {/* Right — auto-scrolling reviews with top/bottom darken fade */}
+        <div style={{
+          height: 'clamp(460px, 72vh, 760px)',
+          overflow: 'hidden',
+          WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, #000 13%, #000 87%, transparent 100%)',
+          maskImage: 'linear-gradient(to bottom, transparent 0%, #000 13%, #000 87%, transparent 100%)',
+        }}>
+          <div className="vmarquee-track">
+            {[...TESTIMONIALS, ...TESTIMONIALS].map((tm, i) => <TestimonialCard key={i} {...tm} />)}
+          </div>
+        </div>
         </div>
       </div>
     </section>
+  )
+}
+
+function TestimonialCard({ quote, name, title }: { quote: string; name: string; title: string }) {
+  return (
+    <div
+      style={{
+        background: 'rgb(20,20,20)',
+        border: '1px solid rgba(255,255,255,0.05)',
+        borderRadius: '20px',
+        padding: 'clamp(2rem, 3.5vw, 3.5rem)',
+        minHeight: 'clamp(300px, 30vw, 380px)',
+        marginBottom: 'clamp(1.5rem, 2.5vw, 2rem)',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '2.5rem',
+        textAlign: 'center',
+        flexShrink: 0,
+      }}
+    >
+      <p style={{ fontSize: 'clamp(1.05rem, 1.4vw, 1.3rem)', color: '#fff', lineHeight: 1.6, margin: 0, flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{quote}</p>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem' }}>
+        <div style={{ width: '44px', height: '44px', borderRadius: '50%', background: 'rgba(255,255,255,0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '15px', color: 'rgba(255,255,255,0.5)', flexShrink: 0 }}>
+          {name[0]}
+        </div>
+        <div style={{ textAlign: 'left' }}>
+          <p style={{ fontSize: '14px', color: '#fff', margin: 0, textTransform: 'uppercase', letterSpacing: '0.04em' }}>{name}</p>
+          <p style={{ fontSize: '12px', color: 'rgb(112,112,112)', margin: 0 }}>{title}</p>
+        </div>
+      </div>
+    </div>
   )
 }
 
@@ -956,6 +976,45 @@ function ProcessSection() {
   )
 }
 
+/* ─── FLOATING START-PROJECT BUTTON ─── */
+function StartProjectFab() {
+  const { t } = useLang()
+  const [visible, setVisible] = useState(false)
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > window.innerHeight * 0.85)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+  const label = t.references.cta.replace('→', '').trim()
+  return (
+    <div style={{ position: 'fixed', bottom: 'clamp(1.25rem, 3vw, 2rem)', left: '50%', transform: 'translateX(-50%)', zIndex: 50, pointerEvents: 'none' }}>
+      <AnimatePresence>
+        {visible && (
+          <motion.div
+            initial={{ opacity: 0, y: 24, scale: 0.92 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 24, scale: 0.92 }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            style={{ pointerEvents: 'auto' }}
+          >
+            <Link
+              href="/kontakt"
+              className="btn-float"
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '0.65rem', padding: '14px 26px', whiteSpace: 'nowrap', boxShadow: '0 10px 34px rgba(0,0,0,0.45)' }}
+            >
+              {label}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </Link>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  )
+}
+
 /* ─── SCROLL TO TOP ─── */
 function ScrollToTop() {
   const [visible, setVisible] = useState(false)
@@ -985,6 +1044,7 @@ export default function HomePage() {
       <TestimonialsSection />
       <AboutSection />
       <ContactSection />
+      <StartProjectFab />
       <ScrollToTop />
     </main>
   )

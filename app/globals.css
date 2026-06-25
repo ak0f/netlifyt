@@ -221,6 +221,22 @@ body {
   to   { transform: translateX(-50%); }
 }
 
+/* ── Vertical auto-scroll (reviews) ── */
+.vmarquee-track {
+  display: flex;
+  flex-direction: column;
+  animation: vmarquee 34s linear infinite;
+  will-change: transform;
+}
+.vmarquee-track:hover { animation-play-state: paused; }
+@keyframes vmarquee {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vmarquee-track { animation: none; }
+}
+
 /* ── Scroll line animation ── */
 @keyframes scrollLine {
   0%,100% { opacity: 0.3; transform: scaleY(1); }

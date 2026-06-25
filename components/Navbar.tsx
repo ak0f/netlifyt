@@ -86,7 +86,7 @@ export default function Navbar() {
 
   const NAV_ITEMS = [
     { label: t.nav.services,   href: '/#leistungen' },
-    { label: t.nav.references, href: '/#referenzen' },
+    { label: t.nav.references, href: '/referenzen' },
     { label: t.nav.about,      href: '/#ueber-uns'  },
     { label: t.nav.process,    href: '/ablauf'       },
     { label: t.nav.contact,    href: '/kontakt'      },
