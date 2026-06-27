@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { PROJECTS, getProject } from '@/lib/projects'
 import ProjectDetail from './ProjectDetail'
+import { safeJsonLd } from '@/lib/jsonld'
 
 export function generateStaticParams() {
   return PROJECTS.map(p => ({ slug: p.slug }))
@@ -51,7 +52,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }}
       />
       <ProjectDetail slug={slug} />
     </>

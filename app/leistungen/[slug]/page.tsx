@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { SERVICES, getService } from '@/lib/services'
 import LeistungContent from './LeistungContent'
+import { safeJsonLd } from '@/lib/jsonld'
 
 const BASE = 'https://slideagentur.ch'
 
@@ -73,7 +74,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }} />
       <LeistungContent slug={s.slug} />
     </>
   )

@@ -8,6 +8,7 @@ import PageTransition from '@/components/PageTransition'
 import CustomCursor from '@/components/CustomCursor'
 import CookieBanner from '@/components/CookieBanner'
 import { LanguageProvider } from '@/context/LanguageContext'
+import { safeJsonLd } from '@/lib/jsonld'
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
@@ -119,7 +120,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={`${dmSans.variable} ${ibmMono.variable} ${hostGrotesk.variable}`}>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }}
         />
         <LanguageProvider>
           <CustomCursor />
