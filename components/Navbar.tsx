@@ -221,7 +221,7 @@ export default function Navbar() {
 
             <Link
               href="/kontakt"
-              aria-label="Erstgespräch buchen"
+              aria-label={t.a11y.bookCall}
               className="hidden lg:inline-flex"
               style={{
                 ...PILL,
@@ -241,7 +241,7 @@ export default function Navbar() {
               onClick={() => setOpen(v => !v)}
               style={{ ...PILL, padding: '11px 14px', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
               className="lg:hidden"
-              aria-label="Menü öffnen"
+              aria-label={t.a11y.openMenu}
               aria-expanded={open}
             >
               <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', width: '18px' }}>
@@ -295,7 +295,7 @@ export default function Navbar() {
                 onClick={() => setOpen(false)}
                 style={{ display: 'block', padding: '12px 16px', color: '#fff', fontSize: '15.41px', fontWeight: 400, textDecoration: 'none', borderRadius: '10px', background: 'rgba(255,255,255,0.06)', marginBottom: '6px' }}
               >
-                {lang === 'de' ? 'Erstgespräch buchen →' : 'Book a free call →'}
+                {t.hero.cta}
               </Link>
 
               {/* Language switch */}

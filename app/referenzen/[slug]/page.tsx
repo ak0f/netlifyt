@@ -12,10 +12,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const p = getProject(slug)
   if (!p) return {}
   return {
-    title: `${p.title} – SLIDE Agentur`,
+    title: `${p.title} | SLIDE Agentur`,
     description: p.desc.de,
+    alternates: { canonical: `https://slideagentur.ch/referenzen/${p.slug}` },
     openGraph: {
-      title: `${p.title} – SLIDE Agentur`,
+      title: `${p.title} | SLIDE Agentur`,
       description: p.desc.de,
       url: `https://slideagentur.ch/referenzen/${p.slug}`,
       siteName: 'SLIDE Agentur',
@@ -27,6 +28,32 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  if (!getProject(slug)) notFound()
-  return <ProjectDetail slug={slug} />
+  const p = getProject(slug)
+  if (!p) notFound()
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'CreativeWork',
+    name: p.title,
+    description: p.desc.de,
+    url: `https://slideagentur.ch/referenzen/${p.slug}`,
+    image: `https://slideagentur.ch${p.img}`,
+    ...(p.year ? { dateCreated: p.year } : {}),
+    creator: {
+      '@type': 'Organization',
+      name: 'SLIDE Agentur',
+      url: 'https://slideagentur.ch',
+    },
+    about: p.meta.industry.de,
+  }
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <ProjectDetail slug={slug} />
+    </>
+  )
 }

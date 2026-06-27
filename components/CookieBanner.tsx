@@ -88,17 +88,17 @@ export default function CookieBanner() {
                 onClick={decline}
                 style={{
                   padding: '8px 16px',
-                  background: 'transparent',
-                  border: '1px solid rgba(255,255,255,0.12)',
+                  background: 'rgba(255,255,255,0.1)',
+                  border: '1px solid rgba(255,255,255,0.18)',
                   borderRadius: '8px',
-                  color: 'rgba(255,255,255,0.4)',
+                  color: '#fff',
                   fontSize: '13px',
                   cursor: 'pointer',
                   fontFamily: 'inherit',
-                  transition: 'border-color 0.2s, color 0.2s',
+                  transition: 'background 0.2s',
                 }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.25)'; e.currentTarget.style.color = 'rgba(255,255,255,0.65)' }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)'; e.currentTarget.style.color = 'rgba(255,255,255,0.4)' }}
+                onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.18)' }}
+                onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)' }}
               >
                 {t.cookie.decline}
               </button>

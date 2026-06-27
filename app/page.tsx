@@ -248,7 +248,7 @@ function ServicesSection() {
     num: `0${i + 1}`,
     title: item.title,
     tagline: item.tagline,
-    subtitle: '/5 services',
+    subtitle: t.flyout.counts[i],
     img: SERVICE_IMGS[i],
     features: item.features,
   }))
@@ -283,6 +283,7 @@ function ServicesSection() {
 function ServiceCard({ title, tagline, subtitle, img, features, idx }: {
   num?: string; title: string; tagline: string; subtitle: string; img: string; features: string[]; idx: number
 }) {
+  const { t }    = useLang()
   const wrapRef  = useRef<HTMLDivElement>(null)
   const cardRef  = useRef<HTMLDivElement>(null)
   const inView   = useInView(wrapRef, { once: true, margin: '-40px' })
@@ -478,7 +479,7 @@ function ServiceCard({ title, tagline, subtitle, img, features, idx }: {
                     letterSpacing: '0.03em',
                   }}
                 >
-                  See More
+                  {t.services.more}
                 </motion.a>
               )}
             </AnimatePresence>
@@ -593,15 +594,15 @@ function ProjectCard({ project }: { project: Project }) {
 }
 
 /* ─── TESTIMONIALS ─── */
-const TESTIMONIALS = [
-  { quote: '"Die neue Website hat unsere Kundenanfragen spürbar erhöht. Schnelle Umsetzung, sauberes Ergebnis."', name: 'M. Emch', title: 'Wegmühle Apotheke' },
-  { quote: '"Unkomplizierte Zusammenarbeit, klare Kommunikation und ein Resultat, das überzeugt."',              name: 'Avanti Bistro Team', title: 'Avanti Bistro Ittigen' },
-  { quote: '"Das Content Marketing ist sehr gut umgesetzt."',                                                    name: '9dl', title: 'CEO, ZeroTrace' },
-  { quote: '"Dein Portfolio hat uns recht beeindruckt."',                                                        name: 'Bundesamt für Informatik und Telekommunikation', title: 'BIT' },
-]
-
 function TestimonialsSection() {
-  const { t } = useLang()
+  const { t, lang } = useLang()
+
+  /* built from the bilingual project data so it follows the language toggle */
+  const testimonials = PROJECTS.map(p => ({
+    quote: `"${p.quote.text[lang]}"`,
+    name: p.quote.author[lang],
+    title: p.title,
+  }))
   return (
     <section style={{ background: 'rgb(11, 11, 11)', padding: 'max(7vw, 3rem) clamp(1rem, 2.5vw, 2.5rem)' }}>
       <div style={{ position: 'relative', width: '100%', margin: '0 auto', background: 'rgb(6,6,6)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 'clamp(20px, 3vw, 32px)', padding: 'clamp(1.75rem, 4vw, 4rem)', overflow: 'hidden' }}>
@@ -631,7 +632,7 @@ function TestimonialsSection() {
           maskImage: 'linear-gradient(to bottom, transparent 0%, #000 13%, #000 87%, transparent 100%)',
         }}>
           <div className="vmarquee-track">
-            {[...TESTIMONIALS, ...TESTIMONIALS].map((tm, i) => <TestimonialCard key={i} {...tm} />)}
+            {[...testimonials, ...testimonials].map((tm, i) => <TestimonialCard key={i} {...tm} />)}
           </div>
         </div>
         </div>
@@ -1017,6 +1018,7 @@ function StartProjectFab() {
 
 /* ─── SCROLL TO TOP ─── */
 function ScrollToTop() {
+  const { t } = useLang()
   const [visible, setVisible] = useState(false)
   useEffect(() => {
     const onScroll = () => setVisible(window.scrollY > 600)
@@ -1027,7 +1029,7 @@ function ScrollToTop() {
     <AnimatePresence>
       {visible && (
         <motion.button initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 16 }} transition={{ duration: 0.3 }}
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="stt" aria-label="Nach oben scrollen">↑</motion.button>
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="stt" aria-label={t.a11y.scrollTop}>↑</motion.button>
       )}
     </AnimatePresence>
   )

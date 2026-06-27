@@ -33,8 +33,8 @@ export const PROJECTS: Project[] = [
     alt: 'Shots by Levin Website',
     title: 'Shots by Levin',
     desc: {
-      de: 'Eine moderne, responsive Website für Shots by Levin – einen Sportfotografen aus Bern. Klares Design mit Portfolio, Leistungsübersicht und integrierter Buchungsfunktion, optimiert für alle Bildschirmgrössen.',
-      en: 'A modern, responsive website for Shots by Levin – a sports photographer from Berne. Clean design with portfolio, services overview and integrated booking, optimised for every screen size.',
+      de: 'Eine moderne, responsive Website für Shots by Levin, einen Sportfotografen aus Bern. Klares Design mit Portfolio, Leistungsübersicht und integrierter Buchung. Optimiert für jede Bildschirmgrösse.',
+      en: 'A modern, responsive website for Shots by Levin, a sports photographer from Berne. Clean design with portfolio, services overview and integrated booking. Optimised for every screen size.',
     },
     quote: {
       text: {
@@ -58,13 +58,13 @@ export const PROJECTS: Project[] = [
     title: 'N&J',
     year: '2026',
     desc: {
-      de: 'Foto- und Videoproduktion für die Kleidungsmarke N&J – gedreht an verschiedenen Standorten und aus unterschiedlichen Perspektiven, verbreitet über mehrere Social-Media-Accounts. Für ein Video wurde gezielt ein Hook eingebaut, um virale Reichweite zu erzeugen. Die Kampagne erreichte die Zielgruppe erfolgreich und steigerte die Verkäufe – mit insgesamt über 10\'000 Aufrufen.',
-      en: 'Photo and video production for the clothing brand N&J – filmed at various locations and from different perspectives, distributed across multiple social media accounts. One video was built around a deliberate hook to drive viral reach. The campaign successfully reached the target audience and boosted sales – with over 10,000 views in total.',
+      de: 'Foto- und Videoproduktion für die Kleidungsmarke N&J. Wir drehten an verschiedenen Standorten und aus mehreren Perspektiven und verbreiteten die Inhalte über mehrere Social-Media-Accounts. In ein Video bauten wir gezielt einen Hook ein, um virale Reichweite zu erzeugen. Die Kampagne erreichte die Zielgruppe und steigerte die Verkäufe. Insgesamt über 10\'000 Aufrufe.',
+      en: 'Photo and video production for the clothing brand N&J. We filmed at several locations and from multiple angles, then shared the content across multiple social media accounts. One video was built around a clear hook to drive viral reach. The campaign reached the target audience and boosted sales. Over 10,000 views in total.',
     },
     quote: {
       text: {
-        de: 'Die Videos sahen richtig gut aus und viele Leute haben danach bei uns ein Kleidungsstück gekauft. SLIDE Agentur hat das richtig gut gemacht – er hatte einen Plan und hat ihn sehr gut umgesetzt.',
-        en: 'The videos looked really good and a lot of people bought a piece of clothing from us afterwards. SLIDE Agentur did a really great job – he had a plan and executed it very well.',
+        de: 'Die Videos sahen richtig gut aus und viele Leute haben danach bei uns ein Kleidungsstück gekauft. SLIDE Agentur hat das richtig gut gemacht. Er hatte einen Plan und hat ihn sehr gut umgesetzt.',
+        en: 'The videos looked really good and a lot of people bought a piece of clothing from us afterwards. SLIDE Agentur did a really great job. He had a plan and executed it very well.',
       },
       author: { de: 'Jules, Inhaber von N&J', en: 'Jules, owner of N&J' },
     },
@@ -95,8 +95,8 @@ export const PROJECTS: Project[] = [
     title: 'Wegmühle Apotheke',
     year: '2024',
     desc: {
-      de: 'Eine moderne, benutzerfreundliche Website für die Wegmühle Apotheke. Vollständig in HTML, CSS und JavaScript programmiert – schnell, klar und auf allen Geräten zuverlässig.',
-      en: 'A modern, user-friendly website for Wegmühle Apotheke. Fully built in HTML, CSS and JavaScript – fast, clear and reliable on every device.',
+      de: 'Eine moderne, benutzerfreundliche Website für die Wegmühle Apotheke. Vollständig in HTML, CSS und JavaScript programmiert. Schnell, klar und auf allen Geräten zuverlässig.',
+      en: 'A modern, user-friendly website for Wegmühle Apotheke. Fully built in HTML, CSS and JavaScript. Fast, clear and reliable on every device.',
     },
     quote: {
       text: {
@@ -119,7 +119,7 @@ export const PROJECTS: Project[] = [
     title: 'Avanti Bistro Ittigen',
     year: '2024',
     desc: {
-      de: 'Eine warme, responsive Website für das Avanti Bistro in Ittigen. Benutzerfreundliches Design, optimiert für alle Bildschirmgrössen.',
+      de: 'Eine warme, responsive Website für das Avanti Bistro in Ittigen. Benutzerfreundliches Design, optimiert für jede Bildschirmgrösse.',
       en: 'A warm, responsive website for Avanti Bistro in Ittigen. User-friendly design, optimised for every screen size.',
     },
     quote: {
@@ -142,8 +142,8 @@ export const PROJECTS: Project[] = [
     alt: 'ZeroTrace Social Media',
     title: 'ZeroTrace',
     desc: {
-      de: 'SLIDE hat die Social-Media-Kanäle von ZeroTrace übernommen und 1–2 Beiträge pro Woche erstellt. Die Online-Sichtbarkeit wurde deutlich gesteigert.',
-      en: 'SLIDE took over ZeroTrace’s social media channels and produced 1–2 posts per week. Online visibility increased significantly.',
+      de: 'SLIDE hat die Social-Media-Kanäle von ZeroTrace übernommen und 1 bis 2 Beiträge pro Woche erstellt. Die Online-Sichtbarkeit ist deutlich gestiegen.',
+      en: 'SLIDE took over the social media channels of ZeroTrace and produced 1 to 2 posts per week. Online visibility grew clearly.',
     },
     quote: {
       text: {
@@ -169,8 +169,8 @@ export const PROJECTS: Project[] = [
     title: 'Portfolio Akif Yaylaci',
     year: '2023',
     desc: {
-      de: 'Das persönliche Portfolio des SLIDE-Gründers – ein modernes Webprojekt in HTML, CSS und JavaScript als Demonstration des handwerklichen Könnens.',
-      en: 'The personal portfolio of SLIDE’s founder – a modern web project in HTML, CSS and JavaScript demonstrating craftsmanship.',
+      de: 'Das persönliche Portfolio des SLIDE-Gründers. Ein modernes Webprojekt in HTML, CSS und JavaScript, das das handwerkliche Können zeigt.',
+      en: 'The personal portfolio of the SLIDE founder. A modern web project in HTML, CSS and JavaScript that shows the craft behind the work.',
     },
     quote: {
       text: {
