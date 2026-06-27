@@ -7,7 +7,12 @@ import Image from 'next/image'
 import { useLang } from '@/context/LanguageContext'
 
 const COMPANY_HREFS = ['/#ueber-uns', '/referenzen', '/#preise', '/ablauf', '/#kontakt']
-const SERVICE_HREFS = ['/#leistungen', '/#leistungen', '/#leistungen', '/#leistungen']
+const SERVICE_HREFS = [
+  '/leistungen/webdesign-bern',
+  '/leistungen/social-media-bern',
+  '/leistungen/email-marketing',
+  '/leistungen/it-support-bern',
+]
 const LEGAL = [
   { label: 'Datenschutz', href: '/datenschutz' },
   { label: 'Impressum',   href: '/impressum' },

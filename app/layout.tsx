@@ -87,7 +87,16 @@ const jsonLd = {
     addressRegion: 'Bern',
     addressCountry: 'CH',
   },
-  areaServed: { '@type': 'Country', name: 'Switzerland' },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 46.9560,
+    longitude: 7.4953,
+  },
+  knowsLanguage: ['de-CH', 'en'],
+  areaServed: [
+    { '@type': 'City', name: 'Bern' },
+    { '@type': 'Country', name: 'Switzerland' },
+  ],
   sameAs: [
     'https://www.instagram.com/slideagentur',
     'https://www.tiktok.com/@slideagentur',

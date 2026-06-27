@@ -64,9 +64,9 @@ function IconChevron({ open }: { open: boolean }) {
 
 /* ── Flyout data ── */
 const SERVICES = [
-  { Icon: PixelWeb,    title: 'Website Development', count: '/5 Leistungen', href: '/#leistungen' },
-  { Icon: PixelSocial, title: 'Social Media',         count: '/4 Leistungen', href: '/#leistungen' },
-  { Icon: PixelMail,   title: 'Email Marketing',      count: '/3 Leistungen', href: '/#leistungen' },
+  { Icon: PixelWeb,    title: 'Website Development', count: '/5 Leistungen', href: '/leistungen/webdesign-bern' },
+  { Icon: PixelSocial, title: 'Social Media',         count: '/4 Leistungen', href: '/leistungen/social-media-bern' },
+  { Icon: PixelMail,   title: 'Email Marketing',      count: '/3 Leistungen', href: '/leistungen/email-marketing' },
 ]
 
 const PILL: React.CSSProperties = {
@@ -85,7 +85,7 @@ export default function Navbar() {
   const { lang, setLang, t }    = useLang()
 
   const NAV_ITEMS = [
-    { label: t.nav.services,   href: '/#leistungen' },
+    { label: t.nav.services,   href: '/leistungen' },
     { label: t.nav.references, href: '/referenzen' },
     { label: t.nav.about,      href: '/#ueber-uns'  },
     { label: t.nav.process,    href: '/ablauf'       },
@@ -94,9 +94,9 @@ export default function Navbar() {
 
   /* update flyout service names too */
   const FLYOUT_SERVICES = [
-    { Icon: PixelWeb,    title: lang === 'de' ? 'Website Development' : 'Website Development', count: t.flyout.counts[0], href: '/#leistungen' },
-    { Icon: PixelSocial, title: lang === 'de' ? 'Social Media'        : 'Social Media',        count: t.flyout.counts[1], href: '/#leistungen' },
-    { Icon: PixelMail,   title: lang === 'de' ? 'Email Marketing'     : 'Email Marketing',     count: t.flyout.counts[2], href: '/#leistungen' },
+    { Icon: PixelWeb,    title: lang === 'de' ? 'Website Development' : 'Website Development', count: t.flyout.counts[0], href: '/leistungen/webdesign-bern' },
+    { Icon: PixelSocial, title: lang === 'de' ? 'Social Media'        : 'Social Media',        count: t.flyout.counts[1], href: '/leistungen/social-media-bern' },
+    { Icon: PixelMail,   title: lang === 'de' ? 'Email Marketing'     : 'Email Marketing',     count: t.flyout.counts[2], href: '/leistungen/email-marketing' },
   ]
 
   function openFlyout()  { clearTimeout(closeTimer.current); setFlyout(true) }
