@@ -3,6 +3,7 @@
 import { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { useLang } from '@/context/LanguageContext'
+import CalEmbed from '@/components/CalEmbed'
 
 const FADE_UP = {
   hidden: { opacity: 0, y: 28 },
@@ -84,6 +85,45 @@ export default function KontaktContent() {
               {kp.heroSub}
             </p>
           </FadeSection>
+        </div>
+      </section>
+
+      {/* Booking — Cal.com inline widget */}
+      <section id="buchen" style={{ padding: '0 max(5vw, 1.25rem) max(6vw, 2.5rem)' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          <FadeSection>
+            <h2 style={{
+              fontFamily: 'var(--font-dm-sans), "DM Sans", sans-serif',
+              fontSize: 'clamp(26px, 3vw, 42px)',
+              fontWeight: 400,
+              color: '#fff',
+              letterSpacing: '-0.03em',
+              margin: '0 0 0.75rem',
+            }}>
+              {kp.bookingHeading}
+            </h2>
+            <p style={{ fontSize: '15.41px', color: 'rgb(178,178,178)', maxWidth: '480px', lineHeight: 1.7, margin: '0 0 2rem' }}>
+              {kp.bookingSub}
+            </p>
+          </FadeSection>
+          <FadeSection delay={0.08}>
+            <div style={{
+              background: 'rgb(16,16,16)',
+              border: '1px solid rgba(255,255,255,0.08)',
+              borderRadius: '15.41px',
+              overflow: 'hidden',
+              height: 'clamp(600px, 80vh, 820px)',
+            }}>
+              <CalEmbed />
+            </div>
+          </FadeSection>
+
+          {/* Divider */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', margin: 'max(6vw, 3rem) 0 max(3vw, 1.5rem)' }}>
+            <span style={{ flex: 1, height: '1px', background: 'rgba(255,255,255,0.1)' }} />
+            <span style={{ fontSize: '13px', textTransform: 'uppercase', letterSpacing: '0.06em', color: 'rgb(178,178,178)', whiteSpace: 'nowrap' }}>{kp.orDivider}</span>
+            <span style={{ flex: 1, height: '1px', background: 'rgba(255,255,255,0.1)' }} />
+          </div>
         </div>
       </section>
 

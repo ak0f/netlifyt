@@ -700,14 +700,9 @@ function AboutSection() {
 
           {/* Right: identity + bio */}
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', marginBottom: '2rem' }}>
-              <div style={{ width: '60px', height: '60px', background: 'rgb(29,29,29)', borderRadius: '15.41px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-dm-sans)', fontSize: '1rem', fontWeight: 400, color: 'rgba(255,255,255,0.6)', flexShrink: 0, border: '1px solid rgba(255,255,255,0.07)' }}>
-                AY
-              </div>
-              <div>
-                <h3 style={{ fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif', fontSize: '20px', fontWeight: 400, color: '#fff', margin: '0 0 0.2rem' }}>Akif Yaylaci</h3>
-                <p style={{ fontSize: '11px', fontWeight: 400, textTransform: 'uppercase', color: 'rgba(255,255,255,0.55)', margin: 0, letterSpacing: '0.08em' }}>{t.about.founderRole}</p>
-              </div>
+            <div style={{ marginBottom: '2rem' }}>
+              <h3 style={{ fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif', fontSize: '20px', fontWeight: 400, color: '#fff', margin: '0 0 0.3rem' }}>Akif Yaylaci</h3>
+              <p style={{ fontSize: '11px', fontWeight: 400, textTransform: 'uppercase', color: 'rgba(255,255,255,0.55)', margin: 0, letterSpacing: '0.08em' }}>{t.about.founderRole}</p>
             </div>
             <p style={{ fontSize: 'clamp(18px, 1.6vw, 22px)', color: '#fff', lineHeight: 1.75, margin: '0 0 1.5rem', fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif' }}>
               {t.about.founderGreeting}
@@ -970,8 +965,8 @@ export default function HomePage() {
     <main>
       <HeroSection />
       <ServicesSection />
-      <ProcessSection />
       <ReferencesSection />
+      <ProcessSection />
       <TestimonialsSection />
       <AboutSection />
       <ContactSection />
