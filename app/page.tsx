@@ -170,8 +170,13 @@ function HeroSection() {
           </motion.h1>
         </div>
 
-        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.85, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.42 }} style={{ display: 'flex', flexWrap: 'wrap', gap: '0.85rem', marginBottom: 'max(5vw, 2.5rem)' }}>
-          <Link href="/#kontakt" className="btn-cta">{t.hero.cta}</Link>
+        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.85, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.42 }} style={{ display: 'flex', flexWrap: 'wrap', gap: '0.85rem', marginBottom: 'max(3vw, 1.5rem)', alignItems: 'center' }}>
+          <Link href="/kontakt" className="btn-cta btn-cta-hero">
+            {t.hero.cta}
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: '0.6rem', flexShrink: 0 }}>
+              <path d="M5 12h14M13 6l6 6-6 6" />
+            </svg>
+          </Link>
           <motion.a
             href="/ablauf"
             className="btn-dark"
@@ -184,12 +189,6 @@ function HeroSection() {
             {t.hero.secondary}
           </motion.a>
         </motion.div>
-
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.68, duration: 1 }} style={{ display: 'flex', flexWrap: 'wrap', gap: 'clamp(1.25rem, 4vw, 3rem)', paddingTop: '2rem', borderTop: '1px solid rgba(255,255,255,0.07)' }}>
-          <StatItem value={t.hero.stat1} label={t.hero.stat1Label} />
-          <StatItem stars label={t.hero.stat2Label} />
-          <StatItem value={t.hero.stat3} label={t.hero.stat3Label} />
-        </motion.div>
       </motion.div>
 
       <motion.div
@@ -199,29 +198,16 @@ function HeroSection() {
         transition={{ delay: 1.6, duration: 1.1, ease: [0.25, 0.46, 0.45, 0.94] }}
         aria-hidden
       >
-        <span style={{ fontSize: '10px', fontWeight: 400, color: 'rgba(255,255,255,0.28)', textTransform: 'uppercase', letterSpacing: '0.14em' }}>scroll</span>
+        <span style={{ fontSize: '10px', fontWeight: 400, color: 'rgba(255,255,255,0.55)', textTransform: 'uppercase', letterSpacing: '0.14em' }}>scroll</span>
         <motion.span
           animate={{ y: [0, 8, 0] }}
           transition={{ repeat: Infinity, duration: 1.8, ease: 'easeInOut', delay: 2.8 }}
-          style={{ display: 'block', color: 'rgba(255,255,255,0.28)', fontSize: '14px', lineHeight: 1 }}
+          style={{ display: 'block', color: 'rgba(255,255,255,0.55)', fontSize: '14px', lineHeight: 1 }}
         >
           ↓
         </motion.span>
       </motion.div>
     </section>
-  )
-}
-
-function StatItem({ value, label, stars }: { value?: string; label: string; stars?: boolean }) {
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-      {stars ? (
-        <span style={{ fontSize: '1rem', fontWeight: 400, color: '#fff', lineHeight: 1 }}>★★★★★</span>
-      ) : (
-        <span style={{ fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif', fontSize: 'clamp(1rem, 2.5vw, 1.4rem)', fontWeight: 400, color: '#fff', lineHeight: 1 }}>{value}</span>
-      )}
-      <span style={{ fontSize: '11px', fontWeight: 400, textTransform: 'uppercase', color: 'rgba(255,255,255,0.28)', letterSpacing: '0.08em' }}>{label}</span>
-    </div>
   )
 }
 
@@ -259,7 +245,7 @@ function ServicesSection() {
         <motion.div style={{ y: yHeader }}>
           <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-end', gap: '2rem', marginBottom: '5vw' }}>
             <div>
-              <span style={{ display: 'block', fontSize: '12px', fontWeight: 400, textTransform: 'uppercase', color: 'rgba(255,255,255,0.28)', marginBottom: '1.25rem', letterSpacing: '0.06em' }}>
+              <span style={{ display: 'block', fontSize: '12px', fontWeight: 400, textTransform: 'uppercase', color: 'rgba(255,255,255,0.55)', marginBottom: '1.25rem', letterSpacing: '0.06em' }}>
                 {t.services.label}
               </span>
               <h2 style={{ fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif', fontSize: 'var(--fs-section)', fontWeight: 400, color: '#fff', margin: '0 0 1rem', lineHeight: 1.2 }}>
@@ -502,7 +488,7 @@ function ReferencesSection() {
     <motion.section ref={sectionRef} id="referenzen" style={{ background: bg, padding: 'max(7vw, 3rem) clamp(1rem, 2.5vw, 2.5rem)' }}>
       <div style={{ width: '100%', margin: '0 auto' }}>
         <FadeUp>
-          <span style={{ display: 'block', fontSize: '15.41px', fontWeight: 400, textTransform: 'uppercase', color: 'rgb(112,112,112)', marginBottom: '1.5rem' }}>{t.references.label}</span>
+          <span style={{ display: 'block', fontSize: '15.41px', fontWeight: 400, textTransform: 'uppercase', color: 'rgb(178,178,178)', marginBottom: '1.5rem' }}>{t.references.label}</span>
           <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-end', gap: '2rem', marginBottom: 'clamp(2rem, 4vw, 3rem)' }}>
             <h2 style={{ fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif', fontSize: 'var(--fs-section)', fontWeight: 400, color: '#fff', margin: 0, lineHeight: 1.25 }}>
               {t.references.heading}
@@ -571,14 +557,14 @@ function ProjectCard({ project }: { project: Project }) {
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', paddingBlock: 'clamp(0.5rem, 1.5vw, 1.5rem)' }}>
           <h3 style={{ fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif', fontSize: 'clamp(2rem, 3.5vw, 3rem)', fontWeight: 400, color: '#fff', margin: 0, lineHeight: 1.05, letterSpacing: '-0.02em' }}>{title}</h3>
-          <p style={{ fontSize: '15.41px', color: 'rgb(150,150,150)', lineHeight: 1.7, margin: 0 }}>{desc[lang]}</p>
+          <p style={{ fontSize: '15.41px', color: 'rgb(196,196,196)', lineHeight: 1.7, margin: 0 }}>{desc[lang]}</p>
 
           <div style={{ flex: 1 }} />
 
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '2.5rem', paddingTop: '0.5rem' }}>
             {metaCols.map(m => (
               <div key={m.label} style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-                <span style={{ fontSize: '13px', color: 'rgb(112,112,112)' }}>{m.label}</span>
+                <span style={{ fontSize: '13px', color: 'rgb(178,178,178)' }}>{m.label}</span>
                 <span style={{ fontSize: '14px', color: '#fff', textTransform: 'uppercase', letterSpacing: '0.04em' }}>{m.value}</span>
               </div>
             ))}
@@ -613,10 +599,10 @@ function TestimonialsSection() {
         {/* Left — sticky intro + CTA */}
         <div style={{ position: 'sticky', top: 'clamp(2rem, 14vh, 9rem)', display: 'flex', flexDirection: 'column', gap: 'clamp(2.5rem, 6vw, 5rem)' }}>
           <FadeUp>
-            <span style={{ display: 'inline-block', fontSize: '13px', textTransform: 'uppercase', letterSpacing: '0.06em', color: 'rgb(150,150,150)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '999px', padding: '8px 18px', marginBottom: '2rem' }}>{t.testimonials.label}</span>
+            <span style={{ display: 'inline-block', fontSize: '13px', textTransform: 'uppercase', letterSpacing: '0.06em', color: 'rgb(196,196,196)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '999px', padding: '8px 18px', marginBottom: '2rem' }}>{t.testimonials.label}</span>
             <h2 style={{ fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif', fontSize: 'clamp(2.25rem, 4vw, 3.75rem)', fontWeight: 400, margin: 0, lineHeight: 1.08, letterSpacing: '-0.02em' }}>
               <span style={{ color: '#fff' }}>{t.testimonials.heading[0]}</span>{' '}
-              <span style={{ color: 'rgb(112,112,112)' }}>{t.testimonials.heading[1]}</span>
+              <span style={{ color: 'rgb(178,178,178)' }}>{t.testimonials.heading[1]}</span>
             </h2>
           </FadeUp>
           <div>
@@ -665,147 +651,90 @@ function TestimonialCard({ quote, name, title }: { quote: string; name: string; 
         </div>
         <div style={{ textAlign: 'left' }}>
           <p style={{ fontSize: '14px', color: '#fff', margin: 0, textTransform: 'uppercase', letterSpacing: '0.04em' }}>{name}</p>
-          <p style={{ fontSize: '12px', color: 'rgb(112,112,112)', margin: 0 }}>{title}</p>
+          <p style={{ fontSize: '12px', color: 'rgb(178,178,178)', margin: 0 }}>{title}</p>
         </div>
       </div>
     </div>
   )
 }
 
-/* ─── ABOUT (editorial row layout) ─── */
-/* VALUES now come from translations — see AboutSection */
-
-function ValueRow({ num, title, desc, idx, isMobile = false }: { num: string; title: string; desc: string; idx: number; isMobile?: boolean }) {
-  const ref    = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-40px' })
-  const [hovered, setHovered] = useState(false)
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 20 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.75, ease: [0.25, 0.46, 0.45, 0.94], delay: idx * 0.1 }}
-      onHoverStart={() => setHovered(true)}
-      onHoverEnd={() => setHovered(false)}
-      style={{
-        display: 'grid',
-        gridTemplateColumns: isMobile ? '1fr' : '72px 1fr 1fr',
-        gap: isMobile ? '0.5rem' : '2.5rem',
-        alignItems: isMobile ? 'start' : 'center',
-        padding: 'max(3vw, 1.5rem) 0',
-        borderBottom: '1px solid rgba(255,255,255,0.07)',
-        cursor: 'default',
-      }}
-    >
-      {/* Number — hidden on mobile */}
-      {!isMobile && (
-        <motion.span
-          animate={{ opacity: hovered ? 0.55 : 0.18 }}
-          transition={{ duration: 0.3 }}
-          style={{ fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif', fontSize: '13px', color: '#fff', letterSpacing: '0.08em', fontWeight: 400 }}
-        >
-          {num}
-        </motion.span>
-      )}
-
-      {/* Title */}
-      <motion.h3
-        animate={{ x: hovered ? 10 : 0, color: hovered ? '#ffffff' : 'rgba(255,255,255,0.85)' }}
-        transition={{ duration: 0.3 }}
-        style={{ fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif', fontSize: 'clamp(20px, 1.8vw, 28px)', fontWeight: 400, margin: 0, lineHeight: 1.2 }}
-      >
-        {title}
-      </motion.h3>
-
-      {/* Description */}
-      <motion.p
-        animate={{ opacity: hovered ? 1 : 0.45 }}
-        transition={{ duration: 0.3 }}
-        style={{ fontSize: '15.41px', color: 'rgb(112,112,112)', lineHeight: 1.65, margin: 0 }}
-      >
-        {desc}
-      </motion.p>
-    </motion.div>
-  )
-}
-
+/* ─── ABOUT (founder-focused) ─── */
 function AboutSection() {
   const { t }               = useLang()
   const ref                 = useRef(null)
-  const isMobile            = useIsMobile()
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] })
-  const yQuote              = useTransform(scrollYProgress, [0, 1], ['4%', '-4%'])
+  const yPhoto              = useTransform(scrollYProgress, [0, 1], ['4%', '-4%'])
 
   return (
     <section ref={ref} id="ueber-uns" style={{ background: '#000', padding: 'max(10vw, 3.5rem) max(5vw, 1.25rem)', overflow: 'hidden' }}>
 
       {/* Header */}
       <FadeUp>
-        <span style={{ display: 'block', fontSize: '15.41px', fontWeight: 400, textTransform: 'uppercase', color: 'rgb(112,112,112)', marginBottom: '1.5rem' }}>
+        <span style={{ display: 'block', fontSize: '15.41px', fontWeight: 400, textTransform: 'uppercase', color: 'rgb(178,178,178)', marginBottom: '1.5rem' }}>
           {t.about.label}
         </span>
-        <h2 style={{ fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif', fontSize: 'var(--fs-section)', fontWeight: 400, color: '#fff', margin: '0 0 3rem', lineHeight: 1.25, maxWidth: '700px' }}>
+        <h2 style={{ fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif', fontSize: 'var(--fs-section)', fontWeight: 400, color: '#fff', margin: '0 0 max(5vw, 3rem)', lineHeight: 1.25, maxWidth: '700px' }}>
           <span style={{ color: '#fff' }}>{t.about.heading1} </span>
-          <span style={{ color: 'rgba(255,255,255,0.40)' }}>{t.about.heading2}</span>
+          <span style={{ color: 'rgba(255,255,255,0.55)' }}>{t.about.heading2}</span>
         </h2>
       </FadeUp>
 
-      {/* Values — editorial rows */}
-      <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)', marginBottom: 'max(10vw, 3rem)' }}>
-        {t.about.values.map((v, idx) => <ValueRow key={v.num} {...v} idx={idx} isMobile={isMobile} />)}
-      </div>
-
-      {/* Founder — editorial block */}
+      {/* Founder — photo + editorial block */}
       <FadeUp>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '5vw', alignItems: 'center' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 'clamp(2rem, 5vw, 5rem)', alignItems: 'center' }}>
 
-          {/* Left: identity */}
+          {/* Left: founder photo with parallax */}
+          <motion.div style={{ y: yPhoto }}>
+            <div style={{ position: 'relative', borderRadius: '20px', overflow: 'hidden', aspectRatio: '4 / 5', background: 'rgb(16,16,16)', border: '1px solid rgba(255,255,255,0.08)' }}>
+              <Image
+                src="/img/akif.webp"
+                alt="Akif Yaylaci, Gründer von SLIDE"
+                fill
+                sizes="(max-width: 768px) 90vw, 45vw"
+                style={{ objectFit: 'cover' }}
+              />
+              {/* subtle bottom gradient for depth */}
+              <div aria-hidden style={{ position: 'absolute', inset: 0, pointerEvents: 'none', background: 'linear-gradient(180deg, transparent 55%, rgba(0,0,0,0.45) 100%)' }} />
+            </div>
+          </motion.div>
+
+          {/* Right: identity + bio */}
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', marginBottom: '2.5rem' }}>
-              <div style={{ width: '60px', height: '60px', background: 'rgb(29,29,29)', borderRadius: '15.41px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-dm-sans)', fontSize: '1rem', fontWeight: 400, color: 'rgba(255,255,255,0.4)', flexShrink: 0, border: '1px solid rgba(255,255,255,0.07)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem', marginBottom: '2rem' }}>
+              <div style={{ width: '60px', height: '60px', background: 'rgb(29,29,29)', borderRadius: '15.41px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'var(--font-dm-sans)', fontSize: '1rem', fontWeight: 400, color: 'rgba(255,255,255,0.6)', flexShrink: 0, border: '1px solid rgba(255,255,255,0.07)' }}>
                 AY
               </div>
               <div>
                 <h3 style={{ fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif', fontSize: '20px', fontWeight: 400, color: '#fff', margin: '0 0 0.2rem' }}>Akif Yaylaci</h3>
-                <p style={{ fontSize: '11px', fontWeight: 400, textTransform: 'uppercase', color: 'rgba(255,255,255,0.28)', margin: 0, letterSpacing: '0.08em' }}>{t.about.founderRole}</p>
+                <p style={{ fontSize: '11px', fontWeight: 400, textTransform: 'uppercase', color: 'rgba(255,255,255,0.55)', margin: 0, letterSpacing: '0.08em' }}>{t.about.founderRole}</p>
               </div>
             </div>
             <p style={{ fontSize: 'clamp(18px, 1.6vw, 22px)', color: '#fff', lineHeight: 1.75, margin: '0 0 1.5rem', fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif' }}>
               {t.about.founderGreeting}
             </p>
-            <p style={{ fontSize: '15.41px', color: 'rgb(112,112,112)', lineHeight: 1.75, margin: '0 0 1.25rem' }}>
+            <p style={{ fontSize: '15.41px', color: 'rgb(178,178,178)', lineHeight: 1.75, margin: '0 0 1.25rem' }}>
               {t.about.bio1}
             </p>
-            <p style={{ fontSize: '15.41px', color: 'rgb(112,112,112)', lineHeight: 1.75, margin: '0 0 1.25rem' }}>
+            <p style={{ fontSize: '15.41px', color: 'rgb(178,178,178)', lineHeight: 1.75, margin: '0 0 1.75rem' }}>
               {t.about.bio2}
             </p>
-            <p style={{ fontSize: '15.41px', color: 'rgb(112,112,112)', lineHeight: 1.75, margin: 0 }}>
-              <span style={{ color: 'rgba(255,255,255,0.7)' }}>{t.about.bio3Quote}</span>
+            <p style={{ fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif', fontSize: 'clamp(17px, 1.6vw, 21px)', color: '#fff', lineHeight: 1.55, margin: '0 0 2rem', borderLeft: '2px solid rgba(255,255,255,0.35)', paddingLeft: '1.25rem' }}>
+              {t.about.bio3Quote}
             </p>
-          </div>
 
-          {/* Right: large pull-quote with parallax */}
-          <motion.div style={{ y: yQuote }}>
-            <div style={{ position: 'relative', padding: '3rem', background: 'rgb(16,16,16)', borderRadius: '15.41px', overflow: 'hidden' }}>
-              {/* Decorative quote mark */}
-              <span aria-hidden style={{ position: 'absolute', top: '-0.5rem', left: '1.5rem', fontFamily: 'Georgia, serif', fontSize: '8rem', color: 'rgba(255,255,255,0.04)', lineHeight: 1, pointerEvents: 'none', userSelect: 'none' }}>"</span>
-              <p style={{ fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif', fontSize: 'clamp(18px, 1.8vw, 26px)', fontWeight: 400, color: '#fff', lineHeight: 1.6, margin: '0 0 2rem', position: 'relative', zIndex: 1 }}>
-                {t.about.bio3Quote}
-              </p>
-              <div style={{ display: 'flex', gap: '2.5rem', flexWrap: 'wrap' }}>
-                {t.about.statsLabels.map((label, i) => {
-                  const val = ['10+', '100%', '2023'][i]
-                  return (
-                    <div key={label}>
-                      <p style={{ fontFamily: 'var(--font-dm-sans)', fontSize: '1.4rem', fontWeight: 400, color: '#fff', margin: '0 0 0.2rem', lineHeight: 1 }}>{val}</p>
-                      <p style={{ fontSize: '11px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.28)', margin: 0, letterSpacing: '0.08em' }}>{label}</p>
-                    </div>
-                  )
-                })}
-              </div>
+            {/* Stats */}
+            <div style={{ display: 'flex', gap: 'clamp(1.75rem, 4vw, 2.5rem)', flexWrap: 'wrap', paddingTop: '1.75rem', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+              {t.about.statsLabels.map((label, i) => {
+                const val = ['10+', '100%', '2023'][i]
+                return (
+                  <div key={label}>
+                    <p style={{ fontFamily: 'var(--font-dm-sans)', fontSize: '1.5rem', fontWeight: 400, color: '#fff', margin: '0 0 0.2rem', lineHeight: 1 }}>{val}</p>
+                    <p style={{ fontSize: '11px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.55)', margin: 0, letterSpacing: '0.08em' }}>{label}</p>
+                  </div>
+                )
+              })}
             </div>
-          </motion.div>
+          </div>
 
         </div>
       </FadeUp>
@@ -831,7 +760,7 @@ function ContactSection() {
   return (
     <section id="kontakt" style={{ background: '#000', padding: 'max(10vw, 3.5rem) max(5vw, 1.25rem)' }}>
       <FadeUp>
-        <span style={{ display: 'block', fontSize: '15.41px', fontWeight: 400, textTransform: 'uppercase', color: 'rgb(112,112,112)', marginBottom: '1.5rem' }}>{t.contact.label}</span>
+        <span style={{ display: 'block', fontSize: '15.41px', fontWeight: 400, textTransform: 'uppercase', color: 'rgb(178,178,178)', marginBottom: '1.5rem' }}>{t.contact.label}</span>
         <h2 style={{ fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif', fontSize: 'var(--fs-section)', fontWeight: 400, color: '#fff', margin: '0 0 3rem', lineHeight: 1.25 }}>
           {t.contact.heading}
         </h2>
@@ -840,14 +769,14 @@ function ContactSection() {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem', alignItems: 'start' }}>
         <FadeUp delay={0.1}>
           <div style={{ background: 'rgb(39,39,39)', borderRadius: '20px', padding: 'clamp(1.25rem, 5vw, 2.5rem)' }}>
-            <p style={{ fontSize: '12px', fontWeight: 400, textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginBottom: '2rem', letterSpacing: '0.08em' }}>
+            <p style={{ fontSize: '12px', fontWeight: 400, textTransform: 'uppercase', color: 'rgba(255,255,255,0.58)', marginBottom: '2rem', letterSpacing: '0.08em' }}>
               {t.contact.formLabel}
             </p>
             <AnimatePresence mode="wait">
               {submitted ? (
                 <motion.div key="success" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} style={{ padding: '3rem 0', textAlign: 'center' }}>
                   <div style={{ width: '44px', height: '44px', background: 'rgba(255,255,255,0.06)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem', color: '#fff', fontSize: '1.2rem' }}>✓</div>
-                  <p style={{ fontSize: '15.41px', color: 'rgb(112,112,112)', lineHeight: 1.65 }}>{t.contact.success}</p>
+                  <p style={{ fontSize: '15.41px', color: 'rgb(178,178,178)', lineHeight: 1.65 }}>{t.contact.success}</p>
                 </motion.div>
               ) : (
                 <motion.form
@@ -862,21 +791,21 @@ function ContactSection() {
                   <input type="hidden" name="form-name" value="contact" />
                   <div className="form-2col">
                     <div>
-                      <label htmlFor="name" style={{ display: 'block', fontSize: '11px', fontWeight: 400, textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginBottom: '0.6rem', letterSpacing: '0.08em' }}>{t.contact.fields.name}</label>
+                      <label htmlFor="name" style={{ display: 'block', fontSize: '11px', fontWeight: 400, textTransform: 'uppercase', color: 'rgba(255,255,255,0.58)', marginBottom: '0.6rem', letterSpacing: '0.08em' }}>{t.contact.fields.name}</label>
                       <input id="name" name="name" type="text" required placeholder={t.contact.fields.namePh} className="fi" />
                     </div>
                     <div>
-                      <label htmlFor="email" style={{ display: 'block', fontSize: '11px', fontWeight: 400, textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginBottom: '0.6rem', letterSpacing: '0.08em' }}>{t.contact.fields.email}</label>
+                      <label htmlFor="email" style={{ display: 'block', fontSize: '11px', fontWeight: 400, textTransform: 'uppercase', color: 'rgba(255,255,255,0.58)', marginBottom: '0.6rem', letterSpacing: '0.08em' }}>{t.contact.fields.email}</label>
                       <input id="email" name="email" type="email" required placeholder={t.contact.fields.emailPh} className="fi" />
                     </div>
                   </div>
                   <div className="form-2col">
                     <div>
-                      <label htmlFor="phone" style={{ display: 'block', fontSize: '11px', fontWeight: 400, textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginBottom: '0.6rem', letterSpacing: '0.08em' }}>{t.contact.fields.phone}</label>
+                      <label htmlFor="phone" style={{ display: 'block', fontSize: '11px', fontWeight: 400, textTransform: 'uppercase', color: 'rgba(255,255,255,0.58)', marginBottom: '0.6rem', letterSpacing: '0.08em' }}>{t.contact.fields.phone}</label>
                       <input id="phone" name="phone" type="tel" placeholder={t.contact.fields.phonePh} className="fi" />
                     </div>
                     <div>
-                      <label htmlFor="subject" style={{ display: 'block', fontSize: '11px', fontWeight: 400, textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginBottom: '0.6rem', letterSpacing: '0.08em' }}>{t.contact.fields.subject}</label>
+                      <label htmlFor="subject" style={{ display: 'block', fontSize: '11px', fontWeight: 400, textTransform: 'uppercase', color: 'rgba(255,255,255,0.58)', marginBottom: '0.6rem', letterSpacing: '0.08em' }}>{t.contact.fields.subject}</label>
                       <select id="subject" name="subject" required className="fs">
                         <option value="">{t.contact.fields.subjectDefault}</option>
                         {t.contact.subjects.map(s => <option key={s} value={s.toLowerCase().replace(/\s+/g, '-')}>{s}</option>)}
@@ -884,7 +813,7 @@ function ContactSection() {
                     </div>
                   </div>
                   <div>
-                    <label htmlFor="message" style={{ display: 'block', fontSize: '11px', fontWeight: 400, textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginBottom: '0.6rem', letterSpacing: '0.08em' }}>{t.contact.fields.message}</label>
+                    <label htmlFor="message" style={{ display: 'block', fontSize: '11px', fontWeight: 400, textTransform: 'uppercase', color: 'rgba(255,255,255,0.58)', marginBottom: '0.6rem', letterSpacing: '0.08em' }}>{t.contact.fields.message}</label>
                     <textarea id="message" name="message" required placeholder={t.contact.fields.messagePh} className="ft" />
                   </div>
                   {error && <p style={{ fontSize: '14px', color: '#f87171' }}>{t.contact.error}</p>}
@@ -902,7 +831,7 @@ function ContactSection() {
               const href  = i === 0 ? 'mailto:info@slideagentur.ch' : i === 1 ? 'tel:+41783262952' : undefined
               return (
                 <div key={label} style={{ padding: '1.5rem 0', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
-                  <p style={{ fontSize: '11px', fontWeight: 400, textTransform: 'uppercase', color: 'rgba(255,255,255,0.28)', marginBottom: '0.4rem', letterSpacing: '0.08em' }}>{label}</p>
+                  <p style={{ fontSize: '11px', fontWeight: 400, textTransform: 'uppercase', color: 'rgba(255,255,255,0.55)', marginBottom: '0.4rem', letterSpacing: '0.08em' }}>{label}</p>
                   {href ? (
                     <a href={href} style={{ fontSize: '15.41px', color: '#fff', textDecoration: 'none', transition: 'color 0.2s' }}>{value}</a>
                   ) : (
@@ -932,7 +861,7 @@ function ProcessSection() {
       <FadeUp>
         <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-end', gap: '2rem', marginBottom: 'max(5vw, 2.5rem)' }}>
           <div>
-            <span style={{ display: 'block', fontSize: '12px', fontWeight: 400, textTransform: 'uppercase', color: 'rgba(255,255,255,0.28)', marginBottom: '1.25rem', letterSpacing: '0.06em' }}>
+            <span style={{ display: 'block', fontSize: '12px', fontWeight: 400, textTransform: 'uppercase', color: 'rgba(255,255,255,0.55)', marginBottom: '1.25rem', letterSpacing: '0.06em' }}>
               {t.process.label}
             </span>
             <h2 style={{ fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif', fontSize: 'var(--fs-section)', fontWeight: 400, color: '#fff', margin: 0, lineHeight: 1.2 }}>
@@ -965,7 +894,7 @@ function ProcessSection() {
                 <h3 style={{ fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif', fontSize: 'clamp(32px, 3vw, 44px)', fontWeight: 400, color: '#fff', margin: '0 0 1.25rem', lineHeight: 1.1 }}>
                   {step.title}
                 </h3>
-                <p style={{ fontSize: '15.41px', color: 'rgb(112,112,112)', lineHeight: 1.65, margin: 0 }}>
+                <p style={{ fontSize: '15.41px', color: 'rgb(178,178,178)', lineHeight: 1.65, margin: 0 }}>
                   {step.desc}
                 </p>
               </div>

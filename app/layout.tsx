@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { DM_Sans, IBM_Plex_Mono, Host_Grotesk } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
@@ -28,6 +28,14 @@ const hostGrotesk = Host_Grotesk({
   variable: '--font-hg',
   display: 'swap',
 })
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  // Extend into the safe areas so env(safe-area-inset-*) resolves on notched
+  // devices and in-app browsers (e.g. Instagram). The Navbar adds matching insets.
+  viewportFit: 'cover',
+}
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://slideagentur.ch'),

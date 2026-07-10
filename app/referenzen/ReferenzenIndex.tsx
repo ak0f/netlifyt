@@ -20,7 +20,7 @@ export default function ReferenzenIndex() {
         }}
       >
         <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
-          <span style={{ display: 'block', fontSize: '15.41px', textTransform: 'uppercase', color: 'rgb(112,112,112)', marginBottom: '1.25rem', letterSpacing: '0.02em' }}>
+          <span style={{ display: 'block', fontSize: '15.41px', textTransform: 'uppercase', color: 'rgb(178,178,178)', marginBottom: '1.25rem', letterSpacing: '0.02em' }}>
             {t.references.page.label}
           </span>
           <h1 style={{ fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif', fontSize: 'clamp(2.75rem, 7vw, 5rem)', fontWeight: 300, color: '#fff', margin: 0, lineHeight: 1.05, letterSpacing: '-0.03em', maxWidth: '14ch' }}>

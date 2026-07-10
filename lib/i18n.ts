@@ -8,7 +8,7 @@ const de = {
   hero: {
     line1: 'SLIDE ist deine Digitalagentur in Bern.',
     line2: 'Wir bauen Websites, betreuen dein Social Media und lösen deine IT-Fragen.',
-    cta: 'Erstgespräch buchen →', secondary: 'So läuft es ab →',
+    cta: 'Kostenloses Erstgespräch buchen', secondary: 'So läuft es ab →',
     stat1: '100%', stat1Label: 'Weiterempfehlungsrate',
     stat2Label: '5.0 auf Google',
     stat3: '2 Wochen', stat3Label: 'Lieferzeit',
@@ -202,7 +202,7 @@ const en: typeof de = {
   hero: {
     line1: 'SLIDE is your digital agency in Berne.',
     line2: 'We build websites, run your social media and solve your IT problems.',
-    cta: 'Book a free call →', secondary: 'See how it works →',
+    cta: 'Book a free call', secondary: 'See how it works →',
     stat1: '100%', stat1Label: 'Referral rate',
     stat2Label: '5.0 on Google',
     stat3: '2 weeks', stat3Label: 'Delivery time',

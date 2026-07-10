@@ -106,7 +106,7 @@ export default function Navbar() {
     <>
       {/* Three-pill floating header */}
       <header
-        style={{ position: 'fixed', top: '1vw', left: 0, right: 0, zIndex: 99, padding: '0 5vw', pointerEvents: 'none' }}
+        style={{ position: 'fixed', top: 'calc(env(safe-area-inset-top, 0px) + max(1vw, 12px))', left: 0, right: 0, zIndex: 99, padding: '0 5vw', pointerEvents: 'none' }}
       >
         <div style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem' }}>
 
@@ -265,7 +265,7 @@ export default function Navbar() {
             transition={{ duration: 0.22, ease: 'easeOut' }}
             style={{
               position: 'fixed',
-              top: 'calc(1vw + 54px)',
+              top: 'calc(env(safe-area-inset-top, 0px) + max(1vw, 12px) + 54px)',
               left: '5vw', right: '5vw',
               zIndex: 98,
               borderRadius: '15.41px',
@@ -390,7 +390,7 @@ function FlyoutCard({
       {/* count */}
       <span style={{
         fontSize: '11px',
-        color: 'rgba(255,255,255,0.28)',
+        color: 'rgba(255,255,255,0.55)',
         letterSpacing: '0.02em',
         flexShrink: 0,
       }}>

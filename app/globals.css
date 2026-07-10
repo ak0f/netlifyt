@@ -9,8 +9,8 @@
   --bg-form:   rgb(39, 39, 39);
   --bg-light:  #ebebeb;
   --t1:        #ffffff;
-  --t2:        rgb(112, 112, 112);
-  --t3:        rgba(255, 255, 255, 0.25);
+  --t2:        rgb(178, 178, 178);
+  --t3:        rgba(255, 255, 255, 0.45);
   --t-dim:     rgba(255, 255, 255, 0.50);
   --b:         rgba(255, 255, 255, 0.08);
   --ui-float:  rgba(36, 36, 36, 0.50);
@@ -59,7 +59,7 @@ body {
   font-size: 15.41px;
   font-weight: 400;
   text-transform: uppercase;
-  color: rgb(112, 112, 112);
+  color: rgb(178, 178, 178);
   margin-bottom: 1.5rem;
 }
 .s-label-dark {
@@ -94,20 +94,31 @@ body {
 .btn-cta {
   display: inline-flex;
   align-items: center;
-  background: rgba(255, 255, 255, 0.70);
+  background: #ffffff;
   border-radius: var(--r-btn);
   color: #000;
   font-family: var(--font-hg), sans-serif;
   font-size: 15.41px;
-  font-weight: 400;
+  font-weight: 500;
   text-decoration: none;
   padding: 12px 17px 12px 23px;
   border: none;
   cursor: pointer;
-  transition: background 0.2s var(--ease);
+  transition: background 0.2s var(--ease), box-shadow 0.2s var(--ease), transform 0.2s var(--ease);
   white-space: nowrap;
+  box-shadow: 0 6px 24px rgba(255, 255, 255, 0.16);
 }
-.btn-cta:hover { background: rgba(255, 255, 255, 0.9); }
+.btn-cta:hover { background: #ffffff; box-shadow: 0 8px 34px rgba(255, 255, 255, 0.28); transform: translateY(-1px); }
+
+/* Prominent hero variant — the main focal CTA */
+.btn-cta-hero {
+  font-size: clamp(15.41px, 1.4vw, 18px);
+  font-weight: 500;
+  padding: 17px 26px 17px 30px;
+  border-radius: 10px;
+  box-shadow: 0 10px 40px rgba(255, 255, 255, 0.22);
+}
+.btn-cta-hero:hover { box-shadow: 0 12px 52px rgba(255, 255, 255, 0.34); }
 
 .btn-dark {
   display: inline-flex;

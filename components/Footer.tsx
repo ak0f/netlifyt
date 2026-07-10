@@ -22,7 +22,7 @@ const LEGAL = [
 const linkStyle: React.CSSProperties = {
   fontSize: '15.41px',
   fontWeight: 400,
-  color: 'rgb(112, 112, 112)',
+  color: 'rgb(178, 178, 178)',
   textDecoration: 'none',
   display: 'block',
   marginBottom: '0.85rem',
@@ -33,7 +33,7 @@ const headingStyle: React.CSSProperties = {
   fontSize: '12px',
   fontWeight: 400,
   textTransform: 'uppercase',
-  color: 'rgba(255,255,255,0.28)',
+  color: 'rgba(255,255,255,0.5)',
   marginBottom: '1.5rem',
   letterSpacing: '0.04em',
 }
@@ -60,7 +60,7 @@ const socialLinkStyle: React.CSSProperties = {
   gap: '0.5rem',
   fontSize: '15.41px',
   fontWeight: 400,
-  color: 'rgb(112, 112, 112)',
+  color: 'rgb(178, 178, 178)',
   textDecoration: 'none',
   marginBottom: '0.85rem',
   transition: 'color 0.2s',
@@ -112,7 +112,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <Image src="/img/logo.png" alt="SLIDE" width={100} height={32} style={{ height: '28px', width: 'auto', marginBottom: '1.25rem' }} />
-            <p style={{ fontSize: '15.41px', fontWeight: 400, color: 'rgb(112,112,112)', lineHeight: 1.65, maxWidth: '200px' }}>
+            <p style={{ fontSize: '15.41px', fontWeight: 400, color: 'rgb(178,178,178)', lineHeight: 1.65, maxWidth: '200px' }}>
               {t.footer.desc}
             </p>
           </div>
@@ -177,12 +177,12 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '1rem' }}>
-          <p style={{ fontSize: '12px', fontWeight: 400, color: 'rgba(255,255,255,0.25)' }}>
+          <p style={{ fontSize: '12px', fontWeight: 400, color: 'rgba(255,255,255,0.45)' }}>
             {t.footer.rights}
           </p>
           <nav style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
             {LEGAL.map(l => (
-              <Link key={l.href} href={l.href} style={{ fontSize: '12px', fontWeight: 400, color: 'rgba(255,255,255,0.25)', textDecoration: 'none', transition: 'color 0.2s' }} className="footer-link-sm">
+              <Link key={l.href} href={l.href} style={{ fontSize: '12px', fontWeight: 400, color: 'rgba(255,255,255,0.45)', textDecoration: 'none', transition: 'color 0.2s' }} className="footer-link-sm">
                 {l.label}
               </Link>
             ))}

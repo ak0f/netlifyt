@@ -76,11 +76,11 @@ export default function KontaktContent() {
               margin: '0 0 2rem',
             }}>
               {kp.heroHeading1}<br />
-              <span style={{ color: 'rgba(255,255,255,0.35)' }}>{kp.heroHeading2}</span>
+              <span style={{ color: 'rgba(255,255,255,0.55)' }}>{kp.heroHeading2}</span>
             </h1>
           </FadeSection>
           <FadeSection delay={0.14}>
-            <p style={{ fontSize: '15.41px', color: 'rgb(112,112,112)', maxWidth: '480px', lineHeight: 1.7 }}>
+            <p style={{ fontSize: '15.41px', color: 'rgb(178,178,178)', maxWidth: '480px', lineHeight: 1.7 }}>
               {kp.heroSub}
             </p>
           </FadeSection>
@@ -126,7 +126,7 @@ export default function KontaktContent() {
                 }}>
                   {kp.successHeading}
                 </h2>
-                <p style={{ color: 'rgb(112,112,112)', fontSize: '15.41px', lineHeight: 1.7 }}>
+                <p style={{ color: 'rgb(178,178,178)', fontSize: '15.41px', lineHeight: 1.7 }}>
                   {kp.successBody}
                 </p>
               </motion.div>
@@ -147,13 +147,13 @@ export default function KontaktContent() {
                 {/* Name + Email row */}
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }} className="form-row">
                   <div>
-                    <label style={{ display: 'block', fontSize: '12px', fontWeight: 400, color: 'rgba(255,255,255,0.3)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '0.75rem' }}>
+                    <label style={{ display: 'block', fontSize: '12px', fontWeight: 400, color: 'rgba(255,255,255,0.55)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '0.75rem' }}>
                       {ct.fields.name} *
                     </label>
                     <input type="text" name="name" required placeholder={ct.fields.namePh} className="fi" />
                   </div>
                   <div>
-                    <label style={{ display: 'block', fontSize: '12px', fontWeight: 400, color: 'rgba(255,255,255,0.3)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '0.75rem' }}>
+                    <label style={{ display: 'block', fontSize: '12px', fontWeight: 400, color: 'rgba(255,255,255,0.55)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '0.75rem' }}>
                       {ct.fields.email} *
                     </label>
                     <input type="email" name="email" required placeholder={ct.fields.emailPh} className="fi" />
@@ -163,13 +163,13 @@ export default function KontaktContent() {
                 {/* Company + Phone row */}
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }} className="form-row">
                   <div>
-                    <label style={{ display: 'block', fontSize: '12px', fontWeight: 400, color: 'rgba(255,255,255,0.3)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '0.75rem' }}>
+                    <label style={{ display: 'block', fontSize: '12px', fontWeight: 400, color: 'rgba(255,255,255,0.55)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '0.75rem' }}>
                       {kp.companyLabel}
                     </label>
                     <input type="text" name="company" placeholder={kp.companyPh} className="fi" />
                   </div>
                   <div>
-                    <label style={{ display: 'block', fontSize: '12px', fontWeight: 400, color: 'rgba(255,255,255,0.3)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '0.75rem' }}>
+                    <label style={{ display: 'block', fontSize: '12px', fontWeight: 400, color: 'rgba(255,255,255,0.55)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '0.75rem' }}>
                       {ct.fields.phone}
                     </label>
                     <input type="tel" name="phone" placeholder={ct.fields.phonePh} className="fi" />
@@ -178,7 +178,7 @@ export default function KontaktContent() {
 
                 {/* Service selection */}
                 <div>
-                  <label style={{ display: 'block', fontSize: '12px', fontWeight: 400, color: 'rgba(255,255,255,0.3)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '1rem' }}>
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: 400, color: 'rgba(255,255,255,0.55)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '1rem' }}>
                     {kp.serviceLabel}
                   </label>
                   <input type="hidden" name="service" value={selectedService} />
@@ -193,7 +193,7 @@ export default function KontaktContent() {
                           borderRadius: '9.246px',
                           border: `1px solid ${selectedService === s ? 'rgba(255,255,255,0.4)' : 'rgba(255,255,255,0.1)'}`,
                           background: selectedService === s ? 'rgba(255,255,255,0.08)' : 'transparent',
-                          color: selectedService === s ? '#fff' : 'rgb(112,112,112)',
+                          color: selectedService === s ? '#fff' : 'rgb(178,178,178)',
                           fontSize: '14px',
                           fontWeight: 400,
                           cursor: 'pointer',
@@ -209,7 +209,7 @@ export default function KontaktContent() {
 
                 {/* Budget selection */}
                 <div>
-                  <label style={{ display: 'block', fontSize: '12px', fontWeight: 400, color: 'rgba(255,255,255,0.3)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '1rem' }}>
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: 400, color: 'rgba(255,255,255,0.55)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '1rem' }}>
                     {kp.budgetLabel}
                   </label>
                   <input type="hidden" name="budget" value={selectedBudget} />
@@ -224,7 +224,7 @@ export default function KontaktContent() {
                           borderRadius: '9.246px',
                           border: `1px solid ${selectedBudget === b ? 'rgba(255,255,255,0.4)' : 'rgba(255,255,255,0.1)'}`,
                           background: selectedBudget === b ? 'rgba(255,255,255,0.08)' : 'transparent',
-                          color: selectedBudget === b ? '#fff' : 'rgb(112,112,112)',
+                          color: selectedBudget === b ? '#fff' : 'rgb(178,178,178)',
                           fontSize: '14px',
                           fontWeight: 400,
                           cursor: 'pointer',
@@ -240,7 +240,7 @@ export default function KontaktContent() {
 
                 {/* Message */}
                 <div>
-                  <label style={{ display: 'block', fontSize: '12px', fontWeight: 400, color: 'rgba(255,255,255,0.3)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '0.75rem' }}>
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: 400, color: 'rgba(255,255,255,0.55)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '0.75rem' }}>
                     {ct.fields.message} *
                   </label>
                   <textarea
@@ -293,20 +293,20 @@ export default function KontaktContent() {
                 borderRadius: '15.41px',
                 padding: '2rem',
               }}>
-                <p style={{ fontSize: '12px', fontWeight: 400, color: 'rgba(255,255,255,0.3)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '1.5rem' }}>
+                <p style={{ fontSize: '12px', fontWeight: 400, color: 'rgba(255,255,255,0.55)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '1.5rem' }}>
                   {kp.sidebarDirect}
                 </p>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
                   <a href="mailto:info@slideagentur.ch" style={{ color: '#fff', textDecoration: 'none', fontSize: '15.41px', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                    <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: '13px', minWidth: '16px' }}>@</span>
+                    <span style={{ color: 'rgba(255,255,255,0.55)', fontSize: '13px', minWidth: '16px' }}>@</span>
                     info@slideagentur.ch
                   </a>
                   <a href="tel:+41783262952" style={{ color: '#fff', textDecoration: 'none', fontSize: '15.41px', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                    <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: '13px', minWidth: '16px' }}>↗</span>
+                    <span style={{ color: 'rgba(255,255,255,0.55)', fontSize: '13px', minWidth: '16px' }}>↗</span>
                     +41 78 326 29 52
                   </a>
-                  <p style={{ color: 'rgb(112,112,112)', fontSize: '15.41px', display: 'flex', alignItems: 'flex-start', gap: '0.75rem', margin: 0 }}>
-                    <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: '13px', minWidth: '16px', marginTop: '2px' }}>◎</span>
+                  <p style={{ color: 'rgb(178,178,178)', fontSize: '15.41px', display: 'flex', alignItems: 'flex-start', gap: '0.75rem', margin: 0 }}>
+                    <span style={{ color: 'rgba(255,255,255,0.55)', fontSize: '13px', minWidth: '16px', marginTop: '2px' }}>◎</span>
                     {ct.infoValues[2]}
                   </p>
                 </div>
@@ -320,10 +320,10 @@ export default function KontaktContent() {
                 borderRadius: '15.41px',
                 padding: '2rem',
               }}>
-                <p style={{ fontSize: '12px', fontWeight: 400, color: 'rgba(255,255,255,0.3)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '1.5rem' }}>
+                <p style={{ fontSize: '12px', fontWeight: 400, color: 'rgba(255,255,255,0.55)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '1.5rem' }}>
                   {kp.sidebarResponse}
                 </p>
-                <p style={{ fontSize: '15.41px', color: 'rgb(112,112,112)', lineHeight: 1.7, margin: 0 }}>
+                <p style={{ fontSize: '15.41px', color: 'rgb(178,178,178)', lineHeight: 1.7, margin: 0 }}>
                   {kp.responseText}{' '}
                   <span style={{ color: '#fff' }}>{kp.responseHighlight}</span>{' '}
                   {kp.responseTextAfter}
@@ -338,17 +338,17 @@ export default function KontaktContent() {
                 borderRadius: '15.41px',
                 padding: '2rem',
               }}>
-                <p style={{ fontSize: '12px', fontWeight: 400, color: 'rgba(255,255,255,0.3)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '1.5rem' }}>
+                <p style={{ fontSize: '12px', fontWeight: 400, color: 'rgba(255,255,255,0.55)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '1.5rem' }}>
                   {kp.sidebarSocial}
                 </p>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                   <a href="https://www.instagram.com/slideagentur" target="_blank" rel="noopener noreferrer"
-                    style={{ color: 'rgb(112,112,112)', textDecoration: 'none', fontSize: '15.41px', transition: 'color 0.2s' }}
+                    style={{ color: 'rgb(178,178,178)', textDecoration: 'none', fontSize: '15.41px', transition: 'color 0.2s' }}
                     className="footer-link">
                     Instagram →
                   </a>
                   <a href="https://www.tiktok.com/@slideagentur" target="_blank" rel="noopener noreferrer"
-                    style={{ color: 'rgb(112,112,112)', textDecoration: 'none', fontSize: '15.41px', transition: 'color 0.2s' }}
+                    style={{ color: 'rgb(178,178,178)', textDecoration: 'none', fontSize: '15.41px', transition: 'color 0.2s' }}
                     className="footer-link">
                     TikTok →
                   </a>

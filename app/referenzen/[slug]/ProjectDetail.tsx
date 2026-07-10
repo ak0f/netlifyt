@@ -51,7 +51,7 @@ export default function ProjectDetail({ slug }: { slug: string }) {
         }}
       >
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-          <Link href="/referenzen" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', whiteSpace: 'nowrap', fontSize: '14px', color: 'rgb(150,150,150)', textDecoration: 'none', marginBottom: 'clamp(2rem, 5vw, 3.5rem)' }} className="footer-link">
+          <Link href="/referenzen" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', whiteSpace: 'nowrap', fontSize: '14px', color: 'rgb(196,196,196)', textDecoration: 'none', marginBottom: 'clamp(2rem, 5vw, 3.5rem)' }} className="footer-link">
             {t.references.detail.back}
           </Link>
 
@@ -70,7 +70,7 @@ export default function ProjectDetail({ slug }: { slug: string }) {
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'clamp(2rem, 5vw, 4rem)', marginTop: 'clamp(2rem, 4vw, 3rem)' }}>
             {metaCols.map(m => (
               <div key={m.label} style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
-                <span style={{ fontSize: '13px', color: 'rgb(112,112,112)' }}>{m.label}</span>
+                <span style={{ fontSize: '13px', color: 'rgb(178,178,178)' }}>{m.label}</span>
                 <span style={{ fontSize: '14px', color: '#fff', textTransform: 'uppercase', letterSpacing: '0.04em' }}>{m.value}</span>
               </div>
             ))}
@@ -102,7 +102,7 @@ export default function ProjectDetail({ slug }: { slug: string }) {
       <section style={{ padding: 'clamp(3.5rem, 8vw, 7rem) clamp(1.25rem, 5vw, 5vw) 0' }}>
         <Reveal>
           <div style={{ maxWidth: '1100px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px, 100%), 1fr))', gap: 'clamp(1.5rem, 4vw, 4rem)', alignItems: 'start' }}>
-            <span style={{ fontSize: '15.41px', textTransform: 'uppercase', color: 'rgb(112,112,112)', letterSpacing: '0.02em' }}>
+            <span style={{ fontSize: '15.41px', textTransform: 'uppercase', color: 'rgb(178,178,178)', letterSpacing: '0.02em' }}>
               {t.references.detail.overview}
             </span>
             <p style={{ fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif', fontSize: 'clamp(1.35rem, 2.6vw, 2rem)', fontWeight: 300, color: 'rgb(220,220,220)', lineHeight: 1.5, margin: 0, letterSpacing: '-0.01em', gridColumn: 'span 2' }}>
@@ -116,7 +116,7 @@ export default function ProjectDetail({ slug }: { slug: string }) {
       <section style={{ padding: 'clamp(3.5rem, 8vw, 7rem) clamp(1.25rem, 5vw, 5vw)' }}>
         <Reveal>
           <figure style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
-            <span style={{ display: 'block', fontSize: '13px', textTransform: 'uppercase', letterSpacing: '0.06em', color: 'rgb(112,112,112)', marginBottom: '2rem' }}>
+            <span style={{ display: 'block', fontSize: '13px', textTransform: 'uppercase', letterSpacing: '0.06em', color: 'rgb(178,178,178)', marginBottom: '2rem' }}>
               {t.references.detail.clientVoice}
             </span>
             <blockquote style={{ fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif', fontSize: 'clamp(1.6rem, 4vw, 3rem)', fontWeight: 300, color: '#fff', lineHeight: 1.25, letterSpacing: '-0.02em', margin: 0 }}>
@@ -129,7 +129,7 @@ export default function ProjectDetail({ slug }: { slug: string }) {
                   style={{ width: '44px', height: '44px', borderRadius: '999px', objectFit: 'cover', border: '1px solid rgba(255,255,255,0.12)' }}
                 />
               )}
-              <span style={{ fontSize: '15.41px', color: 'rgb(150,150,150)' }}>{quote.author[lang]}</span>
+              <span style={{ fontSize: '15.41px', color: 'rgb(196,196,196)' }}>{quote.author[lang]}</span>
             </figcaption>
           </figure>
         </Reveal>
@@ -143,7 +143,7 @@ export default function ProjectDetail({ slug }: { slug: string }) {
               {results.map(r => (
                 <div key={r.label[lang]} style={{ border: '1px solid rgba(255,255,255,0.06)', borderRadius: '16px', padding: 'clamp(1.5rem, 3vw, 2.25rem)', background: 'linear-gradient(135deg, rgba(34,34,34,0.5) 0%, rgba(18,18,18,0.3) 100%)' }}>
                   <div style={{ fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif', fontSize: 'clamp(2.25rem, 5vw, 3.25rem)', fontWeight: 300, color: '#fff', letterSpacing: '-0.02em', lineHeight: 1 }}>{r.value}</div>
-                  <div style={{ fontSize: '14px', color: 'rgb(150,150,150)', marginTop: '0.75rem' }}>{r.label[lang]}</div>
+                  <div style={{ fontSize: '14px', color: 'rgb(196,196,196)', marginTop: '0.75rem' }}>{r.label[lang]}</div>
                 </div>
               ))}
             </div>
@@ -185,7 +185,7 @@ export default function ProjectDetail({ slug }: { slug: string }) {
           <h2 style={{ fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif', fontSize: 'clamp(1.9rem, 5vw, 3.5rem)', fontWeight: 300, color: '#fff', margin: 0, lineHeight: 1.1, letterSpacing: '-0.02em' }}>
             {t.references.detail.ctaHeading}
           </h2>
-          <p style={{ fontSize: '15.41px', color: 'rgb(150,150,150)', margin: '1rem auto 2rem', maxWidth: '40ch' }}>
+          <p style={{ fontSize: '15.41px', color: 'rgb(196,196,196)', margin: '1rem auto 2rem', maxWidth: '40ch' }}>
             {t.references.detail.ctaSub}
           </p>
           <Link href="/kontakt" className="btn-w">{t.references.detail.ctaButton}</Link>
@@ -212,7 +212,7 @@ function NavLink({ project, label, align }: { project: { slug: string; title: st
       }}
       className="footer-link"
     >
-      <span style={{ fontSize: '13px', textTransform: 'uppercase', letterSpacing: '0.04em', color: 'rgb(112,112,112)' }}>{label}</span>
+      <span style={{ fontSize: '13px', textTransform: 'uppercase', letterSpacing: '0.04em', color: 'rgb(178,178,178)' }}>{label}</span>
       <span style={{ fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif', fontSize: 'clamp(1.25rem, 2.5vw, 1.75rem)', fontWeight: 400, color: '#fff', letterSpacing: '-0.01em' }}>{project.title}</span>
     </Link>
   )
