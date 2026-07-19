@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SLIDE — Rechnung {{RECHNUNG_NR}}</title>
+
+<!--
+  SLIDE Rechnung mit Schweizer QR-Zahlteil.
+  Weiss/schwarz (Pflicht für Scanbarkeit des QR-Zahlteils).
+  Ohne MwSt (Art. 10 Abs. 2 MWSTG). Ohne QR-Referenz; stattdessen strukturierte
+  Kunden-/Rechnungsreferenz im Feld "Zusätzliche Informationen".
+
+  Absender-/IBAN-Daten kommen aus dem gewählten PRESET (Einstellungen).
+  Der QR-Code selbst wird vom Dashboard nach Swiss-QR-Bill-Spezifikation
+  generiert und in {{QR_CODE_SVG}} eingesetzt.
+
+  DYNAMISCHE FELDER:
+    {{ABSENDER_NAME}} {{ABSENDER_STRASSE}} {{ABSENDER_PLZ_ORT}}
+    {{ABSENDER_TEL}} {{ABSENDER_MAIL}} {{ABSENDER_WEB}} {{ABSENDER_IBAN}}
+    {{KUNDE_FIRMA}} {{KUNDE_ANREDE_ZEILE}} {{KUNDE_STRASSE}} {{KUNDE_PLZ_ORT}}
+    {{RECHNUNG_NR}} {{RECHNUNG_DATUM}} {{ZAHLBAR_BIS}}
+    {{ANREDE}} {{#POSITIONEN}}…{{/POSITIONEN}} {{TOTAL}} {{WAEHRUNG}}
+    {{ZAHLUNGSHINWEIS}}  (z.B. 40%-Anzahlungstext oder Standard)
+    {{REFERENZ_TEXT}}    (strukturierte Referenz, z.B. "SLIDE-001 / Kunde 42")
+    {{BETRAG}} {{QR_CODE_SVG}}
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Host+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#111;--muted:#555;--line:#dcdcdc;--line-strong:#111;
+    --sans:'DM Sans',sans-serif;--hg:'Host Grotesk',sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#e9e9ee;color:var(--ink);font-family:var(--hg);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+
+  .page{position:relative;width:210mm;height:297mm;background:#fff;margin:14px auto;
+    box-shadow:0 20px 60px rgba(0,0,0,.25);display:flex;flex-direction:column}
+  .content{flex:1;padding:20mm 20mm 6mm}
+
+  /* Kopf */
+  .top{display:flex;justify-content:space-between;align-items:flex-start}
+  .logo .s{font-family:var(--sans);font-weight:700;font-size:26px;letter-spacing:-.01em;color:#111}
+  .logo .a{font-family:var(--hg);font-weight:400;font-size:10px;letter-spacing:.55em;color:#111;display:block;margin-top:-2px}
+  .sender{font-size:11px;color:var(--muted);text-align:right;line-height:1.6}
+
+  .addr{margin-top:26mm;font-size:13px;line-height:1.6}
+  .addr .firma{font-weight:600}
+
+  .meta{margin-top:16px;display:flex;gap:40px;font-size:12.5px}
+  .meta .k{color:var(--muted)}
+  .meta .v{font-weight:600}
+
+  h1.title{font-family:var(--sans);font-weight:700;font-size:30px;margin-top:26px;letter-spacing:-.01em}
+  .intro{font-size:13px;color:#333;line-height:1.65;margin-top:14px;max-width:150mm}
+
+  table.items{width:100%;border-collapse:collapse;margin-top:22px;font-size:12.5px}
+  table.items th{text-align:left;font-weight:600;border-bottom:1.5px solid var(--line-strong);padding:9px 8px}
+  table.items td{padding:9px 8px;border-bottom:1px solid var(--line)}
+  table.items .r{text-align:right}
+  table.items tr.total td{border-bottom:none;font-weight:700;font-size:14px;padding-top:14px}
+  table.items tr.total .lbl{text-align:right}
+
+  .note{margin-top:18px;font-size:11.5px;color:#333;line-height:1.65;max-width:150mm}
+  .note .mwst{color:var(--muted);font-style:italic;margin-bottom:8px}
+  .greet{margin-top:26px;font-size:12.5px}
+  .greet .name{font-weight:600;margin-top:14px}
+
+  /* ══ Schweizer QR-Zahlteil (unten, 105mm) ══ */
+  .qr-slip{height:105mm;border-top:1px dashed #888;display:flex;font-family:'Helvetica Neue',Arial,var(--hg);color:#000}
+  .qr-slip .scissor{position:relative}
+  .qr-slip .scissor::before{content:"✂";position:absolute;left:6px;top:-9px;font-size:12px}
+  .receipt{width:62mm;border-right:1px dashed #888;padding:5mm;display:flex;flex-direction:column}
+  .payment{flex:1;padding:5mm 5mm 5mm 5mm;display:flex}
+  .pay-left{width:51mm}
+  .pay-right{flex:1;padding-left:5mm}
+
+  .slip-h{font-weight:700;font-size:11pt;margin-bottom:3mm}
+  .slip-title{font-weight:700;font-size:6pt;line-height:1;margin-bottom:1mm;text-transform:none}
+  .slip-val{font-size:8pt;line-height:1.15;margin-bottom:2.5mm}
+  .slip-val.iban{font-size:8pt}
+  .amount-row{display:flex;gap:8mm;margin-top:auto}
+  .amount-row .a-title{font-weight:700;font-size:6pt;margin-bottom:1mm}
+  .amount-row .a-val{font-size:8pt}
+  .accept{font-weight:700;font-size:6pt;text-align:right;margin-top:2mm}
+
+  .qr-box{width:46mm;height:46mm;border:1px solid #000;display:flex;align-items:center;justify-content:center;
+    font-size:8pt;color:#888;margin:3mm 0;position:relative}
+  .qr-box svg,.qr-box img{width:44mm;height:44mm}
+
+  @media print{
+    html,body{background:#fff}
+    .page{margin:0;box-shadow:none;page-break-after:always}
+    @page{size:A4;margin:0}
+  }
+</style>
+</head>
+<body>
+
+<section class="page">
+  <div class="content">
+    <div class="top">
+      <div class="logo"><span class="s">SLIDE</span><span class="a">AGENTUR</span></div>
+      <div class="sender">
+        {{ABSENDER_NAME}}<br>
+        {{ABSENDER_STRASSE}}<br>
+        {{ABSENDER_PLZ_ORT}}<br>
+        {{ABSENDER_TEL}}<br>
+        {{ABSENDER_MAIL}}<br>
+        {{ABSENDER_WEB}}
+      </div>
+    </div>
+
+    <div class="addr">
+      <div class="firma">{{KUNDE_FIRMA}}</div>
+      <div>{{KUNDE_ANREDE_ZEILE}}</div>
+      <div>{{KUNDE_STRASSE}}</div>
+      <div>{{KUNDE_PLZ_ORT}}</div>
+    </div>
+
+    <div class="meta">
+      <div><div class="k">Rechnungs-Nr.</div><div class="v">{{RECHNUNG_NR}}</div></div>
+      <div><div class="k">Rechnungsdatum</div><div class="v">{{RECHNUNG_DATUM}}</div></div>
+      <div><div class="k">Zahlbar bis</div><div class="v">{{ZAHLBAR_BIS}}</div></div>
+    </div>
+
+    <h1 class="title">Rechnung</h1>
+    <p class="intro">{{ANREDE}}, wir bedanken uns für die gute Zusammenarbeit und stellen Ihnen wie vereinbart folgende Dienstleistung(en) in Rechnung:</p>
+
+    <table class="items">
+      <thead>
+        <tr>
+          <th style="width:8%">Pos.</th>
+          <th>Bezeichnung</th>
+          <th class="r" style="width:10%">Menge</th>
+          <th class="r" style="width:12%">Einheit</th>
+          <th class="r" style="width:16%">Preis ({{WAEHRUNG}})</th>
+          <th class="r" style="width:16%">Gesamt ({{WAEHRUNG}})</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- {{#POSITIONEN}} -->
+        <tr>
+          <td>{{POS_NR}}</td>
+          <td>{{POS_BEZEICHNUNG}}</td>
+          <td class="r">{{POS_MENGE}}</td>
+          <td class="r">{{POS_EINHEIT}}</td>
+          <td class="r">{{POS_PREIS}}</td>
+          <td class="r">{{POS_GESAMT}}</td>
+        </tr>
+        <!-- {{/POSITIONEN}} — Beispielzeile: -->
+        <tr>
+          <td>1</td>
+          <td>One-Page Website (inkl. Hosting und 2 Korrekturrunden)</td>
+          <td class="r">1,00</td>
+          <td class="r">Stk.</td>
+          <td class="r">200.–</td>
+          <td class="r">200.–</td>
+        </tr>
+        <tr class="total"><td colspan="5" class="lbl">Rechnungsbetrag {{ZAHLUNGSANTEIL}}</td><td class="r">{{TOTAL}}</td></tr>
+      </tbody>
+    </table>
+
+    <div class="note">
+      <div class="mwst">Laut Schweizer Gesetz (Art. 10 Abs. 2 MWSTG) nicht mehrwertsteuerpflichtig.</div>
+      <div>{{ZAHLUNGSHINWEIS}}</div>
+      <div style="margin-top:8px">Bei Zahlungsverzug behalten wir uns vor, Mahngebühren zu verlangen oder rechtliche Schritte einzuleiten. Sie können bar, mit Kreditkarte oder per QR-Rechnung bezahlen.</div>
+    </div>
+
+    <div class="greet">
+      <div>Freundliche Grüsse</div>
+      <div class="name">Akif Yaylaci — SLIDE Agentur</div>
+    </div>
+  </div>
+
+  <!-- ══ Schweizer QR-Zahlteil ══ -->
+  <div class="qr-slip">
+    <!-- Empfangsschein -->
+    <div class="receipt">
+      <div class="slip-h">Empfangsschein</div>
+      <div class="slip-title">Konto / Zahlbar an</div>
+      <div class="slip-val iban">{{ABSENDER_IBAN}}<br>{{ABSENDER_NAME}}<br>{{ABSENDER_STRASSE}}<br>{{ABSENDER_PLZ_ORT}}</div>
+      <div class="slip-title">Zahlbar durch</div>
+      <div class="slip-val">{{KUNDE_FIRMA}}<br>{{KUNDE_STRASSE}}<br>{{KUNDE_PLZ_ORT}}</div>
+      <div class="amount-row">
+        <div><div class="a-title">Währung</div><div class="a-val">{{WAEHRUNG}}</div></div>
+        <div><div class="a-title">Betrag</div><div class="a-val">{{BETRAG}}</div></div>
+      </div>
+      <div class="accept">Annahmestelle</div>
+    </div>
+
+    <!-- Zahlteil -->
+    <div class="payment">
+      <div class="pay-left">
+        <div class="slip-h">Zahlteil</div>
+        <div class="qr-box">{{QR_CODE_SVG}}<span style="position:absolute">QR-Code</span></div>
+        <div class="amount-row" style="margin-top:0">
+          <div><div class="a-title">Währung</div><div class="a-val">{{WAEHRUNG}}</div></div>
+          <div><div class="a-title">Betrag</div><div class="a-val">{{BETRAG}}</div></div>
+        </div>
+      </div>
+      <div class="pay-right">
+        <div class="slip-title">Konto / Zahlbar an</div>
+        <div class="slip-val iban">{{ABSENDER_IBAN}}<br>{{ABSENDER_NAME}}<br>{{ABSENDER_STRASSE}}<br>{{ABSENDER_PLZ_ORT}}</div>
+        <div class="slip-title">Zusätzliche Informationen</div>
+        <div class="slip-val">{{REFERENZ_TEXT}}</div>
+        <div class="slip-title">Zahlbar durch</div>
+        <div class="slip-val">{{KUNDE_FIRMA}}<br>{{KUNDE_STRASSE}}<br>{{KUNDE_PLZ_ORT}}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

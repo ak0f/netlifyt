@@ -124,9 +124,51 @@ function Hero3DLetter() {
   )
 }
 
+/* ─── Decorative S watermark for mobile (no mouse tracking) ─── */
+function MobileHeroLetter() {
+  return (
+    <motion.div
+      aria-hidden
+      className="md:hidden"
+      style={{
+        position: 'absolute',
+        top: '14%',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        pointerEvents: 'none',
+        userSelect: 'none',
+        zIndex: 1,
+      }}
+      animate={{ y: [0, -18, 0] }}
+      transition={{ repeat: Infinity, duration: 6, ease: [0.37, 0, 0.63, 1] }}
+    >
+      <span
+        style={{
+          fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif',
+          fontSize: 'clamp(15rem, 62vw, 26rem)',
+          fontWeight: 400,
+          color: 'rgba(255,255,255,0.0)',
+          WebkitTextStroke: '1.5px rgba(255,255,255,0.16)',
+          lineHeight: 0.85,
+          letterSpacing: '-0.06em',
+          display: 'block',
+          textShadow: `
+            2px  4px 0px rgba(255,255,255,0.06),
+            5px  9px 0px rgba(255,255,255,0.04),
+            0 0 90px rgba(255,255,255,0.05)
+          `,
+        }}
+      >
+        S
+      </span>
+    </motion.div>
+  )
+}
+
 /* ─── HERO ─── */
 function HeroSection() {
   const { t } = useLang()
+  const isMobile            = useIsMobile()
   const ref                 = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
   const yContent            = useTransform(scrollYProgress, [0, 1], ['0%', '22%'])
@@ -138,13 +180,14 @@ function HeroSection() {
     <section
       ref={ref}
       className="grain"
-      style={{ position: 'relative', minHeight: '100svh', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: '0 max(5vw, 1.25rem) max(8vw, 3rem)', background: '#000', overflow: 'hidden' }}
+      style={{ position: 'relative', minHeight: '100svh', display: 'flex', flexDirection: 'column', justifyContent: isMobile ? 'center' : 'flex-end', padding: isMobile ? 'max(24vh, 7rem) max(5vw, 1.25rem) max(20vh, 7rem)' : '0 max(5vw, 1.25rem) max(8vw, 3rem)', background: '#000', overflow: 'hidden' }}
     >
       {/* Atmospheric background */}
       <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }} aria-hidden>
 
         {/* 3D letter */}
         <Hero3DLetter />
+        <MobileHeroLetter />
 
         {/* Orb 1 */}
         <motion.div style={{ y: yOrb1, position: 'absolute', inset: 0, pointerEvents: 'none' }}>

@@ -1,0 +1,36 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - img "SLIDE Agentur" [ref=e4]
+      - group "Sprache" [ref=e5]:
+        - button "DE" [ref=e6] [cursor=pointer]
+        - button "EN" [ref=e7] [cursor=pointer]
+    - main [ref=e8]:
+      - generic [ref=e9]:
+        - generic [ref=e10]:
+          - heading "Willkommen zurück" [level=1] [ref=e11]
+          - paragraph [ref=e12]: Melden Sie sich mit Ihren Zugangsdaten an.
+        - generic [ref=e13]:
+          - generic [ref=e14]:
+            - generic [ref=e15]: Benutzername
+            - textbox "Benutzername" [ref=e16]:
+              - /placeholder: z. B. alpen-immobilien
+          - generic [ref=e17]:
+            - generic [ref=e18]:
+              - generic [ref=e19]: Passwort
+              - button "Anzeigen" [ref=e20]
+            - textbox "Passwort" [ref=e21]:
+              - /placeholder: Ihr Passwort
+          - generic [ref=e22]:
+            - generic [ref=e23] [cursor=pointer]:
+              - checkbox "Angemeldet bleiben" [ref=e24]
+              - text: Angemeldet bleiben
+            - link "Passwort vergessen?" [ref=e25] [cursor=pointer]:
+              - /url: /passwort-vergessen
+          - button "Anmelden" [ref=e26] [cursor=pointer]
+        - paragraph [ref=e29]:
+          - text: Probleme beim Login?
+          - link "Kontakt" [ref=e30] [cursor=pointer]:
+            - /url: mailto:info@slideagentur.ch
+  - button "Open Next.js Dev Tools" [ref=e36] [cursor=pointer]
+  - alert [ref=e40]

@@ -1,0 +1,410 @@
+- generic [active] [ref=f2e1]:
+  - img "SLIDE" [ref=f2e4]
+  - banner:
+    - generic:
+      - link [ref=f2e5] [cursor=pointer]:
+        - /url: /
+        - img "SLIDE" [ref=f2e6]
+      - button "Menü öffnen" [ref=f2e8] [cursor=pointer]
+  - main [ref=f2e14]:
+    - generic [ref=f2e15]:
+      - generic: S
+      - generic [ref=f2e16]:
+        - heading "SLIDE ist deine Digitalagentur in Bern. Wir bauen Websites, betreuen dein Social Media und lösen deine IT-Fragen." [level=1] [ref=f2e18]:
+          - generic [ref=f2e19]: SLIDE ist deine Digitalagentur in Bern.
+          - text: Wir bauen Websites, betreuen dein Social Media und lösen deine IT-Fragen.
+        - generic [ref=f2e20]:
+          - link "Kostenloses Erstgespräch buchen" [ref=f2e21] [cursor=pointer]:
+            - /url: /kontakt
+          - link "So läuft es ab →" [ref=f2e24] [cursor=pointer]:
+            - /url: /ablauf
+      - generic:
+        - generic: scroll
+        - generic: ↓
+    - generic [ref=f2e25]:
+      - generic [ref=f2e28]:
+        - generic [ref=f2e29]:
+          - generic [ref=f2e30]: Unsere Leistungen
+          - heading "Alles aus einer Hand. Ohne Umwege." [level=2] [ref=f2e31]: Alles aus einer Hand.Ohne Umwege.
+        - link "Kostenloses Erstgespräch →" [ref=f2e32] [cursor=pointer]:
+          - /url: /kontakt
+      - generic [ref=f2e33]:
+        - generic [ref=f2e35]:
+          - img "Website Development" [ref=f2e37]
+          - generic [ref=f2e39]:
+            - generic [ref=f2e40]:
+              - heading "Website Development" [level=3] [ref=f2e41]
+              - paragraph [ref=f2e42]: Responsive, schnell und modern
+            - generic [ref=f2e43]: /5 Leistungen
+        - generic [ref=f2e57]:
+          - img "Social Media Management" [ref=f2e59]
+          - generic [ref=f2e61]:
+            - generic [ref=f2e62]:
+              - heading "Social Media Management" [level=3] [ref=f2e63]
+              - paragraph [ref=f2e64]: Content, der Kunden bringt
+            - generic [ref=f2e65]: /4 Leistungen
+        - generic [ref=f2e79]:
+          - img "Email Marketing" [ref=f2e81]
+          - generic [ref=f2e83]:
+            - generic [ref=f2e84]:
+              - heading "Email Marketing" [level=3] [ref=f2e85]
+              - paragraph [ref=f2e86]: Newsletter, die geöffnet werden
+            - generic [ref=f2e87]: /3 Leistungen
+    - generic [ref=f2e101]:
+      - generic [ref=f2e102]:
+        - generic [ref=f2e103]: Neueste Referenzen
+        - generic [ref=f2e104]:
+          - heading "Referenzen, die für sich sprechen." [level=2] [ref=f2e105]
+          - link "Alle Referenzen →" [ref=f2e106] [cursor=pointer]:
+            - /url: /referenzen
+      - generic [ref=f2e107]:
+        - link "Shots by Levin" [ref=f2e108] [cursor=pointer]:
+          - /url: /referenzen/shots-by-levin
+          - article [ref=f2e109]:
+            - img "Shots by Levin Website" [ref=f2e112]
+            - generic [ref=f2e113]:
+              - heading "Shots by Levin" [level=3] [ref=f2e114]
+              - paragraph [ref=f2e115]: Eine moderne, responsive Website für Shots by Levin, einen Sportfotografen aus Bern. Klares Design mit Portfolio, Leistungsübersicht und integrierter Buchung. Optimiert für jede Bildschirmgrösse.
+              - generic [ref=f2e116]:
+                - generic [ref=f2e117]:
+                  - generic [ref=f2e118]: Standort
+                  - generic [ref=f2e119]: Bern, Schweiz
+                - generic [ref=f2e120]:
+                  - generic [ref=f2e121]: Branche
+                  - generic [ref=f2e122]: Sportfotografie
+                - generic [ref=f2e123]:
+                  - generic [ref=f2e124]: Leistung
+                  - generic [ref=f2e125]: Website
+              - generic [ref=f2e126]: Projekt ansehen →
+        - link "N&J" [ref=f2e127] [cursor=pointer]:
+          - /url: /referenzen/nj-clothing
+          - article [ref=f2e128]:
+            - img "N&J Fashion Kampagne" [ref=f2e131]
+            - generic [ref=f2e132]:
+              - heading "N&J" [level=3] [ref=f2e133]
+              - paragraph [ref=f2e134]: Foto- und Videoproduktion für die Kleidungsmarke N&J. Wir drehten an verschiedenen Standorten und aus mehreren Perspektiven und verbreiteten die Inhalte über mehrere Social-Media-Accounts. In ein Video bauten wir gezielt einen Hook ein, um virale Reichweite zu erzeugen. Die Kampagne erreichte die Zielgruppe und steigerte die Verkäufe. Insgesamt über 10'000 Aufrufe.
+              - generic [ref=f2e135]:
+                - generic [ref=f2e136]:
+                  - generic [ref=f2e137]: Standort
+                  - generic [ref=f2e138]: Bern, Schweiz
+                - generic [ref=f2e139]:
+                  - generic [ref=f2e140]: Branche
+                  - generic [ref=f2e141]: Modemarke / Fashion
+                - generic [ref=f2e142]:
+                  - generic [ref=f2e143]: Leistung
+                  - generic [ref=f2e144]: Foto & Video, Social Media
+              - generic [ref=f2e145]: Projekt ansehen →
+        - link "Wegmühle Apotheke" [ref=f2e146] [cursor=pointer]:
+          - /url: /referenzen/wegmuehle-apotheke
+          - article [ref=f2e147]:
+            - img "Wegmühle Apotheke Website" [ref=f2e150]
+            - generic [ref=f2e151]:
+              - heading "Wegmühle Apotheke" [level=3] [ref=f2e152]
+              - paragraph [ref=f2e153]: Eine moderne, benutzerfreundliche Website für die Wegmühle Apotheke. Vollständig in HTML, CSS und JavaScript programmiert. Schnell, klar und auf allen Geräten zuverlässig.
+              - generic [ref=f2e154]:
+                - generic [ref=f2e155]:
+                  - generic [ref=f2e156]: Standort
+                  - generic [ref=f2e157]: Bern, Schweiz
+                - generic [ref=f2e158]:
+                  - generic [ref=f2e159]: Branche
+                  - generic [ref=f2e160]: Apotheke
+                - generic [ref=f2e161]:
+                  - generic [ref=f2e162]: Leistung
+                  - generic [ref=f2e163]: Website
+              - generic [ref=f2e164]: Projekt ansehen →
+        - link "Avanti Bistro Ittigen" [ref=f2e165] [cursor=pointer]:
+          - /url: /referenzen/avanti-bistro
+          - article [ref=f2e166]:
+            - img "Avanti Bistro Website" [ref=f2e169]
+            - generic [ref=f2e170]:
+              - heading "Avanti Bistro Ittigen" [level=3] [ref=f2e171]
+              - paragraph [ref=f2e172]: Eine warme, responsive Website für das Avanti Bistro in Ittigen. Benutzerfreundliches Design, optimiert für jede Bildschirmgrösse.
+              - generic [ref=f2e173]:
+                - generic [ref=f2e174]:
+                  - generic [ref=f2e175]: Standort
+                  - generic [ref=f2e176]: Ittigen, Bern
+                - generic [ref=f2e177]:
+                  - generic [ref=f2e178]: Branche
+                  - generic [ref=f2e179]: Gastronomie
+                - generic [ref=f2e180]:
+                  - generic [ref=f2e181]: Leistung
+                  - generic [ref=f2e182]: Website
+              - generic [ref=f2e183]: Projekt ansehen →
+        - link "ZeroTrace" [ref=f2e184] [cursor=pointer]:
+          - /url: /referenzen/zerotrace
+          - article [ref=f2e185]:
+            - img "ZeroTrace Social Media" [ref=f2e188]
+            - generic [ref=f2e189]:
+              - heading "ZeroTrace" [level=3] [ref=f2e190]
+              - paragraph [ref=f2e191]: SLIDE hat die Social-Media-Kanäle von ZeroTrace übernommen und 1 bis 2 Beiträge pro Woche erstellt. Die Online-Sichtbarkeit ist deutlich gestiegen.
+              - generic [ref=f2e192]:
+                - generic [ref=f2e193]:
+                  - generic [ref=f2e194]: Standort
+                  - generic [ref=f2e195]: Online
+                - generic [ref=f2e196]:
+                  - generic [ref=f2e197]: Branche
+                  - generic [ref=f2e198]: Tech / Privacy
+                - generic [ref=f2e199]:
+                  - generic [ref=f2e200]: Leistung
+                  - generic [ref=f2e201]: Social Media
+              - generic [ref=f2e202]: Projekt ansehen →
+        - link "Portfolio Akif Yaylaci" [ref=f2e203] [cursor=pointer]:
+          - /url: /referenzen/portfolio-akif-yaylaci
+          - article [ref=f2e204]:
+            - img "Portfolio Akif Yaylaci" [ref=f2e207]
+            - generic [ref=f2e208]:
+              - heading "Portfolio Akif Yaylaci" [level=3] [ref=f2e209]
+              - paragraph [ref=f2e210]: Das persönliche Portfolio des SLIDE-Gründers. Ein modernes Webprojekt in HTML, CSS und JavaScript, das das handwerkliche Können zeigt.
+              - generic [ref=f2e211]:
+                - generic [ref=f2e212]:
+                  - generic [ref=f2e213]: Standort
+                  - generic [ref=f2e214]: Bern, Schweiz
+                - generic [ref=f2e215]:
+                  - generic [ref=f2e216]: Branche
+                  - generic [ref=f2e217]: Web Development
+                - generic [ref=f2e218]:
+                  - generic [ref=f2e219]: Leistung
+                  - generic [ref=f2e220]: Portfolio
+              - generic [ref=f2e221]: Projekt ansehen →
+    - generic [ref=f2e222]:
+      - generic [ref=f2e224]:
+        - generic [ref=f2e225]:
+          - generic [ref=f2e226]: Der Ablauf
+          - heading "Von null auf fertig in 4 Wochen." [level=2] [ref=f2e227]: Von null auf fertigin 4 Wochen.
+        - link "Ablauf ansehen →" [ref=f2e228] [cursor=pointer]:
+          - /url: /ablauf
+      - generic [ref=f2e229]:
+        - generic [ref=f2e231]:
+          - generic [ref=f2e232]: "01"
+          - heading "Brief" [level=3] [ref=f2e233]
+          - paragraph [ref=f2e234]: Kostenloses Erstgespräch. Wir klären deine Ziele, dein Budget und deinen Zeitplan.
+        - generic [ref=f2e236]:
+          - generic [ref=f2e237]: "02"
+          - heading "Build" [level=3] [ref=f2e238]
+          - paragraph [ref=f2e239]: Wir bauen deine Lösung. Design, Entwicklung und Content kommen aus einer Hand.
+        - generic [ref=f2e241]:
+          - generic [ref=f2e242]: "03"
+          - heading "Launch" [level=3] [ref=f2e243]
+          - paragraph [ref=f2e244]: Live in 4 Wochen. Kein Versprechen, sondern ein fertiges Produkt, das funktioniert.
+    - generic [ref=f2e247]:
+      - generic [ref=f2e248]:
+        - generic [ref=f2e249]:
+          - generic [ref=f2e250]: Kundenstimmen
+          - heading "Was unsere Kunden über die Zusammenarbeit sagen." [level=2] [ref=f2e251]
+        - link "Lass uns zusammenarbeiten →" [ref=f2e253] [cursor=pointer]:
+          - /url: /kontakt
+      - generic [ref=f2e255]:
+        - generic [ref=f2e256]:
+          - paragraph [ref=f2e257]: "\"Akif ist ein sehr kreativer, sympathischer und vertrauenswürdiger Junge. Die Website sieht top aus und war sehr schnell fertig. Alles top!\""
+          - generic [ref=f2e258]:
+            - generic [ref=f2e259]: L
+            - generic [ref=f2e260]:
+              - paragraph [ref=f2e261]: Levin
+              - paragraph [ref=f2e262]: Shots by Levin
+        - generic [ref=f2e263]:
+          - paragraph [ref=f2e264]: "\"Die Videos sahen richtig gut aus und viele Leute haben danach bei uns ein Kleidungsstück gekauft. SLIDE Agentur hat das richtig gut gemacht. Er hatte einen Plan und hat ihn sehr gut umgesetzt.\""
+          - generic [ref=f2e265]:
+            - generic [ref=f2e266]: J
+            - generic [ref=f2e267]:
+              - paragraph [ref=f2e268]: Jules, Inhaber von N&J
+              - paragraph [ref=f2e269]: N&J
+        - generic [ref=f2e270]:
+          - paragraph [ref=f2e271]: "\"Die neue Website hat unsere Kundenanfragen spürbar erhöht. Schnelle Umsetzung, sauberes Ergebnis.\""
+          - generic [ref=f2e272]:
+            - generic [ref=f2e273]: M
+            - generic [ref=f2e274]:
+              - paragraph [ref=f2e275]: M. Emch
+              - paragraph [ref=f2e276]: Wegmühle Apotheke
+        - generic [ref=f2e277]:
+          - paragraph [ref=f2e278]: "\"Unkomplizierte Zusammenarbeit, klare Kommunikation und ein Resultat, das überzeugt.\""
+          - generic [ref=f2e279]:
+            - generic [ref=f2e280]: A
+            - generic [ref=f2e281]:
+              - paragraph [ref=f2e282]: Avanti Bistro
+              - paragraph [ref=f2e283]: Avanti Bistro Ittigen
+        - generic [ref=f2e284]:
+          - paragraph [ref=f2e285]: "\"Das Content Marketing ist sehr gut umgesetzt.\""
+          - generic [ref=f2e286]:
+            - generic [ref=f2e287]: "9"
+            - generic [ref=f2e288]:
+              - paragraph [ref=f2e289]: 9dl, CEO von ZeroTrace
+              - paragraph [ref=f2e290]: ZeroTrace
+        - generic [ref=f2e291]:
+          - paragraph [ref=f2e292]: "\"Dein Portfolio hat uns recht beeindruckt.\""
+          - generic [ref=f2e293]:
+            - generic [ref=f2e294]: B
+            - generic [ref=f2e295]:
+              - paragraph [ref=f2e296]: Bundesamt für Informatik und Telekommunikation (BIT)
+              - paragraph [ref=f2e297]: Portfolio Akif Yaylaci
+        - generic [ref=f2e298]:
+          - paragraph [ref=f2e299]: "\"Akif ist ein sehr kreativer, sympathischer und vertrauenswürdiger Junge. Die Website sieht top aus und war sehr schnell fertig. Alles top!\""
+          - generic [ref=f2e300]:
+            - generic [ref=f2e301]: L
+            - generic [ref=f2e302]:
+              - paragraph [ref=f2e303]: Levin
+              - paragraph [ref=f2e304]: Shots by Levin
+        - generic [ref=f2e305]:
+          - paragraph [ref=f2e306]: "\"Die Videos sahen richtig gut aus und viele Leute haben danach bei uns ein Kleidungsstück gekauft. SLIDE Agentur hat das richtig gut gemacht. Er hatte einen Plan und hat ihn sehr gut umgesetzt.\""
+          - generic [ref=f2e307]:
+            - generic [ref=f2e308]: J
+            - generic [ref=f2e309]:
+              - paragraph [ref=f2e310]: Jules, Inhaber von N&J
+              - paragraph [ref=f2e311]: N&J
+        - generic [ref=f2e312]:
+          - paragraph [ref=f2e313]: "\"Die neue Website hat unsere Kundenanfragen spürbar erhöht. Schnelle Umsetzung, sauberes Ergebnis.\""
+          - generic [ref=f2e314]:
+            - generic [ref=f2e315]: M
+            - generic [ref=f2e316]:
+              - paragraph [ref=f2e317]: M. Emch
+              - paragraph [ref=f2e318]: Wegmühle Apotheke
+        - generic [ref=f2e319]:
+          - paragraph [ref=f2e320]: "\"Unkomplizierte Zusammenarbeit, klare Kommunikation und ein Resultat, das überzeugt.\""
+          - generic [ref=f2e321]:
+            - generic [ref=f2e322]: A
+            - generic [ref=f2e323]:
+              - paragraph [ref=f2e324]: Avanti Bistro
+              - paragraph [ref=f2e325]: Avanti Bistro Ittigen
+        - generic [ref=f2e326]:
+          - paragraph [ref=f2e327]: "\"Das Content Marketing ist sehr gut umgesetzt.\""
+          - generic [ref=f2e328]:
+            - generic [ref=f2e329]: "9"
+            - generic [ref=f2e330]:
+              - paragraph [ref=f2e331]: 9dl, CEO von ZeroTrace
+              - paragraph [ref=f2e332]: ZeroTrace
+        - generic [ref=f2e333]:
+          - paragraph [ref=f2e334]: "\"Dein Portfolio hat uns recht beeindruckt.\""
+          - generic [ref=f2e335]:
+            - generic [ref=f2e336]: B
+            - generic [ref=f2e337]:
+              - paragraph [ref=f2e338]: Bundesamt für Informatik und Telekommunikation (BIT)
+              - paragraph [ref=f2e339]: Portfolio Akif Yaylaci
+    - generic [ref=f2e340]:
+      - generic [ref=f2e341]:
+        - generic [ref=f2e342]: Über uns
+        - heading "SLIDE ist eine Digitalagentur aus Bern. Wir finden, Technik sollte einfach funktionieren. Klar, verständlich und wirksam." [level=2] [ref=f2e343]:
+          - generic [ref=f2e344]: SLIDE ist eine Digitalagentur aus Bern.
+          - text: Wir finden, Technik sollte einfach funktionieren. Klar, verständlich und wirksam.
+      - generic [ref=f2e346]:
+        - img "Akif Yaylaci, Gründer von SLIDE" [ref=f2e349]
+        - generic [ref=f2e350]:
+          - generic [ref=f2e351]:
+            - heading "Akif Yaylaci" [level=3] [ref=f2e352]
+            - paragraph [ref=f2e353]: Gründer und Webentwickler
+          - paragraph [ref=f2e354]: Hi, ich bin Akif!
+          - paragraph [ref=f2e355]: "Seit 2023 baue ich Websites für Schweizer KMU. Mein Fokus liegt auf einfachen Seiten, die genau das tun, was sie sollen: funktionieren und Kunden bringen. Keine komplizierten Extras."
+          - paragraph [ref=f2e356]: Angefangen hat alles mit meinen ersten Zertifikaten in Webprogrammierung. Nach über 10 Projekten habe ich SLIDE gegründet. Nebenbei unterstütze ich die Hilfsorganisation Time to Help ehrenamtlich bei IT und Organisation.
+          - paragraph [ref=f2e357]: Was ich heute baue, wird morgen genutzt.
+          - generic [ref=f2e358]:
+            - generic [ref=f2e359]:
+              - paragraph [ref=f2e360]: 10+
+              - paragraph [ref=f2e361]: Projekte
+            - generic [ref=f2e362]:
+              - paragraph [ref=f2e363]: 100%
+              - paragraph [ref=f2e364]: Kunden
+            - generic [ref=f2e365]:
+              - paragraph [ref=f2e366]: "2023"
+              - paragraph [ref=f2e367]: Seit
+    - generic [ref=f2e368]:
+      - generic [ref=f2e369]:
+        - generic [ref=f2e370]: Kontakt
+        - heading "Bereit loszulegen?" [level=2] [ref=f2e371]
+      - generic [ref=f2e372]:
+        - generic [ref=f2e374]:
+          - paragraph [ref=f2e375]: "Füll das Formular aus für ein kostenloses Erstgespräch:"
+          - generic [ref=f2e376]:
+            - generic [ref=f2e377]:
+              - generic [ref=f2e378]:
+                - generic [ref=f2e379]: Dein Name
+                - textbox "Dein Name" [ref=f2e380]:
+                  - /placeholder: Deinen Namen eingeben
+              - generic [ref=f2e381]:
+                - generic [ref=f2e382]: Deine E-Mail
+                - textbox "Deine E-Mail" [ref=f2e383]:
+                  - /placeholder: deine@email.com
+            - generic [ref=f2e384]:
+              - generic [ref=f2e385]:
+                - generic [ref=f2e386]: Telefon (optional)
+                - textbox "Telefon (optional)" [ref=f2e387]:
+                  - /placeholder: +41 ...
+              - generic [ref=f2e388]:
+                - generic [ref=f2e389]: Betreff
+                - combobox "Betreff" [ref=f2e390] [cursor=pointer]:
+                  - option "Thema wählen..." [selected]
+                  - option "Website"
+                  - option "Social Media"
+                  - option "E-Mail"
+                  - option "IT-Support"
+                  - option "Sonstiges"
+            - generic [ref=f2e391]:
+              - generic [ref=f2e392]: Nachricht
+              - textbox "Nachricht" [ref=f2e393]:
+                - /placeholder: Erzähl uns von deinem Projekt...
+            - button "Nachricht senden →" [ref=f2e394] [cursor=pointer]
+        - generic [ref=f2e396]:
+          - generic [ref=f2e397]:
+            - paragraph [ref=f2e398]: E-Mail
+            - link "info@slideagentur.ch" [ref=f2e399] [cursor=pointer]:
+              - /url: mailto:info@slideagentur.ch
+          - generic [ref=f2e400]:
+            - paragraph [ref=f2e401]: Telefon
+            - link "+41 78 326 29 52" [ref=f2e402] [cursor=pointer]:
+              - /url: tel:+41783262952
+          - generic [ref=f2e403]:
+            - paragraph [ref=f2e404]: Standort
+            - paragraph [ref=f2e405]: Ostermundigen, Bern, Schweiz
+          - generic [ref=f2e406]:
+            - paragraph [ref=f2e407]: Antwortzeit
+            - paragraph [ref=f2e408]: Innert 24 Stunden
+          - link "Lass uns zusammenarbeiten →" [ref=f2e410] [cursor=pointer]:
+            - /url: /kontakt
+  - contentinfo [ref=f2e411]:
+    - generic [ref=f2e412]:
+      - generic [ref=f2e413]:
+        - generic [ref=f2e414]:
+          - img "SLIDE" [ref=f2e415]
+          - paragraph [ref=f2e416]: Digitalagentur für Websites, Social Media und IT-Lösungen. Bern, Schweiz.
+        - generic [ref=f2e417]:
+          - paragraph [ref=f2e418]: Leistungen
+          - link "Website Entwicklung" [ref=f2e419] [cursor=pointer]:
+            - /url: /leistungen/webdesign-bern
+          - link "Social Media" [ref=f2e420] [cursor=pointer]:
+            - /url: /leistungen/social-media-bern
+          - link "E-Mail & Domain" [ref=f2e421] [cursor=pointer]:
+            - /url: /leistungen/email-marketing
+          - link "IT-Support" [ref=f2e422] [cursor=pointer]:
+            - /url: /leistungen/it-support-bern
+        - generic [ref=f2e423]:
+          - paragraph [ref=f2e424]: Unternehmen
+          - link "Über uns" [ref=f2e425] [cursor=pointer]:
+            - /url: /#ueber-uns
+          - link "Referenzen" [ref=f2e426] [cursor=pointer]:
+            - /url: /referenzen
+          - link "Preise" [ref=f2e427] [cursor=pointer]:
+            - /url: /#preise
+          - link "Ablauf" [ref=f2e428] [cursor=pointer]:
+            - /url: /ablauf
+          - link "Kontakt" [ref=f2e429] [cursor=pointer]:
+            - /url: /#kontakt
+        - generic [ref=f2e430]:
+          - paragraph [ref=f2e431]: Kontakt
+          - link "info@slideagentur.ch" [ref=f2e432] [cursor=pointer]:
+            - /url: mailto:info@slideagentur.ch
+          - link "+41 78 326 29 52" [ref=f2e433] [cursor=pointer]:
+            - /url: tel:+41783262952
+          - paragraph [ref=f2e434]: Ostermundigen, BernSchweiz
+          - paragraph [ref=f2e435]: Social
+          - link "Instagram" [ref=f2e436] [cursor=pointer]:
+            - /url: https://www.instagram.com/slideagentur
+          - link "TikTok" [ref=f2e439] [cursor=pointer]:
+            - /url: https://www.tiktok.com/@slideagentur
+      - generic [ref=f2e442]:
+        - paragraph [ref=f2e443]: © 2026 SLIDE. Alle Rechte vorbehalten.
+        - navigation [ref=f2e444]:
+          - link "Datenschutz" [ref=f2e445] [cursor=pointer]:
+            - /url: /datenschutz
+          - link "Impressum" [ref=f2e446] [cursor=pointer]:
+            - /url: /impressum
+          - link "AGB" [ref=f2e447] [cursor=pointer]:
+            - /url: /agb
+    - generic [ref=f2e448]: SLIDE
+  - button "Open Next.js Dev Tools" [ref=f2e454] [cursor=pointer]
