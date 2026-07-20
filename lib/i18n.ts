@@ -11,7 +11,7 @@ const de = {
     cta: 'Kostenloses Erstgespräch buchen', secondary: 'So läuft es ab →',
     stat1: '100%', stat1Label: 'Weiterempfehlungsrate',
     stat2Label: '5.0 auf Google',
-    stat3: '2 Wochen', stat3Label: 'Lieferzeit',
+    stat3: '4 Wochen', stat3Label: 'Lieferzeit',
   },
   services: {
     label: 'Unsere Leistungen',
@@ -97,7 +97,7 @@ const de = {
     col1: 'Leistungen', col2: 'Unternehmen', col3: 'Kontakt', col4: 'Social',
     rights: '© 2026 SLIDE. Alle Rechte vorbehalten.',
     services: ['Website Entwicklung', 'Social Media', 'E-Mail & Domain', 'IT-Support'],
-    company: ['Über uns', 'Referenzen', 'Preise', 'Ablauf', 'Kontakt'],
+    company: ['Über uns', 'Referenzen', 'Ablauf', 'Kontakt'],
   },
   modal: {
     heading: 'Sprache wählen',
@@ -208,7 +208,7 @@ const en: typeof de = {
     cta: 'Book a free call', secondary: 'See how it works →',
     stat1: '100%', stat1Label: 'Referral rate',
     stat2Label: '5.0 on Google',
-    stat3: '2 weeks', stat3Label: 'Delivery time',
+    stat3: '4 weeks', stat3Label: 'Delivery time',
   },
   services: {
     label: 'Our Services',
@@ -294,7 +294,7 @@ const en: typeof de = {
     col1: 'Services', col2: 'Company', col3: 'Contact', col4: 'Social',
     rights: '© 2026 SLIDE. All rights reserved.',
     services: ['Website Development', 'Social Media', 'Email & Domain', 'IT Support'],
-    company: ['About us', 'Portfolio', 'Pricing', 'Process', 'Contact'],
+    company: ['About us', 'Portfolio', 'Process', 'Contact'],
   },
   modal: {
     heading: 'Choose language',
