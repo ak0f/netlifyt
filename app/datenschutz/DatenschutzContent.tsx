@@ -63,8 +63,8 @@ function BodyDE() {
           <p>
             <strong>SLIDE</strong> (Einzelunternehmen)<br />
             Akif Yaylaci<br />
-            Forelstrasse 44<br />
-            3072 Ostermundigen<br />
+            Talgut-Zentrum 26<br />
+            3063 Ittigen<br />
             Kanton Bern, Schweiz
           </p>
           <p>
@@ -424,8 +424,8 @@ function BodyEN() {
           <p>
             <strong>SLIDE</strong> (sole proprietorship)<br />
             Akif Yaylaci<br />
-            Forelstrasse 44<br />
-            3072 Ostermundigen<br />
+            Talgut-Zentrum 26<br />
+            3063 Ittigen<br />
             Canton of Bern, Switzerland
           </p>
           <p>

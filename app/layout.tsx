@@ -90,9 +90,9 @@ const jsonLd = {
   priceRange: 'CHF',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Forelstrasse 44',
-    postalCode: '3072',
-    addressLocality: 'Ostermundigen',
+    streetAddress: 'Talgut-Zentrum 26',
+    postalCode: '3063',
+    addressLocality: 'Ittigen',
     addressRegion: 'Bern',
     addressCountry: 'CH',
   },

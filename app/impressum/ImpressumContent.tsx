@@ -50,8 +50,8 @@ function BodyDE() {
           <p><strong>SLIDE</strong> (Einzelunternehmen)</p>
           <p>Inhaber: Akif Yaylaci</p>
           <p>Gesetzliche Vertreterin: Fadile Yaylaci</p>
-          <p>Forelstrasse 44</p>
-          <p>3072 Ostermundigen</p>
+          <p>Talgut-Zentrum 26</p>
+          <p>3063 Ittigen</p>
           <p>Kanton Bern, Schweiz</p>
           <div className="mt-4 p-4 rounded-lg text-[0.88rem] font-light leading-[1.7]" style={noteBox}>
             SLIDE wird als Einzelunternehmen von Akif Yaylaci geführt; die gesetzliche Vertretung
@@ -68,7 +68,7 @@ function BodyDE() {
         </Block>
 
         <Block title="Verantwortlich für den Inhalt">
-          <p>Akif Yaylaci, Forelstrasse 44, 3072 Ostermundigen, Schweiz.</p>
+          <p>Akif Yaylaci, Talgut-Zentrum 26, 3063 Ittigen, Schweiz.</p>
         </Block>
       </Section>
 
@@ -145,8 +145,8 @@ function BodyEN() {
           <p><strong>SLIDE</strong> (sole proprietorship)</p>
           <p>Owner: Akif Yaylaci</p>
           <p>Legal representative: Fadile Yaylaci</p>
-          <p>Forelstrasse 44</p>
-          <p>3072 Ostermundigen</p>
+          <p>Talgut-Zentrum 26</p>
+          <p>3063 Ittigen</p>
           <p>Canton of Bern, Switzerland</p>
           <div className="mt-4 p-4 rounded-lg text-[0.88rem] font-light leading-[1.7]" style={noteBox}>
             SLIDE is operated as a sole proprietorship by Akif Yaylaci; legal representation is provided
@@ -162,7 +162,7 @@ function BodyEN() {
         </Block>
 
         <Block title="Responsible for content">
-          <p>Akif Yaylaci, Forelstrasse 44, 3072 Ostermundigen, Switzerland.</p>
+          <p>Akif Yaylaci, Talgut-Zentrum 26, 3063 Ittigen, Switzerland.</p>
         </Block>
       </Section>
 

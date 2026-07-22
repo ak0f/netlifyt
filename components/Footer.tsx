@@ -147,7 +147,7 @@ export default function Footer() {
               +41 78 326 29 52
             </a>
             <p style={{ ...linkStyle, cursor: 'default', marginBottom: '1.75rem' }}>
-              Ostermundigen, Bern<br />Schweiz
+              Ittigen, Bern<br />Schweiz
             </p>
 
             {/* Social links */}

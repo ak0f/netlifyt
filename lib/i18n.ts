@@ -90,7 +90,7 @@ const de = {
     error: 'Etwas ist schiefgelaufen. Schreib uns direkt: info@slideagentur.ch',
     cta: 'Lass uns zusammenarbeiten →',
     infoLabels: ['E-Mail', 'Telefon', 'Standort', 'Antwortzeit'],
-    infoValues: ['info@slideagentur.ch', '+41 78 326 29 52', 'Ostermundigen, Bern, Schweiz', 'Innert 24 Stunden'],
+    infoValues: ['info@slideagentur.ch', '+41 78 326 29 52', 'Ittigen, Bern, Schweiz', 'Innert 24 Stunden'],
   },
   footer: {
     desc: 'Digitalagentur für Websites, Social Media und IT-Lösungen. Bern, Schweiz.',
@@ -287,7 +287,7 @@ const en: typeof de = {
     error: 'Something went wrong. Write to us directly: info@slideagentur.ch',
     cta: "Let's work together →",
     infoLabels: ['Email', 'Phone', 'Location', 'Response time'],
-    infoValues: ['info@slideagentur.ch', '+41 78 326 29 52', 'Ostermundigen, Berne, Switzerland', 'Within 24 hours'],
+    infoValues: ['info@slideagentur.ch', '+41 78 326 29 52', 'Ittigen, Berne, Switzerland', 'Within 24 hours'],
   },
   footer: {
     desc: 'Digital agency for websites, social media and IT solutions. Berne, Switzerland.',
