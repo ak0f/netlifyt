@@ -90,8 +90,6 @@ const jsonLd = {
   priceRange: 'CHF',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Talgut-Zentrum 26',
-    postalCode: '3063',
     addressLocality: 'Ittigen',
     addressRegion: 'Bern',
     addressCountry: 'CH',

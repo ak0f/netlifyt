@@ -42,8 +42,8 @@ function BodyDE() {
         <Block title="1.1 Geltungsbereich">
           <p>
             Diese Allgemeinen Geschäftsbedingungen (nachfolgend «AGB») gelten für sämtliche Verträge,
-            Leistungen und Angebote von SLIDE, Einzelunternehmen, Inhaber Akif Yaylaci, Talgut-Zentrum 26,
-            3063 Ittigen (nachfolgend «Auftragnehmer»), gegenüber seinen Kundinnen und Kunden
+            Leistungen und Angebote von SLIDE, Einzelunternehmen, Inhaber Akif Yaylaci, Ittigen
+            (nachfolgend «Auftragnehmer»), gegenüber seinen Kundinnen und Kunden
             (nachfolgend «Auftraggeber»). Sie gelten sowohl gegenüber Unternehmen als auch gegenüber
             Konsumentinnen und Konsumenten.
           </p>
@@ -317,8 +317,8 @@ function BodyDE() {
               Vertragsabschlusses.
             </p>
             <p>
-              Um Ihr Widerrufsrecht auszuüben, müssen Sie uns – SLIDE, Akif Yaylaci, Talgut-Zentrum 26,
-              3063 Ittigen, Schweiz, E-Mail{' '}
+              Um Ihr Widerrufsrecht auszuüben, müssen Sie uns – SLIDE, Akif Yaylaci, Ittigen,
+              Schweiz, E-Mail{' '}
               <a href="mailto:info@slideagentur.ch" className="legal-link">info@slideagentur.ch</a>, Telefon{' '}
               <a href="tel:+41783262952" className="legal-link">+41 78 326 29 52</a> – mittels einer eindeutigen
               Erklärung (z.&nbsp;B. ein mit der Post versandter Brief oder eine E-Mail) über Ihren Entschluss,
@@ -358,7 +358,7 @@ function BodyDE() {
             zurück.)
           </p>
           <div className="mt-2 p-5 rounded-lg font-mono text-[0.85rem] leading-[1.9]" style={{ ...infoBox, color: 'var(--t2)' }}>
-            <p>An: SLIDE, Akif Yaylaci, Talgut-Zentrum 26, 3063 Ittigen, Schweiz, info@slideagentur.ch</p>
+            <p>An: SLIDE, Akif Yaylaci, Ittigen, Schweiz, info@slideagentur.ch</p>
             <p>— Hiermit widerrufe(n) ich/wir (*) den von mir/uns (*) abgeschlossenen Vertrag über die Erbringung der folgenden Dienstleistung: ______________________________</p>
             <p>— Bestellt am (*) / abgeschlossen am (*): ______________</p>
             <p>— Name des/der Verbraucher(s): ______________________________</p>
@@ -410,7 +410,7 @@ function BodyDE() {
           <p>Für Fragen zu diesen AGB:</p>
           <p>
             <strong>SLIDE</strong> – Akif Yaylaci<br />
-            Talgut-Zentrum 26, 3063 Ittigen<br />
+            Ittigen<br />
             <a href="mailto:info@slideagentur.ch" className="legal-link">info@slideagentur.ch</a><br />
             <a href="tel:+41783262952" className="legal-link">+41 78 326 29 52</a>
           </p>
@@ -427,7 +427,7 @@ function BodyEN() {
         <Block title="1.1 Scope">
           <p>
             These General Terms and Conditions (hereinafter «GTC») apply to all contracts, services and offers
-            of SLIDE, sole proprietorship, owner Akif Yaylaci, Talgut-Zentrum 26, 3063 Ittigen (hereinafter
+            of SLIDE, sole proprietorship, owner Akif Yaylaci, Ittigen (hereinafter
             «Contractor»), towards its customers (hereinafter «Client»). They apply both to businesses and to
             consumers.
           </p>
@@ -690,8 +690,8 @@ function BodyEN() {
               the conclusion of the contract.
             </p>
             <p>
-              To exercise your right of withdrawal, you must inform us – SLIDE, Akif Yaylaci, Talgut-Zentrum 26,
-              3063 Ittigen, Switzerland, e-mail{' '}
+              To exercise your right of withdrawal, you must inform us – SLIDE, Akif Yaylaci, Ittigen,
+              Switzerland, e-mail{' '}
               <a href="mailto:info@slideagentur.ch" className="legal-link">info@slideagentur.ch</a>, phone{' '}
               <a href="tel:+41783262952" className="legal-link">+41 78 326 29 52</a> – of your decision to
               withdraw from this contract by means of a clear statement (e.g. a letter sent by post or an
@@ -725,7 +725,7 @@ function BodyEN() {
         <Block title="11.4 Model withdrawal form">
           <p>(If you wish to withdraw from the contract, please complete this form and return it.)</p>
           <div className="mt-2 p-5 rounded-lg font-mono text-[0.85rem] leading-[1.9]" style={{ ...infoBox, color: 'var(--t2)' }}>
-            <p>To: SLIDE, Akif Yaylaci, Talgut-Zentrum 26, 3063 Ittigen, Switzerland, info@slideagentur.ch</p>
+            <p>To: SLIDE, Akif Yaylaci, Ittigen, Switzerland, info@slideagentur.ch</p>
             <p>— I/we (*) hereby withdraw from the contract concluded by me/us (*) for the provision of the following service: ______________________________</p>
             <p>— Ordered on (*) / concluded on (*): ______________</p>
             <p>— Name of consumer(s): ______________________________</p>
@@ -776,7 +776,7 @@ function BodyEN() {
           <p>For questions about these GTC:</p>
           <p>
             <strong>SLIDE</strong> – Akif Yaylaci<br />
-            Talgut-Zentrum 26, 3063 Ittigen<br />
+            Ittigen<br />
             <a href="mailto:info@slideagentur.ch" className="legal-link">info@slideagentur.ch</a><br />
             <a href="tel:+41783262952" className="legal-link">+41 78 326 29 52</a>
           </p>
