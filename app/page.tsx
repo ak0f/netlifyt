@@ -256,6 +256,7 @@ function HeroSection() {
 
 /* ─── SERVICES ─── */
 const SERVICE_IMGS = ['/img/webdesign.png', '/img/socialmedia.png', '/img/email.png']
+const SERVICE_SLUGS = ['webdesign-bern', 'social-media-bern', 'email-marketing']
 
 function GridDotsIcon() {
   const dots: React.ReactNode[] = []
@@ -279,6 +280,7 @@ function ServicesSection() {
     tagline: item.tagline,
     subtitle: t.flyout.counts[i],
     img: SERVICE_IMGS[i],
+    slug: SERVICE_SLUGS[i],
     features: item.features,
   }))
 
@@ -309,8 +311,8 @@ function ServicesSection() {
   )
 }
 
-function ServiceCard({ title, tagline, subtitle, img, features, idx }: {
-  num?: string; title: string; tagline: string; subtitle: string; img: string; features: string[]; idx: number
+function ServiceCard({ title, tagline, subtitle, img, slug, features, idx }: {
+  num?: string; title: string; tagline: string; subtitle: string; img: string; slug: string; features: string[]; idx: number
 }) {
   const { t }    = useLang()
   const wrapRef  = useRef<HTMLDivElement>(null)
@@ -494,7 +496,7 @@ function ServiceCard({ title, tagline, subtitle, img, features, idx }: {
             <AnimatePresence>
               {(hovered || isMobile) && (
                 <motion.a
-                  href="/kontakt"
+                  href={`/leistungen/${slug}`}
                   initial={{ opacity: 0, y: 6 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 4, transition: { duration: 0.14 } }}

@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(gh repo *)",
+      "PowerShell(gh repo view ak0f/netlifyt --json name,description,defaultBranchRef,pushedAt,isEmpty 2>&1)",
+      "Bash(TMPCLONE=\"/tmp/netlifyt-inspect-1301\"; diff -rq \"$TMPCLONE\" . -x .git -x node_modules -x .next -x .playwright-mcp 2>&1 | head -50)",
+      "Read(//tmp/**)",
+      "Bash(git init *)",
+      "Bash(git remote *)",
+      "Bash(git fetch *)",
+      "Bash(git checkout *)",
+      "Bash(git reset *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(rm -rf /tmp/netlifyt-inspect-1301)"
+    ],
+    "additionalDirectories": [
+      "\\tmp"
+    ]
+  }
+}
