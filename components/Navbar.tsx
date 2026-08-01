@@ -220,6 +220,28 @@ export default function Navbar() {
             </div>
 
             <Link
+              href="https://dashboard.slideagentur.ch"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden lg:inline-flex"
+              style={{
+                ...PILL,
+                padding: '0 16px', height: '42px',
+                alignItems: 'center', justifyContent: 'center',
+                color: 'rgba(255,255,255,0.72)',
+                fontSize: '13px',
+                fontWeight: 400,
+                whiteSpace: 'nowrap',
+                textDecoration: 'none',
+                transition: 'color 0.2s, background 0.2s',
+              }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.color = '#fff'; (e.currentTarget as HTMLElement).style.background = 'rgba(60,60,60,0.60)' }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.72)'; (e.currentTarget as HTMLElement).style.background = 'rgba(36,36,36,0.50)' }}
+            >
+              {t.nav.login}
+            </Link>
+
+            <Link
               href="/kontakt"
               aria-label={t.a11y.bookCall}
               className="hidden lg:inline-flex"
@@ -296,6 +318,16 @@ export default function Navbar() {
                 style={{ display: 'block', padding: '12px 16px', color: '#fff', fontSize: '15.41px', fontWeight: 400, textDecoration: 'none', borderRadius: '10px', background: 'rgba(255,255,255,0.06)', marginBottom: '6px' }}
               >
                 {t.hero.cta}
+              </Link>
+
+              <Link
+                href="https://dashboard.slideagentur.ch"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setOpen(false)}
+                style={{ display: 'block', padding: '12px 16px', color: 'rgba(255,255,255,0.72)', fontSize: '14px', fontWeight: 400, textDecoration: 'none', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.08)', marginBottom: '6px' }}
+              >
+                {t.nav.login}
               </Link>
 
               {/* Language switch */}

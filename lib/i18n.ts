@@ -3,7 +3,7 @@ export type Lang = 'de' | 'en'
 const de = {
   nav: {
     services: 'Leistungen', references: 'Referenzen', about: 'Über uns',
-    process: 'Ablauf', contact: 'Kontakt',
+    process: 'Ablauf', contact: 'Kontakt', login: 'Login für Kunden',
   },
   hero: {
     line1: 'SLIDE ist deine Digitalagentur in Bern.',
@@ -200,7 +200,7 @@ const de = {
 const en: typeof de = {
   nav: {
     services: 'Services', references: 'Portfolio', about: 'About',
-    process: 'Process', contact: 'Contact',
+    process: 'Process', contact: 'Contact', login: 'Client Login',
   },
   hero: {
     line1: 'SLIDE is your digital agency in Berne.',
