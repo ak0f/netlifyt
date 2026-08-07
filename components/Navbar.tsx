@@ -261,8 +261,8 @@ export default function Navbar() {
             {/* Hamburger — mobile */}
             <button
               onClick={() => setOpen(v => !v)}
-              style={{ ...PILL, padding: '11px 14px', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-              className="lg:hidden"
+              style={{ ...PILL, padding: '11px 14px', border: 'none', cursor: 'pointer', alignItems: 'center', justifyContent: 'center' }}
+              className="flex lg:hidden"
               aria-label={t.a11y.openMenu}
               aria-expanded={open}
             >
