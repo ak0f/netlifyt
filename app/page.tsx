@@ -5,7 +5,13 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { motion, useInView, AnimatePresence, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion'
 import { useLang } from '@/context/LanguageContext'
-import { PROJECTS, type Project } from '@/lib/projects'
+import { PROJECTS } from '@/lib/projects'
+import { useIsMobile } from '@/lib/useIsMobile'
+import ScrollCountUp from '@/components/ScrollCountUp'
+import ProcessTimeline from '@/components/ProcessTimeline'
+import TestimonialsStack from '@/components/TestimonialsStack'
+import ReferencesPinnedSlider from '@/components/ReferencesPinnedSlider'
+import ConversationalContactForm from '@/components/ConversationalContactForm'
 
 /* ─── Animation helpers ─── */
 function FadeUp({ children, delay = 0, className = '' }: { children: React.ReactNode; delay?: number; className?: string }) {
@@ -22,17 +28,6 @@ function FadeUp({ children, delay = 0, className = '' }: { children: React.React
       {children}
     </motion.div>
   )
-}
-
-function useIsMobile() {
-  const [mobile, setMobile] = useState(false)
-  useEffect(() => {
-    const check = () => setMobile(window.innerWidth < 768)
-    check()
-    window.addEventListener('resize', check, { passive: true })
-    return () => window.removeEventListener('resize', check)
-  }, [])
-  return mobile
 }
 
 /* ─── 3D S character that follows mouse ─── */
@@ -366,6 +361,7 @@ function ServiceCard({ title, tagline, subtitle, img, slug, features, idx }: {
         onMouseMove={isMobile ? undefined : onMouseMove}
         onMouseEnter={isMobile ? undefined : () => setHovered(true)}
         onMouseLeave={isMobile ? undefined : onMouseLeave}
+        onClick={isMobile ? () => setHovered(v => !v) : undefined}
         style={{
           rotateX: isMobile ? 0 : rotateX,
           rotateY: isMobile ? 0 : rotateY,
@@ -375,7 +371,7 @@ function ServiceCard({ title, tagline, subtitle, img, slug, features, idx }: {
           position: 'relative',
           aspectRatio: isMobile ? undefined : '3 / 4',
           minHeight: isMobile ? '0' : undefined,
-          cursor: 'default',
+          cursor: isMobile ? 'pointer' : 'default',
           willChange: 'transform',
         }}
       >
@@ -460,10 +456,10 @@ function ServiceCard({ title, tagline, subtitle, img, slug, features, idx }: {
             </span>
           </div>
 
-          {/* Pills — always visible on mobile (max 3), hover on desktop */}
-          <div style={{ flexGrow: isMobile ? 0 : 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '0.5rem', paddingBlock: isMobile ? '1rem' : '1.75rem' }}>
+          {/* Pills — revealed on tap (mobile) or hover (desktop), never shown automatically */}
+          <div style={{ flexGrow: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '0.5rem', paddingBlock: '1.75rem' }}>
             <AnimatePresence>
-              {(hovered || isMobile) && (isMobile ? features.slice(0, 3) : features).map((f, i) => (
+              {hovered && features.map((f, i) => (
                 <motion.div
                   key={f}
                   initial={{ opacity: 0, y: 16, scale: 0.95 }}
@@ -494,7 +490,7 @@ function ServiceCard({ title, tagline, subtitle, img, slug, features, idx }: {
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
             <GridDotsIcon />
             <AnimatePresence>
-              {(hovered || isMobile) && (
+              {hovered && (
                 <motion.a
                   href={`/leistungen/${slug}`}
                   initial={{ opacity: 0, y: 6 }}
@@ -524,103 +520,28 @@ function ServiceCard({ title, tagline, subtitle, img, slug, features, idx }: {
 
 /* ─── REFERENCES ─── */
 function ReferencesSection() {
-  const { t } = useLang()
+  const { t, lang } = useLang()
   const sectionRef = useRef(null)
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'start 25%'] })
   const bg = useTransform(scrollYProgress, [0, 1], ['rgb(18,18,18)', 'rgb(11,11,11)'])
 
   return (
     <motion.section ref={sectionRef} id="referenzen" style={{ background: bg, padding: 'max(7vw, 3rem) clamp(1rem, 2.5vw, 2.5rem)' }}>
-      <div style={{ width: '100%', margin: '0 auto' }}>
-        <FadeUp>
-          <span style={{ display: 'block', fontSize: '15.41px', fontWeight: 400, textTransform: 'uppercase', color: 'rgb(178,178,178)', marginBottom: '1.5rem' }}>{t.references.label}</span>
-          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-end', gap: '2rem', marginBottom: 'clamp(2rem, 4vw, 3rem)' }}>
+      <FadeUp>
+        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-end', gap: '2rem', marginBottom: 'clamp(2rem, 4vw, 3rem)' }}>
+          <div>
+            <span style={{ display: 'block', fontSize: '15.41px', fontWeight: 400, textTransform: 'uppercase', color: 'rgb(178,178,178)', marginBottom: '1.5rem' }}>{t.references.label}</span>
             <h2 style={{ fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif', fontSize: 'var(--fs-section)', fontWeight: 400, color: '#fff', margin: 0, lineHeight: 1.25 }}>
               {t.references.heading}
             </h2>
-            <Link href="/referenzen" className="btn-dark">{t.references.seeAll}</Link>
           </div>
-        </FadeUp>
-
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(1rem, 2vw, 1.5rem)' }}>
-          {PROJECTS.map(p => <ProjectCard key={p.slug} project={p} />)}
+          <Link href="/referenzen" className="btn-dark">{t.references.seeAll}</Link>
         </div>
-      </div>
+      </FadeUp>
+
+      {/* One wide pinned rectangle — scrolling slides the projects through it horizontally */}
+      <ReferencesPinnedSlider projects={PROJECTS} t={t.references} lang={lang} />
     </motion.section>
-  )
-}
-
-function ProjectCard({ project }: { project: Project }) {
-  const { t, lang } = useLang()
-  const { img, alt, title, desc, meta, slug } = project
-  const ref    = useRef(null)
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] })
-  const yImg    = useTransform(scrollYProgress, [0, 1], ['-7%', '7%'])
-  // scroll-linked reveal — card fades, rises and scales in as it scrolls up
-  const opacity = useTransform(scrollYProgress, [0, 0.22], [0, 1])
-  const y       = useTransform(scrollYProgress, [0, 0.22], [90, 0])
-  const scale   = useTransform(scrollYProgress, [0, 0.22], [0.95, 1])
-
-  const metaCols = [
-    { label: t.references.meta.location, value: meta.location[lang] },
-    { label: t.references.meta.industry, value: meta.industry[lang] },
-    { label: t.references.meta.service, value: meta.service[lang] },
-  ]
-
-  return (
-    <Link href={`/referenzen/${slug}`} style={{ textDecoration: 'none' }} aria-label={title}>
-      <motion.article
-        ref={ref}
-        style={{
-          opacity,
-          y,
-          scale,
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(min(320px, 100%), 1fr))',
-          gap: 'clamp(2rem, 4vw, 4rem)',
-          alignItems: 'stretch',
-          padding: 'clamp(1.25rem, 2.5vw, 2rem)',
-          borderRadius: '20px',
-          border: '1px solid rgba(255,255,255,0.06)',
-          background: 'linear-gradient(135deg, rgba(34,34,34,0.55) 0%, rgba(18,18,18,0.35) 100%)',
-          transition: 'border-color 0.3s',
-        }}
-        whileHover={{ borderColor: 'rgba(255,255,255,0.16)' }}
-      >
-        {/* Image with parallax */}
-        <div style={{ borderRadius: '14px', overflow: 'hidden', background: 'rgb(29,29,29)', minHeight: '280px' }}>
-          <motion.div style={{ y: yImg, height: '100%' }}>
-            <Image
-              src={img} alt={alt} width={760} height={560}
-              style={{ width: '100%', height: '100%', display: 'block', objectFit: 'cover', filter: 'brightness(0.9)', transition: 'transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.4s', transform: 'scale(1.06)' }}
-              unoptimized
-              onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.1)'; e.currentTarget.style.filter = 'brightness(1)' }}
-              onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1.06)'; e.currentTarget.style.filter = 'brightness(0.9)' }}
-            />
-          </motion.div>
-        </div>
-
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', paddingBlock: 'clamp(0.5rem, 1.5vw, 1.5rem)' }}>
-          <h3 style={{ fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif', fontSize: 'clamp(2rem, 3.5vw, 3rem)', fontWeight: 400, color: '#fff', margin: 0, lineHeight: 1.05, letterSpacing: '-0.02em' }}>{title}</h3>
-          <p style={{ fontSize: '15.41px', color: 'rgb(196,196,196)', lineHeight: 1.7, margin: 0 }}>{desc[lang]}</p>
-
-          <div style={{ flex: 1 }} />
-
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '2.5rem', paddingTop: '0.5rem' }}>
-            {metaCols.map(m => (
-              <div key={m.label} style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
-                <span style={{ fontSize: '13px', color: 'rgb(178,178,178)' }}>{m.label}</span>
-                <span style={{ fontSize: '14px', color: '#fff', textTransform: 'uppercase', letterSpacing: '0.04em' }}>{m.value}</span>
-              </div>
-            ))}
-          </div>
-
-          <span style={{ display: 'inline-flex', alignItems: 'center', fontSize: '15.41px', color: '#fff', marginTop: '0.5rem', fontFamily: 'var(--font-hg), sans-serif' }}>
-            {t.references.viewProject}
-          </span>
-        </div>
-      </motion.article>
-    </Link>
   )
 }
 
@@ -636,9 +557,11 @@ function TestimonialsSection() {
   }))
   return (
     <section style={{ background: 'rgb(11, 11, 11)', padding: 'max(7vw, 3rem) clamp(1rem, 2.5vw, 2.5rem)' }}>
-      <div style={{ position: 'relative', width: '100%', margin: '0 auto', background: 'rgb(6,6,6)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 'clamp(20px, 3vw, 32px)', padding: 'clamp(1.75rem, 4vw, 4rem)', overflow: 'hidden' }}>
-        {/* soft blurred glow */}
-        <div aria-hidden style={{ position: 'absolute', top: '-25%', left: '50%', transform: 'translateX(-50%)', width: 'min(70%, 720px)', height: '45%', background: 'radial-gradient(ellipse at center, rgba(120,120,140,0.14), transparent 70%)', filter: 'blur(70px)', pointerEvents: 'none', zIndex: 0 }} />
+      <div style={{ position: 'relative', width: '100%', margin: '0 auto', background: 'rgb(6,6,6)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 'clamp(20px, 3vw, 32px)', padding: 'clamp(1.75rem, 4vw, 4rem)' }}>
+        {/* soft blurred glow — clipped in its own layer so it doesn't break the tall sticky stack below (position: sticky needs an ancestor chain without overflow:hidden) */}
+        <div aria-hidden style={{ position: 'absolute', inset: 0, top: 0, height: 'clamp(300px, 30vw, 480px)', borderRadius: 'clamp(20px, 3vw, 32px) clamp(20px, 3vw, 32px) 0 0', overflow: 'hidden', pointerEvents: 'none', zIndex: 0 }}>
+          <div style={{ position: 'absolute', top: '-25%', left: '50%', transform: 'translateX(-50%)', width: 'min(70%, 720px)', height: '200%', background: 'radial-gradient(ellipse at center, rgba(120,120,140,0.14), transparent 70%)', filter: 'blur(70px)' }} />
+        </div>
 
         <div style={{ position: 'relative', zIndex: 1, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(380px, 100%), 1fr))', gap: 'clamp(2rem, 5vw, 5rem)', alignItems: 'start' }}>
         {/* Left — sticky intro + CTA */}
@@ -655,51 +578,11 @@ function TestimonialsSection() {
           </div>
         </div>
 
-        {/* Right — auto-scrolling reviews with top/bottom darken fade */}
-        <div style={{
-          height: 'clamp(460px, 72vh, 760px)',
-          overflow: 'hidden',
-          WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, #000 13%, #000 87%, transparent 100%)',
-          maskImage: 'linear-gradient(to bottom, transparent 0%, #000 13%, #000 87%, transparent 100%)',
-        }}>
-          <div className="vmarquee-track">
-            {[...testimonials, ...testimonials].map((tm, i) => <TestimonialCard key={i} {...tm} />)}
-          </div>
-        </div>
+        {/* Right — scroll-scrubbed testimonial stack */}
+        <TestimonialsStack testimonials={testimonials} />
         </div>
       </div>
     </section>
-  )
-}
-
-function TestimonialCard({ quote, name, title }: { quote: string; name: string; title: string }) {
-  return (
-    <div
-      style={{
-        background: 'rgb(20,20,20)',
-        border: '1px solid rgba(255,255,255,0.05)',
-        borderRadius: '20px',
-        padding: 'clamp(2rem, 3.5vw, 3.5rem)',
-        minHeight: 'clamp(300px, 30vw, 380px)',
-        marginBottom: 'clamp(1.5rem, 2.5vw, 2rem)',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '2.5rem',
-        textAlign: 'center',
-        flexShrink: 0,
-      }}
-    >
-      <p style={{ fontSize: 'clamp(1.05rem, 1.4vw, 1.3rem)', color: '#fff', lineHeight: 1.6, margin: 0, flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{quote}</p>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '1rem' }}>
-        <div style={{ width: '44px', height: '44px', borderRadius: '50%', background: 'rgba(255,255,255,0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '15px', color: 'rgba(255,255,255,0.5)', flexShrink: 0 }}>
-          {name[0]}
-        </div>
-        <div style={{ textAlign: 'left' }}>
-          <p style={{ fontSize: '14px', color: '#fff', margin: 0, textTransform: 'uppercase', letterSpacing: '0.04em' }}>{name}</p>
-          <p style={{ fontSize: '12px', color: 'rgb(178,178,178)', margin: 0 }}>{title}</p>
-        </div>
-      </div>
-    </div>
   )
 }
 
@@ -762,13 +645,17 @@ function AboutSection() {
               {t.about.bio3Quote}
             </p>
 
-            {/* Stats */}
+            {/* Stats — count up as this section scrolls through, not on a timer */}
             <div style={{ display: 'flex', gap: 'clamp(1.75rem, 4vw, 2.5rem)', flexWrap: 'wrap', paddingTop: '1.75rem', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
               {t.about.statsLabels.map((label, i) => {
-                const val = ['10+', '100%', '2023'][i]
+                const cfg = [
+                  { from: 0,    to: 10,   suffix: '+' },
+                  { from: 0,    to: 100,  suffix: '%' },
+                  { from: 2015, to: 2023, suffix: ''  },
+                ][i]
                 return (
                   <div key={label}>
-                    <p style={{ fontFamily: 'var(--font-dm-sans)', fontSize: '1.5rem', fontWeight: 400, color: '#fff', margin: '0 0 0.2rem', lineHeight: 1 }}>{val}</p>
+                    <ScrollCountUp progress={scrollYProgress} range={[0.42, 0.6]} from={cfg.from} to={cfg.to} suffix={cfg.suffix} />
                     <p style={{ fontSize: '11px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.55)', margin: 0, letterSpacing: '0.08em' }}>{label}</p>
                   </div>
                 )
@@ -784,18 +671,7 @@ function AboutSection() {
 
 /* ─── CONTACT ─── */
 function ContactSection() {
-  const { t }                     = useLang()
-  const [submitted, setSubmitted] = useState(false)
-  const [error, setError]         = useState(false)
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    const data = new FormData(e.currentTarget)
-    try {
-      await fetch('/__forms.html', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(data as unknown as Record<string, string>).toString() })
-      setSubmitted(true)
-    } catch { setError(true) }
-  }
+  const { t } = useLang()
 
   return (
     <section id="kontakt" style={{ background: '#000', padding: 'max(10vw, 3.5rem) max(5vw, 1.25rem)' }}>
@@ -808,60 +684,7 @@ function ContactSection() {
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem', alignItems: 'start' }}>
         <FadeUp delay={0.1}>
-          <div style={{ background: 'rgb(39,39,39)', borderRadius: '20px', padding: 'clamp(1.25rem, 5vw, 2.5rem)' }}>
-            <p style={{ fontSize: '12px', fontWeight: 400, textTransform: 'uppercase', color: 'rgba(255,255,255,0.58)', marginBottom: '2rem', letterSpacing: '0.08em' }}>
-              {t.contact.formLabel}
-            </p>
-            <AnimatePresence mode="wait">
-              {submitted ? (
-                <motion.div key="success" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} style={{ padding: '3rem 0', textAlign: 'center' }}>
-                  <div style={{ width: '44px', height: '44px', background: 'rgba(255,255,255,0.06)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem', color: '#fff', fontSize: '1.2rem' }}>✓</div>
-                  <p style={{ fontSize: '15.41px', color: 'rgb(178,178,178)', lineHeight: 1.65 }}>{t.contact.success}</p>
-                </motion.div>
-              ) : (
-                <motion.form
-                  key="form"
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -16 }}
-                  onSubmit={handleSubmit}
-                  name="contact"
-                  style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}
-                >
-                  <input type="hidden" name="form-name" value="contact" />
-                  <div className="form-2col">
-                    <div>
-                      <label htmlFor="name" style={{ display: 'block', fontSize: '11px', fontWeight: 400, textTransform: 'uppercase', color: 'rgba(255,255,255,0.58)', marginBottom: '0.6rem', letterSpacing: '0.08em' }}>{t.contact.fields.name}</label>
-                      <input id="name" name="name" type="text" required placeholder={t.contact.fields.namePh} className="fi" />
-                    </div>
-                    <div>
-                      <label htmlFor="email" style={{ display: 'block', fontSize: '11px', fontWeight: 400, textTransform: 'uppercase', color: 'rgba(255,255,255,0.58)', marginBottom: '0.6rem', letterSpacing: '0.08em' }}>{t.contact.fields.email}</label>
-                      <input id="email" name="email" type="email" required placeholder={t.contact.fields.emailPh} className="fi" />
-                    </div>
-                  </div>
-                  <div className="form-2col">
-                    <div>
-                      <label htmlFor="phone" style={{ display: 'block', fontSize: '11px', fontWeight: 400, textTransform: 'uppercase', color: 'rgba(255,255,255,0.58)', marginBottom: '0.6rem', letterSpacing: '0.08em' }}>{t.contact.fields.phone}</label>
-                      <input id="phone" name="phone" type="tel" placeholder={t.contact.fields.phonePh} className="fi" />
-                    </div>
-                    <div>
-                      <label htmlFor="subject" style={{ display: 'block', fontSize: '11px', fontWeight: 400, textTransform: 'uppercase', color: 'rgba(255,255,255,0.58)', marginBottom: '0.6rem', letterSpacing: '0.08em' }}>{t.contact.fields.subject}</label>
-                      <select id="subject" name="subject" required className="fs">
-                        <option value="">{t.contact.fields.subjectDefault}</option>
-                        {t.contact.subjects.map(s => <option key={s} value={s.toLowerCase().replace(/\s+/g, '-')}>{s}</option>)}
-                      </select>
-                    </div>
-                  </div>
-                  <div>
-                    <label htmlFor="message" style={{ display: 'block', fontSize: '11px', fontWeight: 400, textTransform: 'uppercase', color: 'rgba(255,255,255,0.58)', marginBottom: '0.6rem', letterSpacing: '0.08em' }}>{t.contact.fields.message}</label>
-                    <textarea id="message" name="message" required placeholder={t.contact.fields.messagePh} className="ft" />
-                  </div>
-                  {error && <p style={{ fontSize: '14px', color: '#f87171' }}>{t.contact.error}</p>}
-                  <button type="submit" className="btn-dark" style={{ justifyContent: 'center' }}>{t.contact.submit}</button>
-                </motion.form>
-              )}
-            </AnimatePresence>
-          </div>
+          <ConversationalContactForm contact={t.contact} />
         </FadeUp>
 
         <FadeUp delay={0.15}>
@@ -893,7 +716,6 @@ function ContactSection() {
 /* ─── PROCESS ─── */
 function ProcessSection() {
   const { t }    = useLang()
-  const isMobile = useIsMobile()
   const steps    = t.process.steps.map((s, i) => ({ ...s, num: `0${i + 1}` }))
 
   return (
@@ -914,34 +736,9 @@ function ProcessSection() {
         </div>
       </FadeUp>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(240px, 100%), 1fr))', gap: isMobile ? '1rem' : '2px' }}>
-        {steps.map((step, idx) => {
-          const isFirst = idx === 0
-          const isLast  = idx === steps.length - 1
-          const radius  = isMobile
-            ? '15.41px'
-            : isFirst
-            ? '15.41px 4px 4px 15.41px'
-            : isLast
-            ? '4px 15.41px 15.41px 4px'
-            : '4px'
-          return (
-            <FadeUp key={step.num} delay={idx * 0.12}>
-              <div style={{ background: 'rgb(10,10,10)', padding: 'clamp(1.5rem, 4vw, 3rem) clamp(1.25rem, 3vw, 2.5rem)', borderRadius: radius, height: '100%' }}>
-                <span style={{ display: 'block', fontFamily: 'var(--font-dm-sans)', fontSize: '13px', color: 'rgba(255,255,255,0.2)', letterSpacing: '0.08em', marginBottom: '2.5rem' }}>
-                  {step.num}
-                </span>
-                <h3 style={{ fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif', fontSize: 'clamp(32px, 3vw, 44px)', fontWeight: 400, color: '#fff', margin: '0 0 1.25rem', lineHeight: 1.1 }}>
-                  {step.title}
-                </h3>
-                <p style={{ fontSize: '15.41px', color: 'rgb(178,178,178)', lineHeight: 1.65, margin: 0 }}>
-                  {step.desc}
-                </p>
-              </div>
-            </FadeUp>
-          )
-        })}
-      </div>
+      <FadeUp delay={0.1}>
+        <ProcessTimeline steps={steps} dragHint={t.process.dragHint} />
+      </FadeUp>
     </section>
   )
 }

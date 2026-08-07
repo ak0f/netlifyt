@@ -13,6 +13,7 @@ export type Media = { type: 'image' | 'video'; src: string }
 export interface Project {
   slug: string
   img: string            // still image — used on cards and as video poster
+  beforeImg?: string      // optional "before" screenshot — enables the drag compare slider on the card
   alt: string
   title: string
   desc: L

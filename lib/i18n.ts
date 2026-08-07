@@ -28,6 +28,7 @@ const de = {
     label: 'Der Ablauf',
     heading: ['Von null auf fertig', 'in 4 Wochen.'],
     cta: 'Ablauf ansehen →',
+    dragHint: 'Ziehen zum Erkunden',
     steps: [
       { title: 'Brief',  desc: 'Kostenloses Erstgespräch. Wir klären deine Ziele, dein Budget und deinen Zeitplan.' },
       { title: 'Build',  desc: 'Wir bauen deine Lösung. Design, Entwicklung und Content kommen aus einer Hand.' },
@@ -36,6 +37,7 @@ const de = {
   },
   references: {
     label: 'Neueste Referenzen', heading: 'Referenzen, die für sich sprechen.', cta: 'Projekt starten →',
+    beforeLabel: 'Vorher', afterLabel: 'Nachher',
     meta: { location: 'Standort', industry: 'Branche', service: 'Leistung' },
     viewProject: 'Projekt ansehen →',
     seeAll: 'Alle Referenzen →',
@@ -91,6 +93,13 @@ const de = {
     cta: 'Lass uns zusammenarbeiten →',
     infoLabels: ['E-Mail', 'Telefon', 'Standort', 'Antwortzeit'],
     infoValues: ['info@slideagentur.ch', '+41 78 326 29 52', 'Ittigen, Bern, Schweiz', 'Innert 24 Stunden'],
+    flowNext: 'Weiter →',
+    flowBack: '← Zurück',
+    flowSkip: 'Überspringen →',
+    flowEdit: 'Bearbeiten',
+    flowStep: 'Schritt',
+    flowOf: 'von',
+    flowReviewLabel: 'Kurz geprüft, dann ab damit',
   },
   footer: {
     desc: 'Digitalagentur für Websites, Social Media und IT-Lösungen. Bern, Schweiz.',
@@ -225,6 +234,7 @@ const en: typeof de = {
     label: 'The Process',
     heading: ['From zero to live', 'in 4 weeks.'],
     cta: 'See full process →',
+    dragHint: 'Drag to explore',
     steps: [
       { title: 'Brief',  desc: 'Free first call. We sort out your goals, your budget and your timeline.' },
       { title: 'Build',  desc: 'We build your solution. Design, development and content all come from one source.' },
@@ -233,6 +243,7 @@ const en: typeof de = {
   },
   references: {
     label: 'Latest Work', heading: 'Work that speaks for itself.', cta: 'Start a project →',
+    beforeLabel: 'Before', afterLabel: 'After',
     meta: { location: 'Location', industry: 'Industry', service: 'Service' },
     viewProject: 'View project →',
     seeAll: 'All work →',
@@ -288,6 +299,13 @@ const en: typeof de = {
     cta: "Let's work together →",
     infoLabels: ['Email', 'Phone', 'Location', 'Response time'],
     infoValues: ['info@slideagentur.ch', '+41 78 326 29 52', 'Ittigen, Berne, Switzerland', 'Within 24 hours'],
+    flowNext: 'Next →',
+    flowBack: '← Back',
+    flowSkip: 'Skip →',
+    flowEdit: 'Edit',
+    flowStep: 'Step',
+    flowOf: 'of',
+    flowReviewLabel: 'Quick check, then off it goes',
   },
   footer: {
     desc: 'Digital agency for websites, social media and IT solutions. Berne, Switzerland.',
