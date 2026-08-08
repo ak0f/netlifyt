@@ -20,7 +20,7 @@ export default function ConversationalContactForm({ contact: t }: { contact: T['
   const inputRef                = useRef<HTMLInputElement & HTMLTextAreaElement & HTMLSelectElement>(null)
 
   useEffect(() => {
-    if (step < 5) inputRef.current?.focus()
+    if (step < 5) inputRef.current?.focus({ preventScroll: true })
   }, [step])
 
   function set(key: FieldKey, v: string) {
