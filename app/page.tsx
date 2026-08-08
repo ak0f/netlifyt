@@ -676,10 +676,12 @@ function ContactSection() {
   return (
     <section id="kontakt" style={{ background: '#000', padding: 'max(10vw, 3.5rem) max(5vw, 1.25rem)' }}>
       <FadeUp>
-        <span style={{ display: 'block', fontSize: '15.41px', fontWeight: 400, textTransform: 'uppercase', color: 'rgb(178,178,178)', marginBottom: '1.5rem' }}>{t.contact.label}</span>
-        <h2 style={{ fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif', fontSize: 'var(--fs-section)', fontWeight: 400, color: '#fff', margin: '0 0 3rem', lineHeight: 1.25 }}>
-          {t.contact.heading}
+        <h2 style={{ fontFamily: 'var(--font-dm-sans), DM Sans, sans-serif', fontSize: 'clamp(42px, 6vw, 88px)', fontWeight: 400, color: '#fff', margin: '0 0 1.25rem', lineHeight: 0.98, letterSpacing: '-0.03em' }}>
+          {t.contact.label}
         </h2>
+        <p style={{ fontSize: 'clamp(16px, 1.8vw, 20px)', fontWeight: 400, color: '#fff', maxWidth: '480px', lineHeight: 1.5, margin: '0 0 3rem' }}>
+          {t.contact.heading}
+        </p>
       </FadeUp>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem', alignItems: 'start' }}>
@@ -688,7 +690,7 @@ function ContactSection() {
         </FadeUp>
 
         <FadeUp delay={0.15}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
+          <div style={{ position: 'sticky', top: '120px', display: 'flex', flexDirection: 'column', gap: '0' }}>
             {t.contact.infoLabels.map((label, i) => {
               const value = t.contact.infoValues[i]
               const href  = i === 0 ? 'mailto:info@slideagentur.ch' : i === 1 ? 'tel:+41783262952' : undefined

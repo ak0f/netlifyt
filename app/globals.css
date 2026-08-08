@@ -36,7 +36,11 @@ body {
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  /* `hidden` (unlike `clip`) forces the other axis to compute as `auto`,
+     turning body into a scroll container — which silently breaks every
+     `position: sticky` pin/scroll effect on it (references slider,
+     testimonials stack), especially on mobile browsers. */
+  overflow-x: clip;
 }
 
 /* ── Grain overlay ── */
