@@ -61,6 +61,12 @@ async function getStatus(): Promise<DownStatus> {
 }
 
 function lockdownHtml(imageUrl: string | null): string {
+  // Ist ein Bild gesetzt, spricht es für sich — kein Text-Overlay darüber
+  // (der lag vorher sichtbar über dem Bild). Der Text ist nur der Fallback,
+  // wenn (noch) kein Bild hochgeladen ist.
+  const body = imageUrl
+    ? `<img class="bg" src="${imageUrl}" alt=""/>`
+    : `<div class="content"><p>SLIDE ist vorübergehend nicht erreichbar. Bitte versuchen Sie es später erneut.</p></div>`;
   return `<!DOCTYPE html>
 <html lang="de">
 <head>
@@ -70,15 +76,13 @@ function lockdownHtml(imageUrl: string | null): string {
 <title>SLIDE — vorübergehend nicht erreichbar</title>
 <style>
 html,body{margin:0;height:100%;background:#0a0a0a;}
-.bg{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;}
-.overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:1;}
-.content{position:relative;z-index:2;min-height:100%;display:flex;align-items:center;justify-content:center;font-family:system-ui,-apple-system,sans-serif;color:#fff;text-align:center;padding:24px;box-sizing:border-box;}
+.bg{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;}
+.content{position:relative;min-height:100%;display:flex;align-items:center;justify-content:center;font-family:system-ui,-apple-system,sans-serif;color:#fff;text-align:center;padding:24px;box-sizing:border-box;}
 p{max-width:480px;font-size:15px;font-weight:300;opacity:.85;line-height:1.5;}
 </style>
 </head>
 <body>
-${imageUrl ? `<img class="bg" src="${imageUrl}" alt=""/><div class="overlay"></div>` : ""}
-<div class="content"><p>SLIDE ist vorübergehend nicht erreichbar. Bitte versuchen Sie es später erneut.</p></div>
+${body}
 </body>
 </html>`;
 }
