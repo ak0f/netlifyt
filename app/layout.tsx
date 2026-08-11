@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { DM_Sans, IBM_Plex_Mono, Host_Grotesk } from 'next/font/google'
+import { DM_Sans, Host_Grotesk } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
@@ -14,12 +14,6 @@ const dmSans = DM_Sans({
   subsets: ['latin'],
   weight: ['300', '400', '500', '700'],
   variable: '--font-dm-sans',
-  display: 'swap',
-})
-const ibmMono = IBM_Plex_Mono({
-  subsets: ['latin'],
-  weight: ['400'],
-  variable: '--font-ibm-mono',
   display: 'swap',
 })
 const hostGrotesk = Host_Grotesk({
@@ -123,7 +117,7 @@ const jsonLd = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="de" className="scroll-smooth">
-      <body className={`${dmSans.variable} ${ibmMono.variable} ${hostGrotesk.variable}`}>
+      <body className={`${dmSans.variable} ${hostGrotesk.variable}`}>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }}
