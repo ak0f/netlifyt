@@ -6,7 +6,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useLang } from '@/context/LanguageContext'
 
-const COMPANY_HREFS = ['/#ueber-uns', '/referenzen', '/ablauf', '/#kontakt']
+// Index-gleich zu t.footer.company in lib/i18n.ts. Beim Ergänzen beide Listen anfassen.
+const COMPANY_HREFS = ['/#ueber-uns', '/referenzen', '/ablauf', '/onboarding', '/#kontakt']
 const SERVICE_HREFS = [
   '/leistungen/webdesign-bern',
   '/leistungen/social-media-bern',

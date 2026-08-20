@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/referenzen`,  lastModified: now, changeFrequency: 'weekly',  priority: 0.9 },
     { url: `${BASE}/ablauf`,      lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${BASE}/kontakt`,     lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${BASE}/onboarding`,  lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
   ]
 
   const servicePages: MetadataRoute.Sitemap = SERVICES.map((s) => ({
